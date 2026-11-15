@@ -1,0 +1,31 @@
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.24\linewidth}>{\raggedright\arraybackslash}p{0.59\linewidth}>{\raggedright\arraybackslash}p{0.12\linewidth}@{}}
+\toprule
+Measure & Definition & Unit \\
+\midrule
+National group share & $s_{gt}=100P_{gt}/\sum_gP_{gt}$, using monthly passenger journeys. & \% \\
+\addlinespace[5pt]
+Route group share & $s_{grt}=100f_{grt}/\sum_gf_{grt}$, using scheduled flights on the pair in that month. & \% \\
+\addlinespace[5pt]
+Ownership / brand HHI & $\sum s^2$, with shares on the 0--100 scale. Ownership HHI sums squared group shares; brand HHI instead treats each operating brand separately. & Index points \\
+\addlinespace[5pt]
+CR2 & $s_{(1)}+s_{(2)}$, the combined share of the two largest groups, ranked afresh for each observation. & \% \\
+\addlinespace[5pt]
+Leader--rival gap & $s_{(1)}-s_{(2)}$. Nonnegative; this compares the two largest groups, whichever group leads. & pp \\
+\addlinespace[5pt]
+Fringe share & $100-\mathrm{CR2}$. Combined share of all groups outside the leading pair. & \% \\
+\addlinespace[5pt]
+IndiGo / AI frequency share & Each named group's scheduled flights divided by all scheduled flights on the pair in that month, times 100. & \% \\
+\addlinespace[5pt]
+Signed IndiGo--AI gap & IndiGo's frequency share minus Air India Group's. Unlike the leader--rival gap, it can be negative; retained in the focus-period CSV. & pp \\
+\addlinespace[5pt]
+Unused rival capacity, $U_t$ & $\sum_{j\ne I}(\mathrm{ASK}_{jt}-\mathrm{RPK}_{jt})$, where $I$ is IndiGo. Every retained rival brand is counted once. & Seat-km \\
+\addlinespace[5pt]
+Buffer relative to IndiGo, $B_t$ & $100U_t/\mathrm{RPK}_{It}$. The denominator is all IndiGo monthly RPK, not rivals' ASK or cancellation-affected traffic. & \% \\
+\addlinespace[5pt]
+Buffer change / unused-capacity change & $B_{2025}-B_{2024}$ is the buffer change in pp. $100(U_{2025}/U_{2024}-1)$ is the percentage change in unused capacity, comparing the two Decembers. & pp; \% \\
+\addlinespace[5pt]
+Exposure / condition percentages & Monthly exposure: 100 times flagged pairs divided by retained pairs that month. Pooled percentages: 100 times qualifying pair-months divided by all retained pair-months in the stated sample. & \% \\
+\addlinespace[5pt]
+Summary statistics & Means, medians, sample standard deviations and ranges use equally weighted observations within the stated sample. Route quartiles use linear interpolation. & Measure's unit \\
+\bottomrule
+\end{tabular}

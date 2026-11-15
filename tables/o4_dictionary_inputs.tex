@@ -1,0 +1,21 @@
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.24\linewidth}>{\raggedright\arraybackslash}p{0.59\linewidth}>{\raggedright\arraybackslash}p{0.12\linewidth}@{}}
+\toprule
+Variable / key & Meaning and construction & Unit \\
+\midrule
+Month & Calendar month. National and capacity CSVs use a first-of-month date (YYYY-MM-01); route CSVs use YYYY-MM. & Month \\
+\addlinespace[5pt]
+Airline brand & Standardised operating-brand label. Positive-passenger scheduled-domestic records form the national and capacity samples. & Category \\
+\addlinespace[5pt]
+Ownership group & Airline brands combined under the study's common-ownership convention; group passengers or flights are summed before shares are calculated. & Category \\
+\addlinespace[5pt]
+Airport pair & Unordered pair of airport codes, with both directions pooled. A pair in one month is one route observation. GOI and GOX remain separate airports. & Identifier \\
+\addlinespace[5pt]
+2025 route passengers and rank & Passenger journeys summed over both directions and all twelve months of 2025. Descending totals fix the top-twenty selection and its top-ten subset for every study month. These data have no airline breakdown. & Journeys; rank \\
+\addlinespace[5pt]
+National passengers, $P_{gt}$ & Passenger journeys carried by ownership group $g$ in month $t$, summed over retained airline brands. These are journeys, not unique travellers. & Journeys \\
+\addlinespace[5pt]
+Scheduled flights, $f_{grt}$ & Approved scheduled departures for group $g$, pair $r$, month $t$, pooling both directions. Weekdays and validity dates are expanded; each airline/flight/date/directed-leg event is counted once. & Flights \\
+\addlinespace[5pt]
+ASK and RPK & ASK is seats offered times distance; RPK is revenue passengers carried times distance. Reported source values are in thousands; dividing by 1,000,000 expresses them in billions. & Seat-km; passenger-km \\
+\bottomrule
+\end{tabular}

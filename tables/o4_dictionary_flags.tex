@@ -1,0 +1,23 @@
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.24\linewidth}>{\raggedright\arraybackslash}p{0.59\linewidth}>{\raggedright\arraybackslash}p{0.12\linewidth}@{}}
+\toprule
+Flag / convention & Rule and interpretation & Unit \\
+\midrule
+Concentration flags & True when ownership HHI $>1{,}800$, CR2 $\geq80\%$, gap $>20$ pp or fringe $\leq20\%$, respectively. CR2 and fringe conditions are equivalent; gap $>20$ pp is study-defined. & Boolean \\
+\addlinespace[5pt]
+IndiGo exposure / sole operator & Exposure is True when IndiGo supplies $\geq60\%$ of scheduled flights (study-defined). Sole operator is True only when all scheduled flights belong to IndiGo. & Boolean \\
+\addlinespace[5pt]
+Leading-group identities and ties & Groups rank by passengers nationally or flights on each pair-month. Alphabetical ordering resolves ties for display. A route tie across ranks two and three prevents a unique top-two pair; a two-way first-place tie alone does not. & Categories; Boolean \\
+\addlinespace[5pt]
+IndiGo--AI leading-pair flag & True when the top two are IndiGo and Air India Group, regardless of order. The route ``unique pair'' flag also requires no tie across ranks two and three. & Boolean \\
+\addlinespace[5pt]
+Joint concentration flags & H5 combines the national pair flag with CR2 $\geq80\%$ and gap $>20$ pp. The route joint flag applies those conditions to the unique pair; the IndiGo-led variant additionally requires IndiGo to lead. H6 counts observations using only the HHI flag. & Boolean \\
+\addlinespace[5pt]
+First-place leadership flags & IndiGo or AI is a unique leader only if its share strictly exceeds every rival's. First-place ties are counted separately, including in focus-period leadership totals. & Boolean \\
+\addlinespace[5pt]
+Endpoint discrepancy / exact match & Discrepancy is 100 times the sum of absolute airline departure--arrival count differences divided by total departures, pooling directions. Exact match is True only if each airline's two totals agree. & \%; Boolean \\
+\addlinespace[5pt]
+Retained pair-month / available pairs & Retention requires full-month source coverage, endpoint discrepancy $\leq5\%$ and at least ten qualifying pairs in the full twenty-pair panel that month, after exclusions. HYD--MAA in February--March 2022 is excluded. Available pairs count retained observations in the month. & Boolean; count \\
+\addlinespace[5pt]
+Capacity validity & A valid positive-passenger record has ASK $>0$ and $0\leq\mathrm{RPK}\leq\mathrm{ASK}$. Invalid records remain flagged without imputation; the buffer calculation requires every selected December record to be valid. & Category \\
+\bottomrule
+\end{tabular}
