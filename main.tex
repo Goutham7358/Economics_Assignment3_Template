@@ -1,14 +1,221 @@
-\documentclass{article}
-\usepackage{graphicx} % Required for inserting images
+% Editable reconstruction of the supplied DA241O final term paper template.
+% Overleaf main document: main.tex. Compile with pdfLaTeX.
+% Instructional text and original placeholders are deliberately retained.
+% The explicit page breaks before References and the back matter reproduce
+% the supplied template; remove/adapt those breaks when writing the report.
+\documentclass[12pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{mathptmx}
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\usepackage{titlesec}
+\titleformat{\section}{\Large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{0.5em}{}
+% Measured spacing reproduces the supplied PDF's text positions and pagination.
+\titlespacing*{\section}{0pt}{12.083pt plus 5.4pt minus 1.08pt}{5.883pt plus 1.08pt}
+\titlespacing*{\subsection}{0pt}{10.791pt plus 5.4pt minus 1.08pt}{1.75pt plus 1.08pt}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{DA241O: Managerial Economics}
+\fancyhead[R]{Final Term Paper}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\setlength{\headheight}{14.5pt}
+\addtolength{\headsep}{-2.5pt}
+\usepackage[hidelinks]{hyperref}
 
-\title{Economics_Assignment3_Template}
-\author{goutham poloth}
-\date{November 2026}
+% The source prints its bullets as ordinary, unindented paragraphs.
+\newcommand{\templatebullet}[1]{\par\noindent\textbullet\hspace{5.88pt}#1\par}
 
 \begin{document}
+\hypersetup{pageanchor=false}
+\begin{titlepage}
+\centering
+\vspace*{2cm}
+{\Large\bfseries DA241O: MANAGERIAL ECONOMICS\par}
+\vspace{1.5cm}
+{\LARGE\bfseries Final Term Paper\par}
+\vspace{1.5cm}
+{\Large\bfseries [Title of the Study]\par}
+\vspace{2cm}
+{\large\textbf{Team Name:} [Team Name]\par}
+\vspace{0.75cm}
+{\large\textbf{Team Members:}\par}
+\vspace{0.3cm}
+{\large Name 1\\
+Name 2\\
+Name 3\\
+Name 4\par}
+\vfill
+{\large DA241O: Managerial Economics\\
+Department / Programme\\
+Date of Submission\par}
+\end{titlepage}
+\hypersetup{pageanchor=true}
+\setcounter{page}{1}
 
-\maketitle
+\section*{Abstract}
+Briefly present the research problem, research question, data and methodology, main findings, and key implications.
+
+\vspace{0.5cm}
+\textbf{Keywords:} [Keyword 1]; [Keyword 2]; [Keyword 3]; [Keyword 4]
 
 \section{Introduction}
+\subsection{Background and Problem Statement}
+Introduce the market, firm, sector, or policy setting being studied and explain the problem being investigated.
 
+\subsection{Research Question}
+State the primary research question.
+
+\subsection{Research Objectives}
+State the 2--3 research objectives.
+
+\subsection{Economic Framework}
+Identify the economic concept or framework used in the study and explain its relevance to the research question.
+
+Examples may include demand and supply, market structure, information asymmetry, adverse selection, network effects, opportunity cost, principal-agent problems, or other relevant concepts from the course.
+
+\subsection{Scope of the Study}
+Specify the relevant market, geography, time period, population, firms, products, or other boundaries of the study.
+
+\section{Literature Review}
+\subsection{Existing Literature}
+Review the relevant academic, government, industry, and other credible sources.
+
+\subsection{Synthesis of Literature}
+Discuss the major findings, patterns, and differences across the literature.
+
+\subsection{Research Gap}
+Clearly identify what is not adequately addressed by the existing literature and how the present study addresses this gap.
+
+\subsection{Relevance to the Present Study}
+Explain how the existing literature and identified gap inform the research question and analysis.
+
+\section{Data and Methodology}
+\subsection{Research Design}
+Briefly describe the research design used in the study.
+
+\subsection{Data Sources}
+Describe the data source or sources, period covered, geographic coverage, sample or number of observations where applicable, and data collection procedure where applicable.
+
+\subsection{Unit of Analysis}
+Clearly identify the unit of analysis, such as firm, product, transaction, household, district, city, industry, or another relevant unit.
+
+\subsection{Variables and Measures}
+Define the key variables, indicators, measures, or categories used in the analysis.
+
+For quantitative studies, identify the dependent variable, main explanatory variables, and relevant control variables where applicable.
+
+\subsection{Method of Analysis}
+Explain the analytical method used and why it is appropriate for the research question and data.
+
+Examples may include:
+\templatebullet{Descriptive analysis}
+\templatebullet{Comparative analysis}
+\templatebullet{Regression analysis}
+\templatebullet{Market concentration measures}
+\templatebullet{Price analysis}
+\templatebullet{Index construction}
+\templatebullet{Cost-benefit analysis}
+\templatebullet{Cost-effectiveness analysis}
+\templatebullet{Case analysis}
+\templatebullet{Qualitative analysis}
+
+\subsection{Hypotheses or Expected Relationships}
+State the hypotheses or expected relationships developed during the research process, where applicable.
+
+\section{Descriptive and Exploratory Analysis}
+Present the initial analysis of the data.
+
+This may include:
+\templatebullet{Summary statistics}
+\templatebullet{Trends over time}
+\templatebullet{Comparisons across groups}
+\templatebullet{Market shares}
+\templatebullet{Price comparisons}
+\templatebullet{Distribution of observations}
+\templatebullet{Relevant tables and figures}
+Briefly explain the important patterns observed in the data.
+
+\section{Analysis and Results}
+Present the main analysis and findings.
+
+The specific form of analysis will depend on the research question and methodology. This section may include statistical results, regression results, calculated measures or indices, comparative results, tables and figures, qualitative findings, or other relevant empirical evidence.
+
+Interpret the results in terms of their economic meaning and relevance to the research question.
+
+\section{Discussion}
+Discuss the findings in relation to:
+\templatebullet{The research question}
+\templatebullet{The economic framework}
+\templatebullet{The existing literature}
+\templatebullet{The hypotheses or expected relationships}
+\templatebullet{The broader context of the study}
+Clearly state whether the hypotheses or expected relationships were supported, partially supported, or not supported, where applicable.
+
+\section{Implications and Recommendations}
+Discuss the implications of the findings for the relevant stakeholders.
+
+Depending on the topic, these may include:
+\templatebullet{Firms and managers}
+\templatebullet{Consumers}
+\templatebullet{Regulators}
+\templatebullet{Policymakers}
+\templatebullet{Industry participants}
+Provide 2--3 specific recommendations where appropriate. Recommendations should follow from the findings of the study.
+
+\section{Limitations}
+Discuss the important limitations relating to the data, sample, measurement, methodology, analysis, and interpretation.
+
+Where relevant, mention how these limitations could be addressed in future research.
+
+\section{Conclusion}
+Summarise the research question, main findings, key economic interpretation, and main implications.
+
+\newpage
+\section*{References}
+References should follow APA 7th edition style. Every source cited in the text must appear in the reference list, and every source included in the reference list must be cited in the text.
+
+\newpage
+\appendix
+\section{Variable Dictionary}
+Include the variable dictionary where applicable.
+
+\section{Additional Tables and Figures}
+Include additional tables and figures where applicable.
+
+\section{Additional Analysis}
+Include full regression output, additional calculations, analysis code, or other supporting analysis where applicable.
+
+\section{Survey Questionnaire or Interview Guide}
+Include the survey questionnaire or interview guide where applicable.
+
+\newpage
+\section*{Methods and Tools Statement}
+Provide a short statement covering:
+\templatebullet{Data sources used}
+\templatebullet{Software or analytical tools used}
+\templatebullet{Other relevant tools used in preparing or analysing the study}
+\templatebullet{Any AI tool assistance, where applicable}
+
+\section*{Team Member Contributions}
+Provide one line for each team member describing their contribution to the project.
+
+This statement is intended only to confirm that all team members have contributed to the project. It is not an individual assessment of the quality or quantity of each member's contribution, and differences in individual contributions will not result in different marks for team members.
+\templatebullet{\textbf{[Member 1]:} [Brief description of contribution.]}
+\templatebullet{\textbf{[Member 2]:} [Brief description of contribution.]}
+\templatebullet{\textbf{[Member 3]:} [Brief description of contribution.]}
+\templatebullet{\textbf{[Member 4]:} [Brief description of contribution.]}
+
+\newpage
+\section*{General Note}
+The final report should be around 8--12 pages, excluding references and appendices. There is no strict maximum page limit; the length should be appropriate to the scope and depth of the study.
+
+The sections and subsections may be adapted according to the nature of the research question, data, and methodology. Not every subsection will be applicable to every project.
+
+The final report should maintain a clear connection between the research question, economic framework, data, methodology, analysis, findings, and implications.
 \end{document}
