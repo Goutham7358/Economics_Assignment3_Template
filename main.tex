@@ -1,24 +1,29 @@
-% Editable reconstruction of the supplied DA241O final term paper template.
+% Working report based on the supplied DA241O final term paper template.
 % Overleaf main document: main.tex. Compile with pdfLaTeX.
-% Instructional text and original placeholders are deliberately retained.
+% Unfinished sections retain the template's instructional placeholders.
 % The explicit page breaks before References and the back matter reproduce
 % the supplied template; remove/adapt those breaks when writing the report.
 \documentclass[12pt,a4paper]{article}
 \usepackage[T1]{fontenc}
-\usepackage{mathptmx}
+% Latin Modern follows the Computer Modern typography of Assignments 1 and 2.
+\usepackage{lmodern}
+\usepackage{microtype}
 \usepackage{graphicx}
 \usepackage[section]{placeins}
+\usepackage{xcolor}
+\definecolor{headingblue}{RGB}{35,95,155}
+\usepackage{caption}
+\captionsetup[figure]{font=small,labelfont=bf,justification=raggedright,singlelinecheck=false,skip=7pt}
 \usepackage[margin=1in]{geometry}
 \usepackage{setspace}
 \onehalfspacing
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{6pt}
 \usepackage{titlesec}
-\titleformat{\section}{\Large\bfseries}{\thesection.}{0.5em}{}
-\titleformat{\subsection}{\large\bfseries}{\thesubsection}{0.5em}{}
-% Measured spacing reproduces the supplied PDF's text positions and pagination.
-\titlespacing*{\section}{0pt}{12.083pt plus 5.4pt minus 1.08pt}{5.883pt plus 1.08pt}
-\titlespacing*{\subsection}{0pt}{10.791pt plus 5.4pt minus 1.08pt}{1.75pt plus 1.08pt}
+\titleformat{\section}{\large\bfseries\color{headingblue}}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\normalsize\bfseries\color{headingblue}}{\thesubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{1.2em}{0.45em}
+\titlespacing*{\subsection}{0pt}{0.85em}{0.3em}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
@@ -141,10 +146,12 @@ The January 2022 movement includes the study's inclusion of Vistara and AirAsia 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\linewidth]{figures/o4_national_cr2_share_gap.pdf}
-\caption{National CR2 and the gap between the two largest ownership groups.}
+\caption{National concentration and share asymmetry, 2015--2026.}
 \label{fig:o4-national-eda}
+\vspace{2pt}
 \begin{minipage}{\linewidth}
-\footnotesize Source: DGCA monthly airline traffic via \href{https://github.com/mkubicek/india-aviation-stats/tree/16770ac59dae61ce7b80fd8bd67dd7f4cef280a6}{mkubicek/india-aviation-stats}; authors' calculations. Scope: scheduled domestic passengers, 138 observed months. Reproduction files: \href{https://github.com/Goutham7358/Assignment3_Code}{Assignment3\_Code repository}.
+\footnotesize\setstretch{1.1}
+\textit{Source:} DGCA monthly traffic via \href{https://github.com/mkubicek/india-aviation-stats/tree/16770ac59dae61ce7b80fd8bd67dd7f4cef280a6}{Kubicek (2026)}; authors' calculations.
 \end{minipage}
 \end{figure}
 
@@ -197,6 +204,8 @@ Include additional tables and figures where applicable.
 
 \section{Additional Analysis}
 Include full regression output, additional calculations, analysis code, or other supporting analysis where applicable.
+
+\textbf{O4 reproduction files.} Data preparation, Python plotting code, numerical tables and run instructions are available in the \href{https://github.com/Goutham7358/Assignment3_Code}{Assignment 3 code repository}.
 
 \section{Survey Questionnaire or Interview Guide}
 Include the survey questionnaire or interview guide where applicable.
