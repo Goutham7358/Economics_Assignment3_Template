@@ -6,6 +6,8 @@
 \documentclass[12pt,a4paper]{article}
 \usepackage[T1]{fontenc}
 \usepackage{mathptmx}
+\usepackage{graphicx}
+\usepackage[section]{placeins}
 \usepackage[margin=1in]{geometry}
 \usepackage{setspace}
 \onehalfspacing
@@ -128,18 +130,23 @@ Examples may include:
 \subsection{Hypotheses or Expected Relationships}
 State the hypotheses or expected relationships developed during the research process, where applicable.
 
+% Keep the first O4 description and figure together in this working draft.
+\clearpage
 \section{Descriptive and Exploratory Analysis}
-Present the initial analysis of the data.
+\subsection{O4: National concentration trends}
+Figure~\ref{fig:o4-national-eda} summarises 138 observed months from January 2015 to July 2026. The two largest ownership groups' combined passenger share (CR2) rises from 60.7\% to 91.3\%, while their share gap increases from 12.5 to 43.4 percentage points. The leading pair is IndiGo and Jet Airways Group in January 2015, and IndiGo and Air India Group in July 2026; groups are ranked afresh each month.
 
-This may include:
-\templatebullet{Summary statistics}
-\templatebullet{Trends over time}
-\templatebullet{Comparisons across groups}
-\templatebullet{Market shares}
-\templatebullet{Price comparisons}
-\templatebullet{Distribution of observations}
-\templatebullet{Relevant tables and figures}
-Briefly explain the important patterns observed in the data.
+The January 2022 movement includes the study's inclusion of Vistara and AirAsia India/AIX Connect in the Air India Group. It should therefore not be attributed entirely to changes in airline passenger volumes. April 2020 is missing and is not interpolated.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth]{figures/o4_national_cr2_share_gap.pdf}
+\caption{National CR2 and the gap between the two largest ownership groups.}
+\label{fig:o4-national-eda}
+\begin{minipage}{\linewidth}
+\footnotesize Source: DGCA monthly airline traffic via \href{https://github.com/mkubicek/india-aviation-stats/tree/16770ac59dae61ce7b80fd8bd67dd7f4cef280a6}{mkubicek/india-aviation-stats}; authors' calculations. Scope: scheduled domestic passengers, 138 observed months. Reproduction files: \href{https://github.com/Goutham7358/Assignment3_Code}{Assignment3\_Code repository}.
+\end{minipage}
+\end{figure}
 
 \section{Analysis and Results}
 Present the main analysis and findings.
