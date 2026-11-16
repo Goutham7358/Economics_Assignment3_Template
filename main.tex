@@ -152,6 +152,7 @@ For quantitative studies, identify the dependent variable, main explanatory vari
 \textbf{O4.} We calculate monthly HHI, CR2, share gap and fringe share after grouping airlines by ownership. National shares use passenger counts from January 2015 to July 2026. Route shares use scheduled flights in both directions of the 20 busiest airport pairs, ranked by 2025 passengers, with observations available from April 2019 to September 2026. We define December 2024 to July 2026 as the focus period to assess whether an asymmetric duopoly has formed and persisted towards the end of the study. We compare national concentration with concentration on the top 20 and top 10 busiest airport pairs during this period. We also report the percentage of available pairs where IndiGo is the only operator or supplies at least 60\% of scheduled flights. Rivals' combined unused capacity, calculated as ASK minus RPK, is expressed as a percentage of IndiGo's RPK for December 2024 and December 2025. Missing observations are excluded. Appendix~\ref{app:o4-flags} defines the thresholds, and Appendix~\ref{app:o4-route-preparation} provides preparation details and worked calculations.
 
 \subsection{Hypotheses or Expected Relationships}
+\label{sec:hypotheses}
 \textbf{H5 (O4): National concentration.} We expect IndiGo and the Air India Group to remain the two largest groups in every month from December 2024 to July 2026, with CR2 $\geq80\%$ and a share gap above 20 percentage points. HHI $>1{,}800$ is not tested separately, since CR2 $\geq80\%$ already implies HHI $\geq3{,}200$.
 
 \textbf{H6 (O4): Route concentration.} We expect ownership-adjusted scheduled-flight-frequency HHI to exceed 1,800 in more than half of the available route-month observations for the selected twenty airport pairs.
@@ -262,32 +263,26 @@ Rivals' passenger traffic rises by more than their offered capacity, reducing un
 
 \clearpage
 \section{Discussion}
-\subsection{O4: Economic interpretation}
-\textbf{National market structure.} During the focus period (December 2024 to July 2026), the national results are consistent with an asymmetric duopoly. IndiGo and Air India Group dominate the market, but IndiGo has a much larger passenger share (Tables~\ref{tab:o4-national-results} and~\ref{tab:o4-route-focus}). Other airlines form a small competitive fringe.
+\subsection{Economic interpretation}
+% Reserve O4's position until the team's O1--O3 interpretations are inserted.
+\setcounter{subsubsection}{3}
+\subsubsection{O4: Concentration and resilience}
+\textbf{National market structure.} During the focus period (December 2024 to July 2026), the national results are consistent with an asymmetric duopoly. IndiGo and Air India Group dominate the market, but IndiGo has a much larger passenger share (Tables~\ref{tab:o4-national-results} and~\ref{tab:o4-route-focus}). Other airlines form a small competitive fringe. This indicates that domestic passenger traffic depends heavily on two ownership groups, particularly IndiGo, despite the presence of several smaller airlines.
 
-\textbf{Competition on individual airport pairs.} Table~\ref{tab:o4-route-focus} shows that IndiGo and Air India Group, the two national leaders, also dominate scheduled flights on the top 20 and top 10 busiest airport pairs. However, the median gap between the two largest groups is smaller than nationally. Note that national shares use passenger counts, while airport-pair shares use scheduled-flight frequencies, reflecting the data available for each.
+\textbf{Competition on individual airport pairs.} Table~\ref{tab:o4-route-focus} shows that IndiGo and Air India Group, the two national leaders, also dominate scheduled flights on the top 20 and top 10 busiest airport pairs. However, the median gap between the two largest groups is smaller than nationally. This highlights the importance of market definition: IndiGo's large national lead does not imply an equally large lead on individual airport pairs. Note that national shares use passenger counts, while airport-pair shares use scheduled-flight frequencies, reflecting the data available for each.
 
 \textbf{Rivals' capacity buffer.} Table~\ref{tab:o4-capacity-buffer} shows that rivals' unused capacity relative to IndiGo's traffic fell from 9.79\% in December 2024 to 8.19\% in December 2025. This provides a rough aggregate measure of the spare capacity elsewhere in the market relative to IndiGo's traffic, indicating a smaller buffer in December 2025. However, unused seats would also need to match affected passengers' routes and travel dates, so the ratio cannot directly estimate how many passengers could have been accommodated.
 
-\subsection{O4: Hypotheses revisited}
-All three O4 hypotheses are supported within their specified samples and comparison periods (Table~\ref{tab:o4-hypotheses}). These outcomes assess the descriptive conditions stated in Assignment~2; they are not statistical significance tests or causal estimates.
+\subsection{Hypotheses revisited}
+Table~\ref{tab:hypotheses} summarises hypothesis outcomes and supporting evidence. Full hypothesis statements are given in Section~\ref{sec:hypotheses}.
 
-\begin{minipage}{\linewidth}
-\captionsetup{font=small,labelfont=bf,justification=raggedright,singlelinecheck=false,hypcap=false}
-\captionof{table}{O4 hypotheses: outcomes and supporting evidence.}
-\label{tab:o4-hypotheses}
+\begin{resultstable}{Hypothesis outcomes and supporting evidence.}{tab:hypotheses}
 \centering
-{\small\setstretch{1.1}\setlength{\tabcolsep}{5pt}\input{tables/o4_hypothesis_results.tex}\par}
-\vspace{4pt}
-{\footnotesize\setstretch{1.1}\raggedright\textit{Note:} AI Group means Air India Group; pp means percentage points. H6 uses the full April 2019--September 2026 route sample. The H7 denominator is IndiGo's total monthly RPK.\par
-\textit{Source:} Authors' calculations from the Section~5 data.\par}
-\end{minipage}
+\input{tables/hypothesis_results.tex}\par
+\resultstablenotes{O denotes the research objective; pp means percentage points. H5--H7 are descriptive condition checks, not statistical significance tests or causal estimates. H6 uses the full April 2019--September 2026 route sample. The H7 denominator is IndiGo's total monthly RPK.}{Authors' calculations from the Section~5 data.}
+\end{resultstable}
 
-H6 concerns high route concentration, rather than requiring IndiGo to lead Air India by a large margin on every pair. The focus-period comparison therefore qualifies the broader description of asymmetry without contradicting H6: the two groups dominate the busiest sampled pairs, but their scheduled-flight shares are more evenly balanced than their national passenger shares. H7 supports a smaller aggregate buffer, without establishing how many disrupted passengers could actually be accommodated.
-
-\textcite{kumari2026soaring} find that operational efficiency, particularly passenger load factor, matters for airline profitability alongside market structure. Our results preserve that distinction: H5 and H6 establish concentration under the specified measures, while the capacity comparison adds evidence about unused seat-distance. The route results extend the national perspective by distinguishing dominance over the fringe from the gap between the two leaders; they do not replicate the paper's profitability tests or establish collusion.
-
-\textcite{gupta2025antitrust} warn that dependence on a dominant airline can magnify disruption risks. Our capacity comparison adds descriptive evidence of a declining buffer, without establishing that concentration caused the disruption or prevented recovery.
+\textcite{kumari2026soaring} examine how market concentration and operating efficiency relate to airline performance. Our study complements this work by comparing concentration nationally and on the busiest airport pairs. \textcite{gupta2025antitrust} discuss the risks of dependence on a dominant airline. The capacity-buffer comparison in Table~\ref{tab:o4-capacity-buffer} adds a quantitative measure of rivals' aggregate spare capacity relevant to that concern.
 
 \section{Implications and Recommendations}
 Discuss the implications of the findings for the relevant stakeholders.
@@ -302,14 +297,12 @@ Provide 2--3 specific recommendations where appropriate. Recommendations should 
 
 \clearpage
 \section{Limitations}
-\subsection{O4: Measurement, coverage and interpretation}
-\textbf{Scheduled frequency versus passengers carried.} Route concentration uses approved scheduled-flight frequencies, while national concentration uses passenger shares. Flights differ in aircraft size and occupancy, and schedules may differ from actual operations. Consequently, the smaller IndiGo--Air India gap on busy airport pairs describes scheduled frequency; it does not establish an equally balanced division of route passengers. The findings also cannot determine how much of the national--route difference comes from network coverage, aircraft size or occupancy. Airline-by-route passenger and operated-flight data would allow a closer comparison.
+\subsection{O4: Measurement and data availability}
+Route concentration uses scheduled flights, which may differ from actual operations and do not account for aircraft size or occupancy. It therefore cannot establish how passengers are divided between airlines on each airport pair.
 
-\textbf{Incomplete coverage and selected airport pairs.} The sample fixes the twenty busiest pairs by 2025 passengers. In the matched focus period, 350 of 400 possible top-20 pair-months are available; the top-ten comparison retains 184 of 200. These observations need not represent missing pair-months or smaller routes elsewhere in the network. Source-quality screens and the two documented TruJet-related exclusions improve consistency but cannot detect every missing airline filing. Although 99.34\% of exact-endpoint-match observations exceed HHI 1,800, compared with 99.39\% overall, this does not establish complete coverage or random missingness.
+Rivals' unused capacity gives an overall indication of spare capacity elsewhere in the market relative to IndiGo's total monthly traffic. It cannot tell us how many passengers affected by cancellations could have been accommodated, because we do not know whether spare seats were available on the routes and dates they needed.
 
-\textbf{Aggregate capacity buffer.} The fall from 9.79\% to 8.19\% compares monthly unused rival seat-kilometres with all IndiGo passenger-kilometres, rather than the traffic affected by cancellations. It does not show whether unused seats were available on the required routes and dates, or whether additional aircraft, crews and airport slots could be deployed. The two-December comparison is descriptive and cannot establish the cause of the smaller buffer or actual passenger accommodation. Assessing recovery would require disruption-specific demand and route/date-specific available capacity.
-
-\textbf{Ownership conventions and limits to inference.} The January 2022 ownership regrouping mechanically changes concentration, so movements around that date cannot be attributed entirely to passenger redistribution. April 2020 is missing nationally and is not imputed; pandemic-era changes also complicate comparisons across the full series. The gap and IndiGo-exposure thresholds are study-defined descriptive flags. The observed persistence of the national pattern does not establish that it will continue beyond July 2026. Without fare, marginal-cost and recovery data, concentration and buffer measures cannot establish collusion, fare effects, profitability or passenger harm.
+We could not obtain a consistent fare dataset for the study period. Our analysis therefore examines market structure through concentration and market shares, but cannot directly assess airlines' pricing power or whether greater concentration is associated with higher fares.
 
 \section{Conclusion}
 Summarise the research question, main findings, key economic interpretation, and main implications.
@@ -591,17 +584,19 @@ Include the survey questionnaire or interview guide where applicable.
 
 \newpage
 \section*{Methods and Tools Statement}
-Provide a short statement covering:
-\templatebullet{Data sources used}
-\templatebullet{Software or analytical tools used}
-\templatebullet{Other relevant tools used in preparing or analysing the study}
-\templatebullet{Any AI tool assistance, where applicable}
+\textbf{O4 data and tools.} The analysis uses DGCA monthly airline data distributed by Kubicek and DGCA approved domestic flight schedules. Data preparation, calculations and figures use Python; the report is prepared in LaTeX.
+
+\textbf{Code repository:} \href{https://github.com/Goutham7358/Assignment3_Code}{https://github.com/Goutham7358/Assignment3\_Code}. The repository contains the data-preparation scripts, analysis code and reproduction instructions.
+
+\textbf{AI assistance (O4).} AI assistance was used to develop code for cleaning the data, converting DGCA schedule PDFs to CSV, calculating measures such as HHI and CR2, and generating figures. It also supported grammar correction and LaTeX formatting.
+
+% Add the other objectives' data, software and AI-use statements during team integration.
 
 \section*{Team Member Contributions}
 Provide one line for each team member describing their contribution to the project.
 
 This statement is intended only to confirm that all team members have contributed to the project. It is not an individual assessment of the quality or quantity of each member's contribution, and differences in individual contributions will not result in different marks for team members.
-\templatebullet{\textbf{[Member 1]:} [Brief description of contribution.]}
+\templatebullet{\textbf{Goutham P:} Contributed to the literature review and group discussions, and completed O4's data preparation, analysis, figures and report sections.}
 \templatebullet{\textbf{[Member 2]:} [Brief description of contribution.]}
 \templatebullet{\textbf{[Member 3]:} [Brief description of contribution.]}
 \templatebullet{\textbf{[Member 4]:} [Brief description of contribution.]}
