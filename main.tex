@@ -13,6 +13,7 @@
 \usepackage{caption}
 \usepackage{booktabs}
 \usepackage{array}
+\usepackage{tabularx}
 \usepackage{amsmath}
 \usepackage{csquotes}
 \usepackage[backend=biber,style=apa,sorting=nyt]{biblatex}
@@ -41,6 +42,28 @@
 
 % The source prints its bullets as ordinary, unindented paragraphs.
 \newcommand{\templatebullet}[1]{\par\noindent\textbullet\hspace{5.88pt}#1\par}
+
+
+% Keep captions, full-grid tables and supporting notes together.
+\newenvironment{resultstable}[2]{%
+  \par\addvspace{6pt}\noindent
+  \begin{minipage}{\linewidth}
+  \setlength{\parskip}{0pt}%
+  \captionsetup{font=small,labelfont=bf,textfont=normalfont,justification=centering,singlelinecheck=false,hypcap=false,skip=6pt}%
+  \captionof{table}{#1}\label{#2}%
+  \small\setstretch{1.0}%
+  \renewcommand{\arraystretch}{1.25}%
+  \setlength{\tabcolsep}{5pt}%
+  \setlength{\arrayrulewidth}{0.4pt}%
+}{%
+  \end{minipage}\par\addvspace{6pt}%
+}
+\newcommand{\resultstablenotes}[2]{%
+  \par\vspace{6pt}%
+  {\footnotesize\setstretch{1.05}\raggedright
+  \textbf{Note:} #1\par\vspace{2pt}%
+  \textbf{Source:} #2\par}%
+}
 
 \begin{document}
 \hypersetup{pageanchor=false}
@@ -126,7 +149,7 @@ For quantitative studies, identify the dependent variable, main explanatory vari
 
 \clearpage
 \subsection{Method of Analysis}
-\textbf{O4.} Descriptive index and comparative analysis assess two-group dominance and dependence on IndiGo. Each month's national passenger counts and route scheduled-flight counts are aggregated into ownership groups and ranked to calculate HHI, CR2, the leader--rival share gap and fringe share, with the leading groups identified. Route shares pool both directions of the twenty busiest airport pairs by 2025 passengers. The predefined flags are CR2 $\geq80\%$, fringe $\leq20\%$ and gap $>20$ pp, with HHI $>1{,}800$ used as a high-concentration benchmark \parencite[Section~2.1]{dojftc2023merger}. The gap and the IndiGo $\geq60\%$ frequency-share flag are study-defined; monthly exposure percentages use available pairs as their denominator, with IndiGo-only observations identified separately. Rivals' unused capacity is summed as ASK minus RPK and expressed as a percentage of IndiGo's RPK for December 2024 and December 2025. A matched December 2024--July 2026 comparison includes the top-ten subset, while H6 retains the full available April 2019--September 2026 route panel. Missing observations are excluded. Appendix~\ref{app:o4-route-preparation} records ownership conventions, source-quality checks, exclusions and worked calculations.
+\textbf{O4.} We calculate monthly HHI, CR2, share gap and fringe share after grouping airlines by ownership. National shares use passenger counts from January 2015 to July 2026. Route shares use scheduled flights in both directions of the 20 busiest airport pairs, ranked by 2025 passengers, with observations available from April 2019 to September 2026. We define December 2024 to July 2026 as the focus period to assess whether an asymmetric duopoly has formed and persisted towards the end of the study. We compare national concentration with concentration on the top 20 and top 10 busiest airport pairs during this period. We also report the percentage of available pairs where IndiGo is the only operator or supplies at least 60\% of scheduled flights. Rivals' combined unused capacity, calculated as ASK minus RPK, is expressed as a percentage of IndiGo's RPK for December 2024 and December 2025. Missing observations are excluded. Appendix~\ref{app:o4-flags} defines the thresholds, and Appendix~\ref{app:o4-route-preparation} provides preparation details and worked calculations.
 
 \subsection{Hypotheses or Expected Relationships}
 \textbf{H5 (O4): National concentration.} We expect IndiGo and the Air India Group to remain the two largest groups in every month from December 2024 to July 2026, with CR2 $\geq80\%$ and a share gap above 20 percentage points. HHI $>1{,}800$ is not tested separately, since CR2 $\geq80\%$ already implies HHI $\geq3{,}200$.
@@ -138,32 +161,9 @@ For quantitative studies, identify the dependent variable, main explanatory vari
 % Keep the first O4 description and figure together in this working draft.
 \clearpage
 \section{Descriptive and Exploratory Analysis}
-\subsection{O4: National concentration trends}
-Across 138 observed months (January 2015--July 2026), the top two groups' combined passenger share (CR2) rises from 60.7\% to 91.3\%, and their gap from 12.5 to 43.4 percentage points (Figure~\ref{fig:o4-national-eda}). IndiGo is first throughout; Table~\ref{tab:o4-leading-pairs} names the second group by period. Appendix~\ref{app:o4-national-summary} (Table~\ref{tab:o4-national-summary}) provides summary statistics.
-
-The January 2022 movement partly reflects regrouping Vistara and AirAsia India/AIX Connect with the Air India Group, rather than changes in passenger volumes alone.
-
-\begin{minipage}{\linewidth}
-\captionsetup{font=small,labelfont=bf,justification=raggedright,singlelinecheck=false,hypcap=false}
-\captionof{table}{Second-largest ownership group by observed period.}
-\label{tab:o4-leading-pairs}
-\centering
-{\small\setstretch{1.0}
-\begin{tabular}{@{}llr@{}}
-\toprule
-Period & Second-largest group & Observed months \\
-\midrule
-Jan 2015--Jan 2019 & Jet Airways Group & 49 \\
-Feb 2019--Apr 2021 & SpiceJet & 26 \\
-May--Aug 2021 & Air India Group & 4 \\
-Sep 2021 & Vistara & 1 \\
-Oct--Dec 2021 & Go First & 3 \\
-Jan 2022--Jul 2026 & Air India Group & 55 \\
-\bottomrule
-\end{tabular}\par}
-\vspace{3pt}
-{\footnotesize\setstretch{1.1}\raggedright\textit{Note:} April 2020 is missing. Source: same passenger series as Figure~\ref{fig:o4-national-eda}.\par}
-\end{minipage}
+\subsection{National airline data}
+\label{sec:o4-national-data}
+\textbf{O4: Concentration and capacity inputs.} From January 2015 to July 2026, CR2 rises from 60.7\% to 91.3\%, while the gap between the two largest groups increases from 12.5 to 43.4 percentage points (Figure~\ref{fig:o4-national-eda}). IndiGo leads in all 138 observed months, while the second-largest group changes over time. Appendix~\ref{app:o4-national-summary} lists these changes and provides summary statistics. The January 2022 increase in CR2 partly reflects the Tata Group's acquisition of Air India. From that month, our calculations combine Air India and Air India Express with Vistara and AirAsia India as one ownership group.
 
 \begin{figure}[htbp]
 \centering
@@ -177,15 +177,12 @@ Jan 2022--Jul 2026 & Air India Group & 55 \\
 \end{minipage}
 \end{figure}
 
-\clearpage
-\subsection{O4: Route coverage and concentration}
-The sample fixes the 20 busiest airport pairs by 2025 passengers, combining directions. One observation is one airport pair in one calendar month: Delhi--Mumbai in June and July count as two separate observations. There are 1,150 observations across 66 months between April 2019 and September 2026.
+The same national dataset provides the capacity inputs. Between December 2024 and December 2025, rivals' offered capacity rises from 6.385 to 6.619 billion seat-kilometres, while passenger traffic rises from 5.493 to 5.947 billion passenger-kilometres. Appendix~\ref{app:o4-national-summary} provides the complete input table (Table~\ref{tab:o4-capacity-inputs}).
 
-Panel~A of Figure~\ref{fig:o4-route-eda} counts pairs with usable data each month (12--20 in observed months). Gaps mean no retained observations, rather than zero flights.
-
-Panel~B groups the 1,150 observations into HHI intervals of 500 points. Its horizontal axis shows HHI; its vertical axis counts observations. For example, 278 observations have HHI from 3,500 up to 4,000, so that bar has height 278. The bar heights sum to 1,150. This shows how often different concentration levels occur across the observed pairs and months, rather than how HHI changes over time.
-
-Each observation has equal weight. Median HHI is 3,711; the middle half lies between 3,180 and 4,244. HHI uses ownership groups' approved scheduled-flight shares, not passenger shares. Appendix~\ref{app:o4-route-preparation} records preparation and exclusions.
+\FloatBarrier
+\subsection{Route-level flight schedules}
+\label{sec:o4-route-data}
+\textbf{O4: Coverage and concentration.} The route panel contains 1,150 observations across 66 available months between April 2019 and September 2026. Each observation represents one airport pair in one month. Coverage ranges from 12 to 20 airport pairs per observed month. Median HHI is 3,711, with the middle half between 3,180 and 4,244 (Figure~\ref{fig:o4-route-eda}). These measures use ownership groups' scheduled-flight shares. Gaps indicate unavailable data.
 
 \begin{figure}[htbp]
 \centering
@@ -199,10 +196,7 @@ Each observation has equal weight. Median HHI is 3,711; the middle half lies bet
 \end{minipage}
 \end{figure}
 
-\clearpage
-Figure~\ref{fig:o4-route-heatmap} complements the pooled histogram in Figure~\ref{fig:o4-route-eda} using the same 1,150 observations. Each row is one airport pair, ordered by 2025 passenger totals, and each column is a calendar month. Colour shows ownership-group frequency HHI on a common 0--10,000 scale; grey means no usable observation. Reading across a row shows changes for that pair, while reading down a column compares pairs in the same month. Gaps are not interpolated.
-
-For example, Mumbai--Delhi's HHI rises from 2,071 in April 2019 to 4,146 in September 2026. The heatmap preserves this time and pair information, while the histogram shows how frequently each concentration range occurs across all observations.
+Figure~\ref{fig:o4-route-heatmap} shows how HHI varies across individual airport pairs over time. Each row represents one airport pair and each column one calendar month. Colours use a common 0--10,000 HHI scale. Grey cells indicate unavailable data, and gaps are not interpolated.
 
 \begin{figure}[htbp]
 \centering
@@ -217,104 +211,54 @@ For example, Mumbai--Delhi's HHI rises from 2,071 in April 2019 to 4,146 in Sept
 \end{figure}
 
 \clearpage
-\subsection{O4: Capacity and passenger-traffic inputs}
-Table~\ref{tab:o4-capacity-inputs} presents December 2024 and December 2025 data for scheduled domestic passenger airlines. Offered capacity, measured in available seat-kilometres (ASK), is seats offered multiplied by distance. Passenger traffic, measured in revenue passenger-kilometres (RPK), is paying passengers carried multiplied by distance. Both are reported in billions, with all airlines other than IndiGo pooled together.
-
-IndiGo's offered capacity and passenger traffic are lower in December 2025, while both are higher for the other airlines combined. The gap between capacity and traffic supplies the input for the unused-capacity calculation in the main analysis. These national totals do not identify spare seats on a particular route or day.
-
-\begin{minipage}{\linewidth}
-\captionsetup{font=small,labelfont=bf,justification=raggedright,singlelinecheck=false,hypcap=false}
-\captionof{table}{Capacity and passenger-traffic inputs for the December comparison.}
-\label{tab:o4-capacity-inputs}
-\centering
-{\small\setstretch{1.1}\input{tables/o4_capacity_inputs.tex}\par}
-\vspace{4pt}
-{\footnotesize\setstretch{1.1}\raggedright\textit{Source:} DGCA monthly airline traffic via \href{https://github.com/mkubicek/india-aviation-stats/tree/16770ac59dae61ce7b80fd8bd67dd7f4cef280a6}{Kubicek (2026)}; authors' calculations.\par}
-\end{minipage}
-
-\clearpage
 \section{Analysis and Results}
-\subsection{O4: National concentration and dominance}
-IndiGo and the Air India Group are the two largest ownership groups in all 20 months from December 2024 to July 2026, with IndiGo ranked first throughout. Their combined passenger share ranges from 89.13\% to 91.70\%, and the gap between them ranges from 30.01 to 43.39 percentage points. Thus the specified pair, CR2 and gap conditions occur together in every month of this period (Table~\ref{tab:o4-national-results}).
+% Reserve O4's position until the team's O1--O3 subsections are inserted.
+\setcounter{subsection}{3}
+\subsection{O4: Concentration and resilience}
+\label{sec:o4-results}
+\subsubsection{National concentration}
+Table~\ref{tab:o4-national-results} compares the full national series with the focus period. The joint condition requires IndiGo and Air India Group to be the two largest groups, with CR2 of at least 80\% and a share gap above 20 percentage points in the same month. Appendix~\ref{app:o4-national-calculations} provides the formulas and a worked example for the measures in Table~\ref{tab:o4-national-results}.
 
-For each month, passengers are summed within the submitted ownership groups and shares are ranked afresh. We then count months meeting each condition using unrounded values. The full-series comparison covers 138 observed months from January 2015 to July 2026; April 2020 is missing. The focus period, December 2024--July 2026, has no missing months. Appendix~\ref{app:o4-national-calculations} gives the formulas and a worked example.
-
-\begin{minipage}{\linewidth}
-\captionsetup{font=small,labelfont=bf,justification=raggedright,singlelinecheck=false,hypcap=false}
-\captionof{table}{National concentration conditions: full series and December 2024--July 2026.}
-\label{tab:o4-national-results}
+\begin{resultstable}{National concentration conditions: January 2015--July 2026 and the December 2024--July 2026 focus period.}{tab:o4-national-results}
 \centering
-{\small\setstretch{1.1}\setlength{\tabcolsep}{4pt}\input{tables/o4_national_results.tex}\par}
-\vspace{4pt}
-{\footnotesize\setstretch{1.1}\raggedright\textit{Note:} Counts give months meeting the condition / observed months. AI Group means Air India Group. CR2 and fringe are passenger percentages; the gap is in percentage points (pp); HHI is in index points. Ranges use all 20 focus-period months. The final row combines the specified pair, CR2 $\geq80\%$ and gap $>20$ pp, the conditions in H5.\par
-\textit{Source:} DGCA monthly airline traffic via \href{https://github.com/mkubicek/india-aviation-stats/tree/16770ac59dae61ce7b80fd8bd67dd7f4cef280a6}{Kubicek (2026)}; authors' calculations.\par}
-\end{minipage}
+\input{tables/o4_national_h5_results.tex}\par
+\resultstablenotes{Counts show qualifying months divided by observed months. April 2020 is unavailable. AI Group means Air India Group; pp means percentage points.}{DGCA monthly airline data via Kubicek (2026); authors' calculations.}
+\end{resultstable}
 
-Across the full series, the three conditions coincide in 48 of 138 observed months (34.8\%). High HHI alone is less selective: all 138 months exceed 1,800. The measures are related: fringe is $100-\mathrm{CR2}$, and CR2 $\geq80\%$ already implies HHI $\geq3{,}200$. They are therefore not independent tests. The $>20$ pp gap is the study-defined asymmetry threshold; these descriptive cutoffs are not a legal definition of duopoly.
+\subsubsection{Route concentration and national comparison}
+Table~\ref{tab:o4-route-results} reports the full-period results for the selected 20 airport pairs. Each observation represents one airport pair in one month. Shares are calculated from approved scheduled flights in both directions.
 
-Under the study's ownership convention, Vistara and AirAsia India are included in the Air India Group from January 2022, having been treated separately earlier. Combining previously separate groups raises ownership HHI even if their passenger shares are unchanged. The full-series comparison therefore reflects ownership consolidation as well as changes in passenger shares.
-
-\clearpage
-\subsection{O4: Route concentration and IndiGo dependence}
-\textbf{Full-period results: April 2019--September 2026.}
-Ownership-group frequency HHI exceeds 1,800 in 1,143 of the 1,150 retained airport-pair/month observations (99.39\%; Table~\ref{tab:o4-route-results}). Shares are calculated from approved scheduled flights, pooling both directions before grouping airlines by ownership. Each retained observation receives equal weight. Median CR2 is 80.00\%, the median share gap is 13.73 percentage points, and median fringe share is 20.00\%.
-
-\begin{minipage}{\linewidth}
-\captionsetup{font=small,labelfont=bf,justification=raggedright,singlelinecheck=false,hypcap=false}
-\captionof{table}{Route concentration and IndiGo exposure, April 2019--September 2026.}
-\label{tab:o4-route-results}
+\begin{resultstable}{Route concentration and IndiGo dependence, April 2019--September 2026.}{tab:o4-route-results}
 \centering
-{\small\setstretch{1.1}\setlength{\tabcolsep}{5pt}\input{tables/o4_route_results.tex}\par}
-\vspace{4pt}
-{\footnotesize\setstretch{1.1}\raggedright\textit{Note:} The denominator is 1,150 retained observations from 20 selected airport pairs over 66 observed months. AI Group means Air India Group. The joint row requires this unique leading pair, CR2 $\geq80\%$ and gap $>20$ pp. A tie between second and third place prevents a unique pair; exchanging first and second does not change the pair. Conditions overlap. The 60\% exposure flag is study-defined.\par
-\textit{Source:} DGCA approved domestic schedules; authors' calculations.\par}
-\end{minipage}
+\input{tables/o4_route_results_compact.tex}\par
+\resultstablenotes{The joint condition allows either group to lead. A tie for second place prevents a unique leading pair. AI Group means Air India Group; pp means percentage points.}{DGCA approved domestic schedules; authors' calculations.}
+\end{resultstable}
 
-High HHI does not establish the identity of the leading groups. IndiGo and Air India Group form the unique top-two pair in 730 observations (63.48\%); 95 observations (8.26\%) also meet the CR2 and gap conditions jointly. Other unique pairs include IndiGo--Vistara (99 observations) and IndiGo--Go First (83). There are 58 observations with a tie across the second-place boundary, reported separately rather than assigned to an arbitrary pair.
-
-IndiGo's median frequency share is 43.60\%. It supplies at least 60\% of scheduled flights in 79 observations (6.87\%), all on Bengaluru--Kolkata, Chennai--Hyderabad or Bengaluru--Chennai. Across observed months, the percentage of available sampled pairs meeting this flag ranges from 0\% to 11.11\%; none has IndiGo as the sole scheduled operator. In December 2025, one of 19 available pairs meets the flag: Chennai--Hyderabad, at 78.10\%.
-
-HHI exceeds 1,800 in 301 of 303 exact-endpoint-match observations (99.34\%), compared with 99.39\% in the full sample. Appendix~\ref{app:o4-route-calculations} gives the workings; Appendix~\ref{app:o4-route-checks} reports the subset comparisons and leading pairs. These findings describe scheduled-frequency concentration on selected major airport pairs; they are not passenger-share estimates or network-wide measures of IndiGo dependence.
-
-\clearpage
-\subsubsection*{Matched focus period: December 2024--July 2026}
-During the focus period, IndiGo and Air India Group dominate the busiest sampled airport pairs, with other airlines collectively accounting for a relatively small share. However, the gap between the two leading groups is considerably smaller than nationally: route-level dominance is shared more evenly between IndiGo and Air India.
-
-Table~\ref{tab:o4-route-focus} compares the same 20 calendar months nationally and on the selected routes. The top 20 pairs remain the submitted sample; the top 10 form a supplementary comparison using the first ten ranks in the same fixed 2025 passenger ranking. All 20 months are represented, with 184 of 200 possible pair-months retained for the top 10 and 350 of 400 for the top 20. Unavailable pair-months are excluded.
-
+\medskip
 \begin{minipage}{\linewidth}
-\captionsetup{font=small,labelfont=bf,justification=raggedright,singlelinecheck=false,hypcap=false}
-\captionof{table}{National and route concentration during December 2024--July 2026.}
-\label{tab:o4-route-focus}
+\setlength{\parskip}{6pt}
+For the focus period, Table~\ref{tab:o4-route-focus} compares national results with the top 20 and top 10 busiest airport pairs. National shares measure passengers, while airport-pair shares measure scheduled flights.
+
+\begin{resultstable}{National and airport-pair concentration during December 2024--July 2026.}{tab:o4-route-focus}
 \centering
-{\small\setstretch{1.1}\setlength{\tabcolsep}{4pt}\input{tables/o4_national_route_focus.tex}\par}
-\vspace{4pt}
-{\footnotesize\setstretch{1.1}\raggedright\textit{Note:} National observations are months using passenger shares; route observations are airport-pair/months using scheduled-flight-frequency shares. Each observation has equal weight within its sample. Pair counts identify the two groups regardless of which ranks first. The joint row requires that pair, CR2 $\geq80\%$, gap $>20$ pp and IndiGo ranked first. AI Group means Air India Group; pp means percentage points.\par
-\textit{Source:} DGCA monthly airline traffic via Kubicek (2026) and approved domestic schedules; authors' calculations.\par}
+\input{tables/o4_national_route_focus.tex}\par
+\resultstablenotes{National results use 20 monthly observations. Each route-level observation represents one airport pair in one month. Over these 20 months, the top-20 sample has usable data for 350 of 400 possible observations ($20\times20$), and the top-ten sample has 184 of 200 ($10\times20$). Missing observations are excluded. AI Group means Air India Group; pp means percentage points.}{DGCA monthly airline data via Kubicek (2026) and approved domestic schedules; authors' calculations.}
+\end{resultstable}
 \end{minipage}
+\par\addvspace{6pt}
 
-For the top 10 pairs, IndiGo and Air India are the unique leading pair in all 184 retained observations. Their median combined share is 89.37\%, leaving a median fringe share of 10.63\%. The median gap between the two leaders is 7.69 pp, compared with 37.35 pp nationally. IndiGo ranks first in 86 observations, Air India in 94, and they tie for first in four. The unique pair, CR2 and gap conditions hold with IndiGo leading in nine observations (4.89\%).
+During the focus period, median CR2 is similar nationally and on the top 20 and top 10 busiest airport pairs, at around 89--91\%. However, the median gap between the two largest groups is 37.35 percentage points nationally, compared with 11.92 on the top 20 airport pairs and 7.69 on the top 10. Appendix~\ref{app:o4-route-preparation} provides the detailed results, coverage checks, leadership counts and worked calculations.
 
-The top 20 give a similar pattern: the two groups form the unique leading pair in 328 of 350 observations (93.71\%), with median CR2 of 89.55\% and median gap of 11.92 pp. The IndiGo-led joint conditions hold in 50 observations (14.29\%). IndiGo supplies at least 60\% of scheduled flights in 26 observations (7.43\%) in the top 20 and none in the top 10. No retained observation in either focus-period sample has IndiGo as sole operator. Appendix~\ref{app:o4-route-focus} gives the coverage and calculation details. These comparisons distinguish IndiGo's lead over Air India from the leading pair's dominance over the smaller airlines.
+\subsubsection{Rivals' capacity buffer}
+Table~\ref{tab:o4-capacity-buffer} compares the two Decembers. Rivals include all retained airlines other than IndiGo. Their combined ASK minus RPK gives unused capacity, which is expressed as a percentage of IndiGo's RPK.
 
-\clearpage
-\subsection{O4: Rivals' capacity buffer}
-Rivals' unused capacity relative to IndiGo's passenger traffic falls from 9.79\% in December 2024 to 8.19\% in December 2025, a decline of 1.60 percentage points (Table~\ref{tab:o4-capacity-buffer}). December 2024 provides the same-calendar-month baseline. Unused capacity is each rival's available seat-kilometres (ASK) less its revenue passenger-kilometres (RPK), summed across all retained airlines other than IndiGo. Dividing that total by IndiGo's RPK and multiplying by 100 gives the buffer measure.
-
-\begin{minipage}{\linewidth}
-\captionsetup{font=small,labelfont=bf,justification=raggedright,singlelinecheck=false,hypcap=false}
-\captionof{table}{Rivals' unused capacity relative to IndiGo's traffic, December comparison.}
-\label{tab:o4-capacity-buffer}
+\begin{resultstable}{Rivals' capacity buffer, December 2024 and December 2025.}{tab:o4-capacity-buffer}
 \centering
-{\small\setstretch{1.1}\setlength{\tabcolsep}{5pt}\input{tables/o4_capacity_buffer.tex}\par}
-\vspace{4pt}
-{\footnotesize\setstretch{1.1}\raggedright\textit{Note:} Rivals include nine retained airline brands in December 2024 and eight in December 2025; each is counted once. Changes are December 2025 minus December 2024, calculated before rounding. The buffer denominator is IndiGo's total monthly RPK; its change is in percentage points (pp).\par
-\textit{Source:} DGCA monthly airline traffic via \href{https://github.com/mkubicek/india-aviation-stats/tree/16770ac59dae61ce7b80fd8bd67dd7f4cef280a6}{Kubicek (2026)}; authors' calculations.\par}
-\end{minipage}
+\input{tables/o4_capacity_buffer.tex}\par
+\resultstablenotes{Changes are December 2025 minus December 2024, calculated before rounding. ASK measures available seat-kilometres and RPK measures revenue passenger-kilometres. The buffer change is in percentage points (pp).}{DGCA monthly airline data via Kubicek (2026); authors' calculations.}
+\end{resultstable}
 
-Rivals' offered capacity rises from 6.385 to 6.619 billion seat-km, but their passenger traffic increases by more in absolute terms, from 5.493 to 5.947 billion passenger-km. The unused gap consequently narrows from 0.892 to 0.672 billion seat-km, a reduction of 24.69\%. IndiGo's RPK also falls, from 9.113 to 8.208 billion passenger-km. The buffer ratio nevertheless declines because rivals' unused capacity falls proportionately more than its denominator.
-
-The ratios correspond to 9.79 and 8.19 unused rival seat-km per 100 IndiGo passenger-km in the respective months. They compare the aggregate buffer with all IndiGo traffic, rather than the traffic affected by cancellations. Monthly national totals do not identify whether those unused seats matched passengers' routes and travel dates, or whether airlines could add flights using available aircraft, crews and airport slots. The calculation therefore measures the size of the aggregate buffer; it does not establish actual passenger accommodation. Appendix~\ref{app:o4-capacity-buffer} gives the airline-level contributions and worked calculations.
+Rivals' passenger traffic rises by more than their offered capacity, reducing unused capacity. These monthly totals do not establish whether seats were available on the routes and dates affected by cancellations. Appendix~\ref{app:o4-capacity-buffer} provides the airline-level inputs and worked calculation.
 
 \clearpage
 \section{Discussion}
@@ -416,6 +360,7 @@ All calculations precede display rounding. Pooled route summaries weight pair-mo
 
 \clearpage
 \subsection{O4: Flags, coverage and missingness}
+\label{app:o4-flags}
 Boolean flags are saved as True/False. Table~\ref{tab:o4-dictionary-flags} defines the conditions behind the reported counts. These descriptive flags do not identify pricing conduct or constitute independent tests of duopoly.
 
 \begin{minipage}{\linewidth}
@@ -425,7 +370,7 @@ Boolean flags are saved as True/False. Table~\ref{tab:o4-dictionary-flags} defin
 \centering
 {\footnotesize\setstretch{1.0}\setlength{\tabcolsep}{4pt}\input{tables/o4_dictionary_flags.tex}\par}
 \vspace{4pt}
-{\footnotesize\setstretch{1.0}\raggedright\textit{Source:} Rules implemented in the O4 preparation and analysis code.\par}
+{\footnotesize\setstretch{1.0}\raggedright\textit{Source:} O4 preparation and analysis code. HHI benchmark: \textcite[Section~2.1]{dojftc2023merger}.\par}
 \end{minipage}
 
 \textbf{Missingness.} Unavailable or excluded pair-months are absent from analysis tables and blank in the heatmap matrix (grey in the figure). Zero available pairs means no retained data, not zero flights. Coverage checks do not prove all filings are present. Observed zero gaps, fringe shares or exposure counts remain valid values. Preparation and workings are in Appendix~\ref{app:o4-route-preparation}.
@@ -442,6 +387,41 @@ Boolean flags are saved as True/False. Table~\ref{tab:o4-dictionary-flags} defin
 \vspace{4pt}
 {\footnotesize\setstretch{1.1}\raggedright\textit{Note:} Each measure has 138 observed months, weighted equally. April 2020 is missing and is not imputed. HHI uses squared ownership-group percentage shares; CR2 adds the largest two shares, the gap subtracts the second from the first, and fringe share is $100-\mathrm{CR2}$. Standard deviations use the sample formula; pp means percentage points.\par
 \textit{Source:} DGCA monthly airline traffic via Kubicek (2026); authors' calculations.\par}
+\end{minipage}
+
+
+\medskip
+\begin{minipage}{\linewidth}
+\captionsetup{font=small,labelfont=bf,justification=raggedright,singlelinecheck=false,hypcap=false}
+\captionof{table}{Second-largest ownership group by observed period.}
+\label{tab:o4-leading-pairs}
+\centering
+{\small\setstretch{1.0}
+\begin{tabular}{@{}llr@{}}
+\toprule
+Period & Second-largest group & Observed months \\
+\midrule
+Jan 2015--Jan 2019 & Jet Airways Group & 49 \\
+Feb 2019--Apr 2021 & SpiceJet & 26 \\
+May--Aug 2021 & Air India Group & 4 \\
+Sep 2021 & Vistara & 1 \\
+Oct--Dec 2021 & Go First & 3 \\
+Jan 2022--Jul 2026 & Air India Group & 55 \\
+\bottomrule
+\end{tabular}\par}
+\vspace{3pt}
+{\footnotesize\setstretch{1.1}\raggedright\textit{Note:} April 2020 is missing. Source: same passenger series as Figure~\ref{fig:o4-national-eda}.\par}
+\end{minipage}
+
+\medskip
+\begin{minipage}{\linewidth}
+\captionsetup{font=small,labelfont=bf,justification=raggedright,singlelinecheck=false,hypcap=false}
+\captionof{table}{Capacity and passenger-traffic inputs for the December comparison.}
+\label{tab:o4-capacity-inputs}
+\centering
+{\small\setstretch{1.1}\input{tables/o4_capacity_inputs.tex}\par}
+\vspace{4pt}
+{\footnotesize\setstretch{1.1}\raggedright\textit{Source:} DGCA monthly airline traffic via \href{https://github.com/mkubicek/india-aviation-stats/tree/16770ac59dae61ce7b80fd8bd67dd7f4cef280a6}{Kubicek (2026)}; authors' calculations.\par}
 \end{minipage}
 
 \clearpage
@@ -473,6 +453,19 @@ For example, IndiGo's share is $100\times8{,}081{,}825/11{,}999{,}411\approx67.3
 \input{tables/o4_national_worked_calculations.tex}
 July 2026 meets all three joint conditions and contributes one month to the numerator. Repeating this calculation gives $48/138\times100\approx34.8\%$ for the full series and $20/20\times100=100\%$ for December 2024--July 2026.
 
+
+\medskip
+\begin{minipage}{\linewidth}
+\captionsetup{font=small,labelfont=bf,justification=raggedright,singlelinecheck=false,hypcap=false}
+\captionof{table}{Complete national concentration results, including supporting HHI and fringe measures.}
+\label{tab:o4-national-complete}
+\centering
+{\small\setstretch{1.1}\setlength{\tabcolsep}{4pt}\input{tables/o4_national_results.tex}\par}
+\vspace{4pt}
+{\footnotesize\setstretch{1.1}\raggedright\textit{Note:} Full series: January 2015--July 2026, with April 2020 missing. Focus period: December 2024--July 2026. Ranges use all focus-period months. CR2 and fringe are passenger percentages, gap is in percentage points, and HHI is in index points.\par
+\textit{Source:} DGCA monthly airline data via Kubicek (2026); authors' calculations.\par}
+\end{minipage}
+
 \clearpage
 \subsection{O4: Route concentration calculations}
 \label{app:o4-route-calculations}
@@ -498,6 +491,21 @@ This observation contributes to the HHI-above-1,800 count and the unique IndiGo-
 \clearpage
 \subsection{O4: Route subset comparisons and leading pairs}
 \label{app:o4-route-checks}
+
+\medskip
+\begin{minipage}{\linewidth}
+\captionsetup{font=small,labelfont=bf,justification=raggedright,singlelinecheck=false,hypcap=false}
+\captionof{table}{Complete route concentration and dependence conditions, April 2019--September 2026.}
+\label{tab:o4-route-complete}
+\centering
+{\small\setstretch{1.1}\setlength{\tabcolsep}{4pt}\input{tables/o4_route_results.tex}\par}
+\vspace{4pt}
+{\footnotesize\setstretch{1.1}\raggedright\textit{Note:} Conditions overlap and use all 1,150 retained airport-pair/month observations. The joint condition requires the unique IndiGo--Air India Group pair, CR2 $\geq80\%$ and gap $>20$ pp, allowing either group to lead. The 60\% IndiGo flag is study-defined.\par
+\textit{Source:} DGCA approved domestic schedules; authors' calculations.\par}
+\end{minipage}
+
+Full-period medians are CR2 80.00\%, gap 13.73 pp, fringe 20.00\% and IndiGo frequency share 43.60\%. The 79 observations meeting the IndiGo $\geq60\%$ flag occur on Bengaluru--Kolkata, Chennai--Hyderabad and Bengaluru--Chennai. Monthly exposure ranges from 0\% to 11.11\% of available airport pairs. In December 2025, Chennai--Hyderabad is the only one of 19 available airport pairs meeting the flag, with IndiGo at 78.10\%.
+
 Table~\ref{tab:o4-route-sensitivity} compares the full sample with the stricter exact-endpoint-match subset. December 2025 is a separate period comparison. Exact matches refer to airline arrival and departure counts agreeing, not proof that every airline filing is present. The subsets overlap and should not be added together.
 
 \begin{minipage}{\linewidth}
@@ -537,9 +545,13 @@ The focus-period comparison retains observations dated December 2024--July 2026.
 {\footnotesize\setstretch{1.1}\raggedright\textit{Source:} Prepared DGCA approved schedules and source-quality screen; authors' calculations.\par}
 \end{minipage}
 
-Shares and indices are calculated separately for each retained pair-month using Appendix~\ref{app:o4-route-calculations}. Reported medians are taken across these observations with equal weight; they are not averages of monthly medians or pooled flight shares. The IndiGo-led joint count requires the unique IndiGo--Air India pair, CR2 $\geq80\%$, gap $>20$ pp and IndiGo ranked first:
+Shares and indices are calculated separately for each retained airport-pair/month using Appendix~\ref{app:o4-route-calculations}. National medians use the 20 focus-period monthly values. The top-20 and top-ten medians use the 350 and 184 retained airport-pair/month values respectively. Each observation enters once, without passenger or flight-volume weights. Airport pairs with more retained months therefore contribute more observations. These are pooled observation medians, not medians of monthly summaries or measures calculated from pooled flight totals.
+
+\begin{samepage}
+The IndiGo-led joint count requires the unique IndiGo--Air India pair, CR2 $\geq80\%$, gap $>20$ pp and IndiGo ranked first:
 \input{tables/o4_route_focus_counts.tex}
-First-place ties are counted separately: IndiGo leads in 86, Air India in 94 and both tie in four top-10 observations; the corresponding top-20 counts are 214, 132 and four.
+\end{samepage}
+First-place ties are counted separately: IndiGo leads in 86, Air India in 94 and both tie in four top-10 observations; the corresponding top-20 counts are 214, 132 and four. IndiGo supplies at least 60\% of scheduled flights in 26 of 350 top-20 observations and none of the 184 top-ten observations. Neither focus-period sample contains an IndiGo-only observation.
 
 \clearpage
 \subsection{O4: Capacity-buffer calculations}
@@ -549,7 +561,7 @@ Let $I$ denote IndiGo and $j$ a retained rival airline brand. For month $t$, unu
 U_t=\sum_{j\ne I}(\mathrm{ASK}_{jt}-\mathrm{RPK}_{jt}),
 \qquad B_t=100\frac{U_t}{\mathrm{RPK}_{It}}.
 \]
-The same positive-passenger scheduled-domestic filter is used as in Section~4.3. All 19 selected airline records have valid ASK/RPK inputs. The source reports thousands of seat-km and passenger-km; dividing by 1,000,000 expresses them in billions. Summing the airline-level unused amounts gives the numerator in Table~\ref{tab:o4-capacity-buffer}.
+The same positive-passenger scheduled-domestic filter is used as in Section~\ref{sec:o4-national-data}. All 19 selected airline records have valid ASK/RPK inputs. The source reports thousands of seat-km and passenger-km; dividing by 1,000,000 expresses them in billions. Summing the airline-level unused amounts gives the numerator in Table~\ref{tab:o4-capacity-buffer}.
 
 \begin{minipage}{\linewidth}
 \captionsetup{font=small,labelfont=bf,justification=raggedright,singlelinecheck=false,hypcap=false}
@@ -564,7 +576,7 @@ The same positive-passenger scheduled-domestic filter is used as in Section~4.3.
 
 Using billions for both numerator and denominator gives
 \input{tables/o4_capacity_buffer_workings.tex}
-The denominator is all IndiGo RPK in each December. The CSV outputs preserve every airline's ASK/RPK inputs and the unrounded aggregates, ratios and change.
+The denominator is all IndiGo RPK in each December. Rivals' unused capacity falls by 24.69\% between the two Decembers. The CSV outputs preserve every airline's ASK/RPK inputs and the unrounded aggregates, ratios and change.
 
 \clearpage
 \subsection{O4: Reproduction and data preparation}
