@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../../../Downloads/IISC/IISC Managerial Economics"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"diffEditor.codeLens": true
+	}
+}

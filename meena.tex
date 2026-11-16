@@ -9,8 +9,10 @@
 \usepackage{lmodern}
 \usepackage{microtype}
 \usepackage{graphicx}
+\usepackage{xcolor}
 \usepackage{amsmath}
 \usepackage{booktabs}
+\usepackage{array}
 \usepackage{enumitem}
 \usepackage{float}
 \usepackage{csquotes}
@@ -23,6 +25,7 @@
 \usepackage[section]{placeins}
 \usepackage{caption}
 \captionsetup[figure]{font=small,labelfont=bf,justification=raggedright,singlelinecheck=false,skip=7pt}
+\newenvironment{mycontribution}{\par\color{blue}\captionsetup{font+={color=blue}}}{\par}
 \usepackage[margin=1in]{geometry}
 \usepackage{setspace}
 \onehalfspacing
@@ -90,7 +93,9 @@ State the primary research question.
 \subsection{Research Objectives}
 State the 2--3 research objectives.
 
+\begin{mycontribution}
 \textbf{O2.} Which groups absorbed Jet Airways' and Go First's passengers and capacity, and how much the Tata consolidation raised concentration through common ownership alone, read against CCI's combination order.
+\end{mycontribution}
 
 \subsection{Economic Framework}
 Identify the economic concept or framework used in the study and explain its relevance to the research question.
@@ -131,7 +136,14 @@ For quantitative studies, identify the dependent variable, main explanatory vari
 \subsection{Method of Analysis}
 Explain the analytical method used and why it is appropriate for the research question and data.
 
-\textbf{O2.} For each exit, every ownership group's average passenger and seat-km share is compared over up to 12 months before and after, excluding the exit month. A group's absorption share is its gain as a percentage of the exiting airline's previous share, and its contribution is how much that gain raised \HHI{}. For each Tata step, the rise in \HHI{} from common ownership alone, with no passengers switching airline, is compared with the change actually observed, and the result is read against CCI's combination order \parencite{cci2023vistara}. This accounting answers the objective's question directly: who gained, and how much each gain raised concentration. Full workings are in Appendix~\ref{app:workings}.
+\begin{mycontribution}
+\textbf{O2.}
+\begin{itemize}[leftmargin=2em]
+	\item \textbf{Who absorbed the exits?} Compare each group's average passenger and seat-km shares over up to 12 months before and after each exit, excluding the exit month. Absorption is the group's share gain divided by the exiting group's average share before exit, expressed as a percentage. Check whether IndiGo ranks first after both exits and absorbs more after Go First.
+	\item \textbf{Who drove concentration?} Calculate each group's contribution to the change in \HHI{} as its squared average share after minus before each exit. Sum all contributions, including the exiting group's disappearance, and check whether IndiGo accounts for over half of the net rise, using both passenger and seat-km shares.
+\end{itemize}
+For Tata consolidation, compare the mechanical \HHI{} rise from common ownership at fixed shares with the observed change, alongside CCI's combination order \parencite{cci2023vistara}. Full workings are in Appendix~\ref{app:workings}.
+\end{mycontribution}
 
 Examples may include:
 \templatebullet{Descriptive analysis}
@@ -148,19 +160,23 @@ Examples may include:
 \subsection{Hypotheses or Expected Relationships}
 State the hypotheses or expected relationships developed during the research process, where applicable.
 
+\begin{mycontribution}
 \begin{itemize}[leftmargin=2em]
 	\item \textbf{H3 (O2):} IndiGo has the largest absorption ratio after both exits, larger after Go First.
 	\item \textbf{H4 (O2):} IndiGo's gain accounts for over half of the \HHI{} rise after each exit.
 \end{itemize}
+\end{mycontribution}
 
 % Keep the first O4 description and figure together in this working draft.
 \clearpage
 \section{Descriptive and Exploratory Analysis}
+\begin{mycontribution}
 \subsection{O2: Exits and Tata consolidation}
 \textbf{Exits: exploratory analysis.} Neither exit was sudden (Figure~\ref{fig:o2-exits}). Jet Airways' passenger share fell from 16.2\% to 5.7\% in the year before its April 2019 exit, and Go First's from 11.1\% to 6.4\% in the year before its May 2023 exit, as both grounded aircraft. Some traffic therefore moved before the exit month, so the before-window already includes part of the shift and the before-and-after comparison may understate it. IndiGo rose most around both exits, from about 43\% to 48\% after Jet Airways and from about 57\% to 62\% after Go First. The market grew in both post-exit windows, with passengers rising faster than seat-km, so rivals mainly filled existing seats (Table~\ref{tab:o2-market}). Section~\ref{sec:o2-results} uses these before-and-after windows to measure how much of each exiting airline's share every group absorbed.
 
 \begin{figure}[H]
 \centering
+\color{blue}
 \includegraphics[width=\textwidth]{o2_exit_share_paths.png}
 \caption{Monthly passenger shares by ownership group around the Jet Airways and Go First exits}\label{fig:o2-exits}
 \sourcenote{DGCA monthly airline statistics via \textcite{kubicek2026aviationstats}; authors' calculations. Light shading: 12-month pre-exit window; dark shading: post-exit window (10 months for Jet Airways, ending before COVID-19); dashed line: exit month, excluded from both windows. The Air India Group's jump in January 2022 is the Tata acquisition grouping, not an exit effect.}
@@ -168,11 +184,13 @@ State the hypotheses or expected relationships developed during the research pro
 
 \begin{table}[H]
 \centering
+\color{blue}
 \caption{Market size and capacity before and after each exit (monthly averages)}\label{tab:o2-market}
 \small
+\setlength{\tabcolsep}{5pt}
 \begin{tabular}{@{}llrrrr@{}}
 \toprule
-Exit & Window & \shortstack[r]{Passengers\\(million)} & \shortstack[r]{Capacity\\(billion seat-km)} & \shortstack[r]{Load\\factor (\%)} & \shortstack[r]{Groups\\$\geq$1\% share} \\
+Exit & Window & \shortstack[r]{Passengers\\(million)} & \shortstack[r]{Capacity\\(billion seat-km)} & \shortstack[r]{Load\\factor (\%)} & \shortstack[r]{Average no.\\of groups with\\$\geq$1\% share} \\
 \midrule
 Jet Airways & Apr 2018--Mar 2019 & 11.69 & 13.07 & 86.0 & 8.0 \\
  & May 2019--Feb 2020 & 12.25 & 13.60 & 87.1 & 7.0 \\
@@ -187,6 +205,7 @@ Go First & May 2022--Apr 2023 & 11.53 & 13.29 & 84.1 & 5.6 \\
 
 \begin{table}[H]
 \centering
+\color{blue}
 \caption{Passenger shares of the Tata brands before each consolidation step (\%)}\label{tab:o2-tata}
 \small
 \begin{tabular}{@{}lrrrrr@{}}
@@ -199,6 +218,7 @@ Mergers, Dec 2024 (Sep 2024) & 11.14 & 3.97 & 10.04 & 4.11 & 29.26 \\
 \end{tabular}
 \sourcenote{DGCA monthly airline statistics via \textcite{kubicek2026aviationstats}; authors' calculations. \textsuperscript{a}Renamed AIX Connect. September 2024 is the last month before the AIX Connect merger (October 2024) and the Vistara merger (November 2024).}
 \end{table}
+\end{mycontribution}
 
 \subsection{O4: National concentration trends}
 Figure~\ref{fig:o4-national-eda} summarises 138 observed months from January 2015 to July 2026. The two largest ownership groups' combined passenger share (CR2) rises from 60.7\% to 91.3\%, while their share gap increases from 12.5 to 43.4 percentage points. The leading pair is IndiGo and Jet Airways Group in January 2015, and IndiGo and Air India Group in July 2026; groups are ranked afresh each month.
@@ -226,18 +246,20 @@ The specific form of analysis will depend on the research question and methodolo
 
 Interpret the results in terms of their economic meaning and relevance to the research question.
 
+\begin{mycontribution}
 \subsection{O2: Who gained from exits and consolidation}\label{sec:o2-results}
-\textbf{Who absorbed the exits.} IndiGo had the highest passenger-share absorption after both exits: 37.7\% for Jet Airways and 66.0\% for Go First (Table~\ref{tab:o2-absorption}). After Jet Airways' exit, SpiceJet was second (22.9\%), followed by Vistara, Go First and AirAsia India. After Go First's exit, Akasa Air (35.3\%) and the Air India Group (33.7\%) also gained. Go First was not the only airline losing share: SpiceJet and other airlines also lost share. Adding only the positive absorption percentages gives more than 100\%; including the negative percentages brings the total back to 100\%.
+\textbf{Who absorbed the exits.} IndiGo led passenger-share absorption after both exits: 37.7\% for Jet Airways and 66.0\% for Go First (Table~\ref{tab:o2-absorption}). SpiceJet ranked second after Jet Airways (22.9\%); Akasa Air (35.3\%) and Air India Group (33.7\%) also gained after Go First. Positive absorption exceeds 100\% because SpiceJet and other survivors also lost share; including these losses gives 100\%.
 
 \begin{table}[H]
 \centering
+\color{blue}
 \caption{Share of the exiting airline absorbed by each group, and contribution to the change in \HHI{}}\label{tab:o2-absorption}
 \small
 \begin{tabular}{@{}lrrrrrr@{}}
 \toprule
  & \multicolumn{3}{c}{Jet Airways exit (Apr 2019)} & \multicolumn{3}{c}{Go First exit (May 2023)} \\
 \cmidrule(lr){2-4}\cmidrule(l){5-7}
-Group & Passengers & Seat-km & $c_g$ & Passengers & Seat-km & $c_g$ \\
+Group & \shortstack{Passengers\\$a_g$ (\%)} & \shortstack{Seat-km\\$a_g$ (\%)} & $c_g$ & \shortstack{Passengers\\$a_g$ (\%)} & \shortstack{Seat-km\\$a_g$ (\%)} & $c_g$ \\
 \midrule
 IndiGo & 37.7 & 28.5 & 473 & 66.0 & 66.0 & 632 \\
 SpiceJet & 22.9 & 30.4 & 90 & $-$33.7 & $-$36.2 & $-$34 \\
@@ -255,28 +277,31 @@ Total change in \HHI{} & 100 & 100 & +444 & 100 & 100 & +690 \\
 \sourcenote{DGCA monthly airline statistics via \textcite{kubicek2026aviationstats}; authors' calculations. Passengers and Seat-km: absorption $a_g$ (\%), a group's change in mean share divided by the exiting airline's pre-exit mean share. $c_g$: contribution to the change in \HHI{} (points), using passenger shares. Windows: Apr 2018--Mar 2019 vs May 2019--Feb 2020 (Jet Airways); May 2022--Apr 2023 vs Jun 2023--May 2024 (Go First).}
 \end{table}
 
-\textbf{Who drove the rise in concentration.} IndiGo's gain alone added 473 \HHI{} points after Jet Airways' exit, more than the total rise of 444, because Jet Airways' own 191 points disappeared. After Go First's exit it added 632 of the 690-point rise (92\%). The seat-km results are similar (IndiGo: 352 of 354 points after Jet Airways; 599 of 653 after Go First).
+\textbf{Who drove concentration.} IndiGo added 473 \HHI{} points after Jet Airways' exit, exceeding the net rise of 444 because Jet's 191 points disappeared. It added 632 of 690 points (92\%) after Go First. Seat-km results similarly show IndiGo driving both increases.
 
-\textbf{Capacity versus filling seats.} After Jet Airways' exit, SpiceJet took a larger share of Jet Airways' seat-km (30.4\%) than of its passengers (22.9\%), so it expanded capacity. Its annual report confirms that it was allotted 74 of the vacated slots and inducted 31 aircraft made available by the suspension \parencite[p.~62]{spicejet2020annual}. IndiGo did the reverse (28.5\% of seat-km, 37.7\% of passengers), filling seats it already had. After Go First's exit, Akasa Air added capacity (40.7\% of seat-km against 35.3\% of passengers), partly reflecting its own ramp-up since August 2022. Go First's decline was fleet-driven: engine problems had grounded a significant part of its fleet well before the exit \parencite[p.~35]{goair2021drhp}.
+\textbf{Capacity versus filling seats.} SpiceJet's seat-km absorption exceeded its passenger absorption after Jet Airways (30.4\% versus 22.9\%). Its annual report confirms that it received 74 vacated slots and inducted 31 aircraft made available by Jet's suspension \parencite[p.~62]{spicejet2020annual}. IndiGo showed the reverse pattern, but this alone does not establish fuller seats. Akasa's higher seat-km absorption after Go First partly reflects its ramp-up since August 2022. Go First's engine-related groundings predated its exit \parencite[p.~35]{goair2021drhp}.
 
-\textbf{Tata consolidation.} At the January 2022 acquisition, ownership \HHI{} rose by 373 points against a mechanical rise of 334 from common ownership alone, so almost all of the rise is the ownership effect (Table~\ref{tab:o2-mech}). This comparison is affected by the recovery from COVID-19, as the before-window is all of 2021. At the December 2024 mergers, brand \HHI{} rose by 493 points against a mechanical 256. The gap does not come from the merged group: the Tata brands' combined share fell from 28.3\% to 26.7\%, so their own contribution rose by only about 135 points. Most of the gap is IndiGo's continued growth, from 61.5\% to 64.5\%, which alone added about 380 points. The observed rise was therefore at least the mechanical rise at both steps, but for different reasons. This is an additional check, not stated as a hypothesis in Assignment~2.
+\textbf{Tata consolidation.} Ownership \HHI{} rose 373 points in January 2022 against a mechanical 334 from common ownership alone (Table~\ref{tab:o2-mech}); COVID-19 recovery also affects this comparison. At the December 2024 mergers, brand \HHI{} rose 493 points against a mechanical 256. Tata's combined share fell from 28.3\% to 26.7\%, limiting its contribution to about 135 points; IndiGo's growth from 61.5\% to 64.5\% added about 380. Observed increases exceeded mechanical increases at both steps.
 
 \begin{table}[H]
 \centering
+\color{blue}
 \caption{Mechanical and observed change in \HHI{} at each Tata consolidation step (points)}\label{tab:o2-mech}
 \small
-\begin{tabular}{@{}llrrr@{}}
+\begin{tabular}{@{}p{0.36\textwidth}lrrr@{}}
 \toprule
 Step & Measure & Mechanical & Observed & Difference \\
 \midrule
-Acquisition (Jan 2022) & Ownership \HHI{} & +334 & +373 & +39 \\
-Mergers (Dec 2024) & Brand \HHI{} & +256 & +493 & +237 \\
+\raggedright\textbf{Acquisition (Jan 2022)}\newline Tata acquired Air India and Air India Express. & Ownership \HHI{} & +334 & +373 & +39 \\
+\addlinespace
+\raggedright\textbf{Mergers (Oct--Nov 2024)}\newline AIX Connect into Air India Express; Vistara into Air India. & Brand \HHI{} & +256 & +493 & +237 \\
 \bottomrule
 \end{tabular}
-\sourcenote{DGCA monthly airline statistics via \textcite{kubicek2026aviationstats}; authors' calculations. Mechanical: $2\sum s_a s_b$ over brands combined, using the shares in Table~\ref{tab:o2-tata}. Observed: 12-month mean after minus 12-month mean before (Jan--Dec 2021 vs Jan--Dec 2022; Oct 2023--Sep 2024 vs Dec 2024--Nov 2025, merger months omitted).}
+\sourcenote{DGCA monthly airline statistics via \textcite{kubicek2026aviationstats}; authors' calculations. The January 2022 ownership grouping also includes Tata's existing interests in Vistara and AirAsia India. AIX Connect merged on 1 October 2024; Vistara on 12 November 2024. Mechanical: common-ownership effect at fixed shares from Table~\ref{tab:o2-tata}; formula in Appendix~\ref{app:workings}. Observed: 12-month mean after minus 12-month mean before (Jan--Dec 2021 vs Jan--Dec 2022; Oct 2023--Sep 2024 vs Dec 2024--Nov 2025, merger months omitted).}
 \end{table}
 
-\textbf{CCI's review of the Vistara merger.} The merger needed CCI approval under the combination provisions of the Competition Act (Sections 5--6) \parencite[slide~65]{gandhi2026marketstructure}. CCI defined the relevant market as the origin--destination city pair, not the national market, and found 48 domestic pairs where Air India and Vistara overlapped, with a combined share above 40\% on some of them \parencite[paras.~19, 109--111]{cci2023vistara}. It approved the merger with voluntary commitments, including keeping a minimum capacity on seven domestic routes for up to four years \parencite[paras.~115--118, 126--127]{cci2023vistara}. It did not assess national concentration, which the merger itself raised by 256 points.
+\textbf{CCI's combination order: Air India--Vistara.} Approval was required under Sections 5--6 of the Competition Act. CCI assessed city pairs, finding 48 domestic overlaps, some above 40\% combined share \parencite[paras.~19, 109--111]{cci2023vistara}. Approval included minimum-capacity commitments on seven domestic routes for up to four years \parencite[paras.~115--118, 126--127]{cci2023vistara}, but no national concentration assessment; our mechanical estimate is 256 points.
+\end{mycontribution}
 
 \section{Discussion}
 Discuss the findings in relation to:
@@ -287,36 +312,32 @@ Discuss the findings in relation to:
 \templatebullet{The broader context of the study}
 Clearly state whether the hypotheses or expected relationships were supported, partially supported, or not supported, where applicable.
 
+\begin{mycontribution}
 \subsection{O2: Economic interpretation}
-\textbf{Exits (O2).} Each exit removed a meaningful competitor. Jet Airways' exit raised ownership \HHI{} from about 2,440 to 2,870, equivalent to the market going from 4.1 to 3.5 equal-sized firms; Go First's raised it from about 3,940 to 4,620, from 2.5 to 2.2 equal-sized firms. In a Cournot oligopoly, the industry's average price markup equals \HHI{} divided by the price elasticity of demand \parencite[slide~48]{gandhi2026marketstructure}. With an illustrative elasticity of 1.5, the two exits would raise the markup by about 3.0 and 4.6 percentage points of price. We have no fare data, so these figures show the size of the change in market structure, not observed fare increases.
+\textbf{Exits.} Jet Airways' and Go First's exits reduced the effective number of equal-sized firms from 4.1 to 3.5 and 2.5 to 2.2, respectively. Under Cournot assumptions, the share-weighted markup equals normalised \HHI{} divided by absolute demand elasticity. An illustrative elasticity of 1.5 implies markup increases of about 3.0 and 4.6 percentage points of price, not observed fare increases: we have no fare data.
 
-\textbf{Why IndiGo absorbed most.} IndiGo behaves like a Stackelberg leader: large, irreversible aircraft orders, including a record order for 500 aircraft in June 2023, commit it to capacity that followers cannot match \parencite[slide~52]{gandhi2026marketstructure}. When Go First left a month earlier, IndiGo had the aircraft to take two-thirds of its passengers. Airport slots, which are rationed licences and so a barrier to entry \parencite[slide~29]{gandhi2026marketstructure}, decided who could add capacity: after Jet Airways' exit, the airline that received the vacated slots (SpiceJet) was the one that expanded. Concentration may partly reflect IndiGo's cost leadership rather than weak competition \parencite[slide~8]{gandhi2026marketstructure}; without fare and cost data we cannot separate the two.
+\textbf{Why IndiGo absorbed most.} IndiGo's capacity commitments, including its June 2023 order for 500 aircraft, fit a Stackelberg-leadership interpretation. Slot access also constrains rivals' expansion: SpiceJet received vacated Jet Airways slots and expanded capacity, illustrating an entry barrier. IndiGo's dominance may reflect cost leadership as well as weaker competition; without fare and cost data, we cannot distinguish them.
 
-\textbf{Tata consolidation and merger review.} Common ownership alone accounts for most of the January 2022 rise, and the December 2024 mergers added 256 points by themselves. CCI reviewed the Vistara merger route by route and protected seven routes with capacity commitments; it did not consider the national rise. The two views complement each other: route remedies protect travellers on specific routes, but national structure, with two groups carrying about 90\% of passengers, also shapes access to airport slots and the market's exposure to disruption at a single airline.
+\textbf{Tata consolidation and merger review.} Common ownership accounts for most of the January 2022 rise; the late-2024 mergers mechanically added 256 brand \HHI{} points. CCI's capacity commitments protected seven routes but did not address national concentration. Both perspectives matter: with two groups carrying about 90\% of passengers, national structure also affects slot access and exposure to single-airline disruption.
 
 \subsection{O2: Hypotheses revisited}
-\begin{itemize}[leftmargin=2em]
-	\item \textbf{H3: IndiGo has the largest absorption ratio after both exits, larger after Go First.}\par
-	\textbf{Outcome: Partially supported.} IndiGo absorbed the largest share of passengers after both exits, and a larger share after Go First (66.0\%) than after Jet Airways (37.7\%); but after Jet Airways, SpiceJet took more of the seat-km because it received the vacated slots.
-	\item \textbf{H4: IndiGo's gain accounts for over half of the \HHI{} rise after each exit.}\par
-	\textbf{Outcome: Supported.} IndiGo's gain accounts for more than half of the rise in \HHI{} after both exits, on both measures.
-\end{itemize}
-Both results match \textcite{grosche2020concentration}, who find that concentration in German air transport rose after Air Berlin's bankruptcy and that the largest group, Lufthansa, became more dominant, as IndiGo did here.
-
 \begin{table}[H]
 \centering
-\caption{O2 hypotheses and additional check: outcomes}\label{tab:hypotheses}
+\color{blue}
+\caption{O2 hypotheses: outcomes and evidence}\label{tab:hypotheses}
 \small
-\begin{tabular}{@{}p{0.08\textwidth}p{0.23\textwidth}p{0.60\textwidth}@{}}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.38\textwidth}>{\raggedright\arraybackslash}p{0.16\textwidth}>{\raggedright\arraybackslash}p{0.40\textwidth}@{}}
 \toprule
-No. & Outcome & Evidence \\
+\textbf{Hypothesis} & \textbf{Outcome} & \textbf{Evidence} \\
 \midrule
-H3 & Partially supported & Table~\ref{tab:o2-absorption}: largest for passengers (37.7\%, 66.0\%); SpiceJet larger for seat-km after Jet Airways \\
-H4 & Supported & Table~\ref{tab:o2-absorption}: 473 of 444; 632 of 690 points \\
-Check & Holds at both steps & Observed \HHI{} rise exceeds mechanical rise at both Tata steps (Table~\ref{tab:o2-mech}); not an Assignment 2 hypothesis \\
+\textbf{H3: Absorption.} IndiGo has the largest absorption ratio after both exits, larger after Go First. & Partially supported & Largest passenger absorption: 37.7\% after Jet Airways; 66.0\% after Go First. After Jet Airways, SpiceJet led seat-km absorption (30.4\% versus IndiGo's 28.5\%). Table~\ref{tab:o2-absorption}. \\
+\addlinespace
+\textbf{H4: Concentration.} IndiGo's gain accounts for over half of the \HHI{} rise after each exit. & Supported & Passenger shares: 473 of 444 points after Jet Airways; 632 of 690 after Go First. Seat-km: 352 of 354 and 599 of 653 points, respectively. Table~\ref{tab:o2-absorption} reports passenger-based contributions. \\
 \bottomrule
 \end{tabular}
 \end{table}
+Both results match \textcite{grosche2020concentration}, who find that concentration in German air transport rose after Air Berlin's bankruptcy and that the largest group, Lufthansa, became more dominant, as IndiGo did here.
+\end{mycontribution}
 
 \section{Implications and Recommendations}
 Discuss the implications of the findings for the relevant stakeholders.
@@ -329,17 +350,21 @@ Depending on the topic, these may include:
 \templatebullet{Industry participants}
 Provide 2--3 specific recommendations where appropriate. Recommendations should follow from the findings of the study.
 
+\begin{mycontribution}
 \begin{enumerate}[leftmargin=2em]
 	\item \textbf{For CCI (O2):} in aviation mergers, assess national concentration and airport-slot holdings alongside route overlaps, and publish compliance with route capacity commitments. The Vistara merger alone raised national brand \HHI{} by 256 points, which the route-level review did not consider (Section~\ref{sec:o2-results}).
 	\item \textbf{For the Ministry of Civil Aviation and airport operators (O2):} when an airline exits, reallocate its slots with priority for smaller and newer airlines. After Jet Airways' exit, the airline that received the slots was the one that expanded capacity, while IndiGo's share of both exits shows how quickly the largest firm gains otherwise (Section~\ref{sec:o2-results}).
 \end{enumerate}
+\end{mycontribution}
 
 \section{Limitations}
 Discuss the important limitations relating to the data, sample, measurement, methodology, analysis, and interpretation.
 
 Where relevant, mention how these limitations could be addressed in future research.
 
+\begin{mycontribution}
 \textbf{O2.} Both exiting airlines declined before they stopped flying, so the before-windows already include part of the shift and the absorption figures may understate it. Other changes overlap the windows: Akasa Air's ramp-up and SpiceJet's decline during the Go First window, and the end of COVID-19 during the January 2022 comparison. The Jet Airways after-window is ten months to avoid the pandemic. The Cournot markups are illustrative, as we have no fare or cost data. CCI's market is the city pair and ours is national, so the two measure different things, and the share triggers in the CCI commitments are redacted.
+\end{mycontribution}
 
 \section{Conclusion}
 Summarise the research question, main findings, key economic interpretation, and main implications.
@@ -358,6 +383,7 @@ Include additional tables and figures where applicable.
 \section{Additional Analysis}\label{app:workings}
 Include full regression output, additional calculations, analysis code, or other supporting analysis where applicable.
 
+\begin{mycontribution}
 \subsection*{O2: Exit decomposition and Tata consolidation}
 \textbf{A. Airline exits: worked example for Jet Airways and IndiGo.}
 The same steps are repeated for every ownership group and for Go First's exit. Shares are entered as percentages: use 42.78, not 0.4278.
@@ -412,6 +438,7 @@ Here the question is how much concentration rises simply because separate groups
 \end{enumerate}
 
 For the late-2024 mergers, repeat the fixed-share calculation using September 2024 brand shares: the mechanical rise is 256 points. Compare average monthly brand \HHI{} in October 2023--September 2024 with December 2024--November 2025: the observed rise is 493 points. The additional squared-average-share breakdown gives Tata brands $+135$, IndiGo $+380$, SpiceJet $-12$ and Akasa Air $+5$. It indicates which brands drove the rise, but is not an exact decomposition of the 493-point change in average monthly \HHI{}.
+\end{mycontribution}
 
 \textbf{O4 reproduction files.} Data preparation, Python plotting code, numerical tables and run instructions are available in the \href{https://github.com/Goutham7358/Assignment3_Code}{Assignment 3 code repository}.
 
