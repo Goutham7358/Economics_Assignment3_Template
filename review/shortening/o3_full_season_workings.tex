@@ -1,22 +1,19 @@
 \begingroup
 \renewcommand{\theHequation}{review-o3-season-departures}
-\par\medskip
-\textbf{Full-season departure counts.} For each service, count the dates on which a departure was scheduled within both the service's valid date range and the selected summer or winter season. The operating weekdays determine which dates count. Sum across services and both directions of the airport pair, using the deduplicated schedule records.
+\textbf{Full-season counts.} Sum deduplicated services across both directions, counting only valid dates and operating weekdays within the chosen season:
 \begin{equation}
 D_{a,r,s}=\sum_{j\in(a,r)}\ \sum_{d\in s}
 \mathbf{1}\{b_j\leq d\leq e_j\}\,
 \mathbf{1}\{\mathrm{weekday}(d)\in W_j\}.
 \tag{O3.1}\label{eq:o3-season-departures}
 \end{equation}
-Here $D_{a,r,s}$ counts airline $a$'s scheduled departures on airport pair $r$ in season $s$. Service $j$ has start date $b_j$, end date $e_j$ and operating weekdays $W_j$. Each qualifying service-date contributes one departure. These are scheduled flights, not verified operations.
+Here $a,r,s$ denote airline, pair and season; $b_j,e_j,W_j$ are service $j$'s validity dates and weekdays. These are scheduled departures, not verified operations.
 \renewcommand{\theHequation}{review-o3-season-share}
 \begin{equation}
 \mathrm{SeasonShare}_{a,r,s}=100\,
 \frac{D_{a,r,s}}{\sum_b D_{b,r,s}}.
 \tag{O3.2}\label{eq:o3-season-share}
 \end{equation}
-The denominator includes all recorded airlines on the airport pair in that season. Sole-operator and at-least-50\% flags use this share. A service that begins late or ends early contributes only on its valid operating dates. The seasons differ across entrants, so the table is not a comparison of all airlines at one common date.
-
-For example, the seven regional entrants' airport-pair counts sum to $31+37+15+12+2+7+5=109$. Their sole-operator counts sum to $18+28+8+9+1+7+4=75$, or $68.8\%$. The four ceased entrants account for $31+12+2+5=50$ records, of which $18+9+1+4=32$ are sole-operator cases ($64.0\%$). These are airline--airport-pair--season records, not unique airports or a monthly panel. The separate TruJet November 2019 comparison remains 17 of 22 airport pairs.
+The denominator includes all recorded airlines on that pair and season. Sole-operator and at-least-50\% flags use this share; entrants' seasons differ, not a common-date comparison. For example, regional entrants have 75 sole-operator records out of 109, giving $100(75/109)=68.8\%$; ceased entrants have $100(32/50)=64.0\%$. Units are airline--pair--season records, not unique airports. TruJet's separate November 2019 result is 17 of 22 pairs.
 \endgroup
 \par

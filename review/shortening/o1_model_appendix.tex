@@ -1,31 +1,15 @@
 \subsubsection{O1: Formulae and model specification}
 \label{app:review-o1-formulae}
-Let $q_{it}$ be brand $i$'s domestic passengers in month $t$. Its percentage share and the share of ownership group $g$ are
-\[
-s_{it}=100\frac{q_{it}}{\sum_j q_{jt}},\qquad S_{gt}=\sum_{i\in g}s_{it}.
-\]
-Air India and Air India Express form one group, as do Jet Airways and JetLite. Vistara and AirAsia India/AIX Connect join the Air India Group from January 2022 under the study's grouping convention. The three indices and the regression model are defined as follows:
-\begin{align}
-\text{Brand-HHI}_t &= \sum_i s_{it}^2, \qquad \text{Ownership-HHI}_t = \sum_g S_{gt}^2 \tag{O1.1a}\label{eq:review-o1-indices}\\
-\text{MHHI}_t &= \text{Ownership-HHI}_t+\sum_{j}\sum_{k\neq j}\lambda_{jk}S_{jt}S_{kt},\qquad
+Shares, ownership mapping and the common indices follow Appendix~\ref{app:shared-calculations}. MHHI adds the partial-ownership adjustment:
+\begin{equation}
+\text{MHHI}_t = \text{Ownership-HHI}_t+\sum_{j}\sum_{k\neq j}\lambda_{jk}S_{jt}S_{kt},\qquad
 \lambda_{jk}=\frac{\sum_i \gamma_{ij}\beta_{ik}}{\sum_i \gamma_{ij}\beta_{ij}} \tag{O1.1b}\label{eq:review-o1-mhhi}
-\end{align}
+\end{equation}
 Here $\beta_{ik}$ is owner $i$'s stake in firm $k$ and $\gamma_{ik}$ its control share \parencite{obriensalop2000}. The regression is
 \begin{equation}
 \text{Index}_t = \alpha + \beta t + \sum_{k=1}^{4}\gamma_k\,\text{Post}_{kt} + \delta\,\text{COVID}_t + \sum_{m=2}^{12}\mu_m M_{mt} + \varepsilon_t \tag{O1.2}\label{eq:review-o1-regression}
 \end{equation}
-Here $\beta$ is the monthly trend, $\gamma_k$ the event coefficients, $\delta$ the COVID coefficient and $\mu_m$ the seasonal coefficients, with January as the base month. Each post-event indicator is zero before its date and one thereafter. The dates and COVID window are given in Section~\ref{sec:method-o1} (O1). Newey--West standard errors use 12 lags \parencite{neweywest1987}. These are descriptive shifts, not causal effects; robustness checks are in Appendix~\ref{app:o1-robust}.
-
-Other measures are
-\[
-\mathrm{CR2}_t=S_{(1)t}+S_{(2)t},\qquad
-N_{\mathrm{effective},t}=\frac{10{,}000}{\mathrm{Ownership\mbox{-}HHI}_t}.
-\]
-The two ownership comparisons are
-\begin{align*}
-\mathrm{Grouping\ effect}_t&=\mathrm{Ownership\mbox{-}HHI}_t-\mathrm{Brand\mbox{-}HHI}_t,\\
-\mathrm{Partial\mbox{-}ownership\ effect}_t&=\mathrm{MHHI}_t-\mathrm{Ownership\mbox{-}HHI}_t.
-\end{align*}
+Here $\beta$ is the monthly trend, $\gamma_k$ the four permanent event steps, $\delta$ the COVID effect and $\mu_m$ the seasonal effects (January base). Dates and COVID window: Section~\ref{sec:method-o1}. Inference uses Newey--West errors with 12 lags \parencite{neweywest1987}; shifts are descriptive, not causal.
 \begin{samepage}
 For each of Brand HHI, Ownership HHI and MHHI, let $x_t$ be the change from the previous available observation. The modified score is
 \begingroup
@@ -36,6 +20,4 @@ M_t=\frac{0.6745\,[x_t-\operatorname{median}(x)]}{\operatorname{median}|x-\opera
 \end{equation}
 \endgroup
 \par\end{samepage}
-The median and median absolute deviation use all observed changes in that series \parencite{iglewicz1993outliers}. A month is flagged if $|M_t|>3.5$ in any of the three series, allowing unusually large increases and decreases. April 2020 is missing, so the May 2020 change spans March to May.
-
-The scripts specify the seven windows D1--D7 separately from this screen. A window passes the nearby-jump check if a flagged date falls within 40 days of its end-month date. D1 and D6 do not pass this check. Window changes are the end-month index minus the start-month index. Their economic context and any subsequent reversals are assessed from the observed series.
+The median and MAD use all observed changes \parencite{iglewicz1993outliers}; $|M_t|>3.5$ in any series flags either direction. Missing April 2020 makes May's change span March--May. The separately specified D1--D7 windows pass the nearby-jump check only if a flag lies within 40 days of the end-month; D1 and D6 fail. Window changes are end minus start; context and reversals are descriptive.

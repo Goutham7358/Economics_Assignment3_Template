@@ -5,6 +5,9 @@
 		},
 		{
 			"path": "."
+		},
+		{
+			"path": "../Assignment3_Code"
 		}
 	],
 	"settings": {
