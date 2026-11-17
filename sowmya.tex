@@ -12,6 +12,7 @@
 \usepackage[section]{placeins}
 \usepackage{caption}
 \usepackage{booktabs}
+\usepackage[dvipsnames]{xcolor}
 \usepackage{array}
 \usepackage{amsmath}
 \usepackage{csquotes}
@@ -43,6 +44,10 @@
 % The source prints its bullets as ordinary, unindented paragraphs.
 \newcommand{\templatebullet}[1]{\par\noindent\textbullet\hspace{5.88pt}#1\par}
 
+% O1 highlight: each O1 block is wrapped in a group that turns text orange and captions blue.
+\newif\ifoneon
+\AddToHook{para/begin}{\ifoneon\color{orange}\fi}
+\newcommand{\oneHL}{\par\oneontrue\color{orange}\captionsetup{font+={color=blue}}}
 \begin{document}
 \hypersetup{pageanchor=false}
 \begin{titlepage}
@@ -109,16 +114,6 @@ Clearly identify what is not adequately addressed by the existing literature and
 Explain how the existing literature and identified gap inform the research question and analysis.
 
 
-\subsection{O1: Ownership structure and partial stakes}
-Measuring concentration at ownership-group level requires knowing who controls each airline and who holds minority stakes in rivals \parencite{obriensalop2000}. Two airlines in the sample had such cross-holdings before the Tata Group consolidated them into the Air India Group in January 2022, and their company-published stake histories are summarised below; the full schedule with sources is in Table~\ref{tab:o1-stakes} in Appendix~\ref{app:o1-stakes}.
-
-\textbf{Vistara.} Vistara was a joint venture of Tata Sons (51\%) and Singapore Airlines (49\%) from the start of the sample \parencite{sia2015annual}, a split that Singapore Airlines restated when announcing the merger of Air India and Tata SIA Airlines in 2022 \parencite{sia2022merger}.
-
-\textbf{AirAsia India.} AirAsia India began as a three-way venture of Tata Sons (30\%), AirAsia Investment (49\%) and Telestra (21\%) \parencite{airasia2013jv}. Tata Sons raised its stake to 41.06\% in 2015 and to 49\% in March 2016 by buying out Telestra's remaining shares \parencite{tata2016airasia}; AirAsia Berhad's reporting kept its own holding at 49\% \parencite{airasia2018q4}. Tata Sons held 51\% before the December 2020 sale in which AirAsia Investment sold 32.67\% of the company to it, leaving Tata Sons at 83.67\% and AirAsia at 16.33\% \parencite{airasia2021disposal,airasia2021results}.
-
-Under Equation~O1.1b these minority holdings produce the partial-ownership term of MHHI: the larger the stake a rival group holds in another, the more it internalises that firm's profits, and the larger the gap between MHHI and Ownership-HHI. Once Tata Sons controls both airlines (from January 2022), the wedge is zero by construction. Because the stakes are company-reported and not directly observed in operating decisions, MHHI is treated as a measure of structure rather than of conduct.
-
-
 \section{Data and Methodology}
 \subsection{Research Design}
 Briefly describe the research design used in the study.
@@ -126,56 +121,99 @@ Briefly describe the research design used in the study.
 \subsection{Data Sources}
 Describe the data source or sources, period covered, geographic coverage, sample or number of observations where applicable, and data collection procedure where applicable.
 
-\textbf{O1.} DGCA's Monthly Summary of Domestic Passenger Traffic, in the cleaned distribution of \textcite{kubicek2026aviationstats} (\texttt{carrier\_monthly.csv}, commit \texttt{16770ac}), gives scheduled domestic passengers by airline for January 2015--July 2026: 1,577 airline-months, 138 market-months and 26 airlines after cleaning, at national level with no fares or city pairs. Ownership stakes for the modified HHI come from company filings, with press reports for three points (Appendix~\ref{app:o1-stakes}).
-
-\textbf{O1 data cleansing.} Nine auditable rules (Appendix~\ref{app:o1-cleaning}) coerce numeric fields, keep scheduled domestic service, sum duplicate airline-months, drop zero-passenger rows, and only flag inconsistent values, outliers and gaps; no observed value is overwritten. Shares are recomputed from passengers and sum to 100\% each month. April 2020, missing for every airline, stays empty; AirAsia India's missing 2017 is interpolated only as a sensitivity check.
+{\oneHL \textbf{O1.} DGCA monthly scheduled domestic passengers by airline \parencite{kubicek2026aviationstats}, January 2015--July 2026: 26 airlines, 1,577 airline-months, 138 market-months, national level, no fares. Stakes for the modified HHI come from company filings and three press reports (Appendix~\ref{app:o1-stakes}).\par}
 
 \subsection{Unit of Analysis}
 Clearly identify the unit of analysis, such as firm, product, transaction, household, district, city, industry, or another relevant unit.
 
-\textbf{O1.} The unit of analysis is the market-month, for which concentration is computed. It is built from airline-months aggregated into ownership groups: Air India with Air India Express and Jet Airways with JetLite throughout, with Vistara and AirAsia India/AIX Connect joining the Air India Group from January 2022.
+{\oneHL \textbf{O1.} The market-month, built from airline-months grouped by controlling owner (see Method of Analysis).\par}
 
 \subsection{Variables and Measures}
 Define the key variables, indicators, measures, or categories used in the analysis.
 
 For quantitative studies, identify the dependent variable, main explanatory variables, and relevant control variables where applicable.
 
-\textbf{O4.} Appendix~\ref{app:o4-dictionary} defines the inputs, constructed measures, units, sample flags and source-quality conventions used in the concentration and buffer calculations.
+{\oneHL \textbf{O1.} Appendix~\ref{app:o1-dictionary} defines the indices (dependent), event indicators and trend (explanatory), and COVID and month controls.\par}
 
-\textbf{O1.} Appendix~\ref{app:o1-dictionary} defines the concentration indices (dependent variables), the event indicators and time trend (main explanatory variables), and the COVID and month-of-year controls.
+\textbf{O4.} Appendix~\ref{app:o4-dictionary} defines the inputs, constructed measures, units, sample flags and source-quality conventions used in the concentration and buffer calculations.
 
 \clearpage
 \subsection{Method of Analysis}
-\textbf{O4.} Descriptive index and comparative analysis assess two-group dominance and dependence on IndiGo. Each month's national passenger counts and route scheduled-flight counts are aggregated into ownership groups and ranked to calculate HHI, CR2, the leader--rival share gap and fringe share, with the leading groups identified. Route shares pool both directions of the twenty busiest airport pairs by 2025 passengers. The predefined flags are CR2 $\geq80\%$, fringe $\leq20\%$ and gap $>20$ pp, with HHI $>1{,}800$ used as a high-concentration benchmark \parencite[Section~2.1]{dojftc2023merger}. The gap and the IndiGo $\geq60\%$ frequency-share flag are study-defined; monthly exposure percentages use available pairs as their denominator, with IndiGo-only observations identified separately. Rivals' unused capacity is summed as ASK minus RPK and expressed as a percentage of IndiGo's RPK for December 2024 and December 2025. A matched December 2024--July 2026 comparison includes the top-ten subset, while H6 retains the full available April 2019--September 2026 route panel. Missing observations are excluded. Appendix~\ref{app:o4-route-preparation} records ownership conventions, source-quality checks, exclusions and worked calculations.
+{\oneHL \textbf{O1.} Table~\ref{tab:o1-cleansing} lists the cleansing applied. Brand shares are $s_{it}=100\,q_{it}/\sum_j q_{jt}$ from cleansed passengers $q_{it}$, summed into ownership groups $S_{gt}$ (Air India with Air India Express; Jet Airways with JetLite; Vistara and AirAsia India/AIX Connect join Air India from January 2022). HHI runs from 0 to 10,000, with values above 1,800 highly concentrated \parencite{dojftc2023merger}; $\mathrm{CR2}=S_{(1)}+S_{(2)}$ is reported with it \parencite{gandhi2026marketstructure}. Grouping Effect $=$ Ownership-HHI $-$ Brand-HHI; Partial-Ownership Effect $=$ MHHI $-$ Ownership-HHI. Drift points use a jump rule $|M|>3.5$ on monthly changes \parencite{iglewicz1993outliers} and trend breaks by dynamic programming \parencite{baiperron2003}.
 
-\textbf{O1.} Concentration indices and a segmented (interrupted time-series) regression measure how four events changed national concentration once common ownership is counted. For each market-month, brand passenger shares are $s_{it}=100\,q_{it}/\sum_j q_{jt}$, with $q$ passengers carried, and brands are summed into controlling groups $S_{gt}$ under the ownership convention above. The Herfindahl--Hirschman Index (HHI) is the sum of squared shares, from 0 to 10,000, with values above 1,800 highly concentrated \parencite{dojftc2023merger}. The modified HHI (MHHI) adds rivals' partial cross-holdings \parencite{obriensalop2000}:
+\begin{minipage}{\linewidth}
+\captionsetup{font={small,color=blue},labelfont=bf,justification=raggedright,singlelinecheck=false,hypcap=false}
+\captionof{table}{O1: Data cleansing applied (full log in Appendix~\ref{app:o1-cleaning}).}
+\label{tab:o1-cleansing}
+\centering
+{\footnotesize\setstretch{1.0}\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}p{2.3cm}p{5.2cm}p{6.6cm}@{}}
+\toprule
+Rules & Treatment & Effect \\
+\midrule
+C1--C3 Schema, names, scope & Coerce numeric fields; keep scheduled domestic service & 1,773 out-of-scope rows excluded \\
+C4--C5 Duplicates, zeros & Sum duplicate airline-months; drop zero-passenger rows & 132 zero rows dropped \\
+C6--C7 Consistency, outliers & Flag, never overwrite & 92 outlier flags, none material \\
+C8 Gaps & April 2020 left empty; AirAsia India 2017 interpolated only as a sensitivity run & 138 market-months \\
+C9 Shares & Recomputed from passengers & Sum to 100\% in all months \\
+\bottomrule
+\end{tabular}\par}
+\end{minipage}
+
 \begin{align}
 \text{Brand-HHI}_t &= \sum_i s_{it}^2, \qquad \text{Ownership-HHI}_t = \sum_g S_{gt}^2 \tag{O1.1a}\\
 \text{MHHI}_t &= \text{Ownership-HHI}_t+\sum_{j}\sum_{k\neq j}\lambda_{jk}S_{jt}S_{kt},\qquad
 \lambda_{jk}=\frac{\sum_i \gamma_{ij}\beta_{ik}}{\sum_i \gamma_{ij}\beta_{ij}} \tag{O1.1b}
 \end{align}
-where $\beta_{ik}$ is owner $i$'s financial stake in firm $k$ and $\gamma_{ik}$ its control share ($\gamma=\beta$ in the baseline; the alternative gives a majority owner full control). $\mathrm{CR2}=S_{(1)}+S_{(2)}$ is the two largest groups' combined share; it ignores the split below the top two, so it is reported with HHI \parencite{gandhi2026marketstructure}. Ownership-HHI $-$ Brand-HHI is the Grouping Effect and MHHI $-$ Ownership-HHI the Partial-Ownership Effect, zero from January 2022 by construction. A rise in all HHI variants is a share shift; in Ownership-HHI and MHHI only, a change of control; in Brand-HHI only, a change in reporting.
-
-Drift points are months whose change has a modified $z$-score above 3.5 \parencite{iglewicz1993outliers}, or trend breaks from piecewise-linear fits with minimum segments of 12 months, found by dynamic programming \parencite{baiperron2003} and chosen by the Bayesian information criterion. Each index is then regressed over the 138 months:
+with $\beta_{ik}$ owner $i$'s stake in firm $k$ and $\gamma_{ik}$ its control share \parencite{obriensalop2000}, and
 \begin{equation}
 \text{Index}_t = \alpha + \beta t + \sum_{k=1}^{4}\gamma_k\,\text{Post}_{kt} + \delta\,\text{COVID}_t + \sum_{m=2}^{12}\mu_m M_{mt} + \varepsilon_t \tag{O1.2}
 \end{equation}
-with $\text{Post}_{kt}$ switching on at the Jet Airways exit (May 2019), Tata acquisition of Air India (January 2022), Go First exit (June 2023) and legal mergers (December 2024), COVID covering March 2020--December 2021, and Newey--West errors with 12 lags \parencite{neweywest1987}. The $\gamma_k$ are descriptive level shifts, not causal effects. Robustness checks are in Appendix~\ref{app:o1-robust}.
+where $\text{Post}_{kt}$ starts at the Jet Airways exit (May 2019), Tata acquisition (January 2022), Go First exit (June 2023) and legal mergers (December 2024); COVID spans March 2020--December 2021; errors are Newey--West with 12 lags \parencite{neweywest1987}. The $\gamma_k$ are descriptive level shifts, not causal effects (robustness: Appendix~\ref{app:o1-robust}).
+\par}
+
+\textbf{O4.} Descriptive index and comparative analysis assess two-group dominance and dependence on IndiGo. Each month's national passenger counts and route scheduled-flight counts are aggregated into ownership groups and ranked to calculate HHI, CR2, the leader--rival share gap and fringe share, with the leading groups identified. Route shares pool both directions of the twenty busiest airport pairs by 2025 passengers. The predefined flags are CR2 $\geq80\%$, fringe $\leq20\%$ and gap $>20$ pp, with HHI $>1{,}800$ used as a high-concentration benchmark \parencite[Section~2.1]{dojftc2023merger}. The gap and the IndiGo $\geq60\%$ frequency-share flag are study-defined; monthly exposure percentages use available pairs as their denominator, with IndiGo-only observations identified separately. Rivals' unused capacity is summed as ASK minus RPK and expressed as a percentage of IndiGo's RPK for December 2024 and December 2025. A matched December 2024--July 2026 comparison includes the top-ten subset, while H6 retains the full available April 2019--September 2026 route panel. Missing observations are excluded. Appendix~\ref{app:o4-route-preparation} records ownership conventions, source-quality checks, exclusions and worked calculations.
 
 \subsection{Hypotheses or Expected Relationships}
+{\oneHL \textbf{H1 (O1): Lasting event steps.} We expect each exit, acquisition and merger to produce a positive and lasting step in Ownership-HHI ($\gamma_k>0$ and significant in Equation~O1.2), so that concentration does not return to its pre-event level.\par}
+
+{\oneHL \textbf{H2 (O1): Partial-ownership wedge.} We expect MHHI to exceed Ownership-HHI before January 2022, reflecting Tata's stakes in Vistara and AirAsia India, and the difference to vanish once both join the Air India Group.\par}
+
 \textbf{H5 (O4): National concentration.} We expect IndiGo and the Air India Group to remain the two largest groups in every month from December 2024 to July 2026, with CR2 $\geq80\%$ and a share gap above 20 percentage points. HHI $>1{,}800$ is not tested separately, since CR2 $\geq80\%$ already implies HHI $\geq3{,}200$.
 
 \textbf{H6 (O4): Route concentration.} We expect ownership-adjusted scheduled-flight-frequency HHI to exceed 1,800 in more than half of the available route-month observations for the selected twenty airport pairs.
 
 \textbf{H7 (O4): Capacity buffer.} We expect rivals' unused capacity relative to IndiGo's passenger-kilometres to be lower in December 2025 than in December 2024.
 
-\textbf{H1 (O1): Lasting event steps.} We expect each exit, acquisition and merger to produce a positive and lasting step in Ownership-HHI ($\gamma_k>0$ and significant in Equation~O1.2), so that concentration does not return to its pre-event level.
-
-\textbf{H2 (O1): Partial-ownership wedge.} We expect MHHI to exceed Ownership-HHI before January 2022, reflecting Tata's stakes in Vistara and AirAsia India, and the difference to vanish once both join the Air India Group.
-
 % Keep the first O4 description and figure together in this working draft.
 \clearpage
 \section{Descriptive and Exploratory Analysis}
+{\oneHL \subsection{O1: Concentration trends and data quality}
+ The raw file has no missing fields, duplicates or impossible load factors; the noise is in coverage and small carriers. Dropping the 23 unexplained, immaterial outlier flags moves Brand-HHI by at most 70.6 points and Ownership-HHI and MHHI by at most 34.5. AirAsia India has no 2017 rows, so the headline series is overstated by about 165--171 points in those months. Brand- and Ownership-HHI average 3,249 and 3,447, with minima of 2,109 and 2,216 (Appendix~\ref{app:o1-tables}). Table~\ref{tab:o1-periods} gives period means.
+
+\begin{minipage}{\linewidth}
+\captionsetup{font={small,color=blue},labelfont=bf,justification=raggedright,singlelinecheck=false,hypcap=false}
+\captionof{table}{O1: Concentration measures by period (period means).}
+\label{tab:o1-periods}
+\centering
+{\small\setstretch{1.1}\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}p{4.4cm}rrrrrr@{}}
+\toprule
+Period & Brand HHI & Own.\ HHI & MHHI & CR2 (\%) & Gap (pp) & Fringe (\%) \\
+\midrule
+Pre-Jet exit (Jan 2015--Apr 2019) & 2{,}323.8 & 2{,}408.0 & 2{,}416.1 & 58.7 & 21.8 & 41.3 \\
+Jet exit to Tata (May 2019--Dec 2021) & 3{,}293.1 & 3{,}294.5 & 3{,}342.3 & 66.9 & 39.2 & 33.1 \\
+Tata to mergers (Jan 2022--Nov 2024) & 3{,}847.6 & 4{,}308.6 & 4{,}308.6 & 85.5 & 33.1 & 14.5 \\
+Post mergers (Dec 2024--Jul 2026) & 4{,}538.0 & 4{,}876.7 & 4{,}876.7 & 90.7 & 38.0 & 9.3 \\
+\bottomrule
+\end{tabular}\par}
+\vspace{4pt}
+{\footnotesize\setstretch{1.1}\raggedright\textit{Note:} HHI values are index points; CR2, gap and fringe use ownership-group passenger shares. April 2020 is missing and not imputed.\par
+\textit{Source:} DGCA monthly airline traffic via \href{https://github.com/mkubicek/india-aviation-stats/tree/16770ac59dae61ce7b80fd8bd67dd7f4cef280a6}{Kubicek (2026)}; authors' calculations.\par}
+\end{minipage}
+\par}
+
+\clearpage
 \subsection{O4: National concentration trends}
 Across 138 observed months (January 2015--July 2026), the top two groups' combined passenger share (CR2) rises from 60.7\% to 91.3\%, and their gap from 12.5 to 43.4 percentage points (Figure~\ref{fig:o4-national-eda}). IndiGo is first throughout; Table~\ref{tab:o4-leading-pairs} names the second group by period. Appendix~\ref{app:o4-national-summary} (Table~\ref{tab:o4-national-summary}) provides summary statistics.
 
@@ -270,59 +308,86 @@ IndiGo's offered capacity and passenger traffic are lower in December 2025, whil
 {\footnotesize\setstretch{1.1}\raggedright\textit{Source:} DGCA monthly airline traffic via \href{https://github.com/mkubicek/india-aviation-stats/tree/16770ac59dae61ce7b80fd8bd67dd7f4cef280a6}{Kubicek (2026)}; authors' calculations.\par}
 \end{minipage}
 
-\clearpage
-\subsection{O1: Concentration trends and data quality}
-The raw file has no missing fields, duplicates or impossible load factors; the noise is in coverage and small carriers. Dropping the 23 unexplained, immaterial outlier flags moves Brand-HHI by at most 70.6 points and Ownership-HHI and MHHI by at most 34.5. AirAsia India has no 2017 rows, so the headline series, overstated by about 165--171 points in those months, stays as published. Brand- and Ownership-HHI average 3,249 and 3,447 and never fall below the 1,800 line \parencite{dojftc2023merger}. Table~\ref{tab:o1-periods} shows every measure rising across the four periods while the fringe outside the top two groups shrinks from 41.3\% to 9.3\%. IndiGo's share is 2.81 times the second group's in July 2026. Appendix~\ref{app:o1-tables} gives summary statistics.
-
-\begin{minipage}{\linewidth}
-\captionsetup{font=small,labelfont=bf,justification=raggedright,singlelinecheck=false,hypcap=false}
-\captionof{table}{O1: Concentration measures by period (period means).}
-\label{tab:o1-periods}
-\centering
-{\small\setstretch{1.1}\setlength{\tabcolsep}{4pt}
-\begin{tabular}{@{}p{4.4cm}rrrrrr@{}}
-\toprule
-Period & Brand HHI & Own.\ HHI & MHHI & CR2 (\%) & Gap (pp) & Fringe (\%) \\
-\midrule
-Pre-Jet exit (Jan 2015--Apr 2019) & 2{,}323.8 & 2{,}408.0 & 2{,}416.1 & 58.7 & 21.8 & 41.3 \\
-Jet exit to Tata (May 2019--Dec 2021) & 3{,}293.1 & 3{,}294.5 & 3{,}342.3 & 66.9 & 39.2 & 33.1 \\
-Tata to mergers (Jan 2022--Nov 2024) & 3{,}847.6 & 4{,}308.6 & 4{,}308.6 & 85.5 & 33.1 & 14.5 \\
-Post mergers (Dec 2024--Jul 2026) & 4{,}538.0 & 4{,}876.7 & 4{,}876.7 & 90.7 & 38.0 & 9.3 \\
-\bottomrule
-\end{tabular}\par}
-\vspace{4pt}
-{\footnotesize\setstretch{1.1}\raggedright\textit{Note:} HHI values are index points; CR2, gap and fringe use ownership-group passenger shares. April 2020 is missing and not imputed.\par
-\textit{Source:} DGCA monthly airline traffic via \href{https://github.com/mkubicek/india-aviation-stats/tree/16770ac59dae61ce7b80fd8bd67dd7f4cef280a6}{Kubicek (2026)}; authors' calculations.\par}
-\end{minipage}
-
-\subsection{O1: Drift points in the indices}
-The detectors find seven drift points, D1--D7 (Table~\ref{tab:o1-drift} in Appendix~\ref{app:o1-tables}). \emph{Permanent share shifts (D1, D5):} the two exits raise all indices alike ($+531$ to $+558$; $+664$ to $+693$ points) and never reverse; IndiGo took 6.4 of Jet's 10.4 share points and 5.7 of Go First's 6.4. Jet's group share fell to zero between January and May 2019, so its drift starts in March, two months before the event date. \emph{Reclassifications (D4, D6):} in January 2022 Ownership-HHI rises 367 points and Brand-HHI 51, so 317 points are regrouping; at the mergers Brand-HHI rises 153 and Ownership-HHI 54. \emph{Transient (D2, D3, D7):} the July 2020 jump after the post-lockdown restart ($+741$, the strongest, $M=8.3$--9.1) is 94\% reversed by November 2020; D3 (the second COVID wave) reverses by October 2021, and D7, IndiGo's December 2025 operational disruption \parencite{moca2026indigo}, reverses in January 2026.
-
-\clearpage
-\subsection{O1: Index over months}
-Figure~\ref{fig:o1-its} shows (a) observed and fitted HHI series against the 5,000 symmetric-duopoly reference, (b) CR2, and (c) the Grouping and Partial-Ownership Effects, with events T1--T4 and drift points D1--D7 marked.
-
-\textbf{Panel (a).} Before the Jet Airways exit the three series coincide and rise slowly within roughly 2,100--2,500, already above the 1,800 line. After that the fit is a staircase: a gently rising plateau, then a vertical step at each event (Ownership-HHI $+312$, $+900$, $+640$ and $+137$ points). No plateau is revisited, which is what lasting structural change, rather than a transient shock, looks like. The observed series follow the fitted steps ($R^2$ 0.97--0.98); the main departures are the 2020--21 COVID spike (D2, D3), which the fit nets out, and the December 2025 dip (D7). The series stay together at the two exits, which are share shifts, and separate at T2, which is regrouping, when Brand-HHI falls 300--600 points below the others. By 2025--26 Ownership-HHI and MHHI reach the 5,000 reference while Brand-HHI stays below it.
-
-\textbf{Panel (b).} CR2 shows the same staircase for ownership groups ($+5.7$, $+17.9$, $+9.3$ and $+1.4$ points) and stays close to 90\% from T3. At brand level T2 adds only 1.9 points, because the brands were still reported separately.
-
-\textbf{Panel (c).} The total concealed wedge, MHHI minus Brand-HHI, is the concentration that brand shares hide. It opens sharply at T2, almost entirely as the Grouping Effect, peaks near 600 points in late 2024, and narrows after T4 when Vistara and AIX Connect stop being reported as separate brands. Before 2022 the Partial-Ownership Effect is the smallest component (23 points on average).
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=\linewidth]{figures/o1_hhi.png}
-\caption{O1: Interrupted time-series view of national concentration, January 2015--July 2026.}
-\label{fig:o1-its}
-\vspace{2pt}
-\begin{minipage}{\linewidth}
-\footnotesize\setstretch{1.1}
-\textit{Note:} (a) Brand-, Ownership- and MHHI: observed (thin) and fitted (thick) values from Equation~O1.2, keeping the trend and the four event steps, with COVID and month-of-year terms netted out; figures beside each step are Ownership-HHI steps in points. (b) CR2 with its steps in percentage points. (c) Grouping Effect, Partial-Ownership Effect and their sum, the total concealed wedge. T1--T4: Jet exit, Tata acquisition, Go First exit, legal mergers. D1--D7: drift points (filled markers flagged by the jump detector). Grey band: COVID window.\par
-\textit{Source:} DGCA monthly traffic via \href{https://github.com/mkubicek/india-aviation-stats/tree/16770ac59dae61ce7b80fd8bd67dd7f4cef280a6}{Kubicek (2026)}; authors' calculations.
-\end{minipage}
-\end{figure}
 
 \clearpage
 \section{Analysis and Results}
+{\oneHL \subsection{O1: Index over months and drift points}
+ Figure~\ref{fig:o1-its} plots observed and fitted HHI against the 5,000 symmetric-duopoly reference, CR2, and the concealed wedge, with events T1--T4 and drift points D1--D7. Ownership-HHI rises as a staircase, with steps of $+312$, $+900$, $+640$ and $+137$ points and no plateau revisited. The series coincide at the two exits (share shifts) and separate at T2 (regrouping), when Brand-HHI falls 300--600 points below the others. CR2 steps by $+5.7$, $+17.9$, $+9.3$ and $+1.4$ points. The wedge peaks near 600 points in late 2024.
+
+\begin{minipage}{\linewidth}
+\centering
+\includegraphics[width=\linewidth]{figures/o1_hhi.png}
+\captionof{figure}{O1: Interrupted time-series view of national concentration, January 2015--July 2026.}
+\label{fig:o1-its}
+\vspace{2pt}
+\par\footnotesize\setstretch{1.1}
+\textit{Note:} (a) Brand-, Ownership- and MHHI: observed (thin) and fitted (thick) values from Equation~O1.2, keeping the trend and the four event steps, with COVID and month-of-year terms netted out; figures beside each step are Ownership-HHI steps in points. (b) CR2 with its steps in percentage points. (c) Grouping Effect, Partial-Ownership Effect and their sum, the total concealed wedge. T1--T4: Jet exit, Tata acquisition, Go First exit, legal mergers. D1--D7: drift points (filled markers flagged by the jump detector). Grey band: COVID window.\par
+\textit{Source:} DGCA monthly traffic via \href{https://github.com/mkubicek/india-aviation-stats/tree/16770ac59dae61ce7b80fd8bd67dd7f4cef280a6}{Kubicek (2026)}; authors' calculations.
+\end{minipage}
+
+Table~\ref{tab:o1-drift} gives, for each drift point, the index change and the reason for the shift in level.
+
+\begin{minipage}{\linewidth}
+\captionsetup{font={small,color=blue},labelfont=bf,justification=raggedright,singlelinecheck=false,hypcap=false}
+\captionof{table}{O1: Drift points and the reason for each level shift.}
+\label{tab:o1-drift}
+\centering
+{\footnotesize\setstretch{1.0}\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}lp{1.7cm}rrrp{2.7cm}p{1.9cm}p{2.9cm}@{}}
+\toprule
+ID & Window & $\Delta$Br. & $\Delta$Own. & $\Delta$CR2 & Largest share movers (pp) & Type & Reason for the shift \\
+\midrule
+D1 & Feb--Apr 2019 & $+558$ & $+531$ & $+5.8$ & Jet group $-10.4$; IndiGo $+6.4$ & Share shift; permanent & Jet Airways exit; IndiGo took most of its passengers \\
+D2 & Jun--Jul 2020 & $+741$ & $+739$ & $+6.5$ & IndiGo $+7.6$; Air India Group $-3.3$ & Share shift; retraced by Nov 2020 & Post-lockdown restart; IndiGo regained volume first \\
+D3 & Apr--May 2021 & $+321$ & $+321$ & $+6.0$ & Air India Group $+6.1$; AirAsia India $-3.2$ & Share shift; retraced by Oct 2021 & Second COVID wave \\
+D4 & Dec 2021--Jan 2022 & $+51$ & $+367$ & $+12.1$ & Air India Group $+13.9$ (Vistara $-7.7$, AirAsia India $-6.3$) & Regrouping; Own.\ and MHHI only & Tata grouping: Vistara and AirAsia India reported inside Air India \\
+D5 & Apr--Jun 2023 & $+664$ & $+693$ & $+6.6$ & Go First $-6.4$; IndiGo $+5.7$ & Share shift; permanent & Go First exit; IndiGo took most of its passengers \\
+D6 & Nov--Dec 2024 & $+153$ & $+54$ & $0.0$ & Vistara, AIX Connect folded into Air India, Air India Express & Regrouping; Brand only & Legal mergers; fewer reported brands, no share change \\
+D7 & Nov--Dec 2025 & $-411$ & $-330$ & $-1.2$ & IndiGo $-4.0$; Air India Group $+2.8$ & Share shift; reversed Jan 2026 & IndiGo operational disruption \parencite{moca2026indigo} \\
+\bottomrule
+\end{tabular}\par}
+\vspace{4pt}
+{\footnotesize\setstretch{1.0}\raggedright\textit{Note:} Changes are index points between the months shown; $\Delta$CR2 is in percentage points on ownership groups. A flagged May 2020 change spans two months because April 2020 is missing. Reasons are the events coinciding with each drift, not causal estimates.\par
+\textit{Source:} DGCA monthly airline traffic via \href{https://github.com/mkubicek/india-aviation-stats/tree/16770ac59dae61ce7b80fd8bd67dd7f4cef280a6}{Kubicek (2026)}; authors' calculations.\par}
+\end{minipage}
+
+The two exits (D1, D5) raise all indices alike and never reverse; Jet's group share was zero by May 2019, so its drift starts in March. The reclassifications (D4, D6) move only the indices that depend on grouping or reporting. The transient drifts (D2, D3, D7) reverse within months; D2 ($M=8.3$--9.1) is 94\% reversed by November 2020.
+\par}
+
+{\oneHL \subsection{O1: Event steps in concentration}
+All four event steps are positive and significant in every model (Table~\ref{tab:o1-regression}). The Tata acquisition (900 vs.\ 449 points) and the Go First exit (640 vs.\ 482) are larger once brands are grouped by owner; the mergers are smaller (137 vs.\ 291) because they combined brands already grouped. The steps sum to 1,988 points for Ownership-HHI against 1,563 for Brand-HHI, so brand-level counting misses about a fifth of the event-driven rise. MHHI's Tata step is 56 points smaller than Ownership-HHI's because the partial-ownership wedge ends there. Re-dating the Jet and Go First steps to their drift months (March 2019, May 2023) lifts the Ownership-HHI sum to 2,211 and $R^2$ from 0.981 to 0.985 without changing the ranking.
+
+\begin{minipage}{\linewidth}
+\captionsetup{font={small,color=blue},labelfont=bf,justification=raggedright,singlelinecheck=false,hypcap=false}
+\captionof{table}{O1: Segmented regression of monthly concentration indices (Equation~O1.2).}
+\label{tab:o1-regression}
+\centering
+{\small\setstretch{1.1}\setlength{\tabcolsep}{5pt}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Regressor & Brand HHI & Ownership HHI & MHHI \\
+\midrule
+Time trend (points per month) & 6.34\textsuperscript{**} (1.94) & 4.68\textsuperscript{*} (2.00) & 5.12\textsuperscript{*} (2.01) \\
+Post-Jet exit (May 2019) & 340.83\textsuperscript{**} (78.99) & 311.51\textsuperscript{**} (79.12) & 330.33\textsuperscript{**} (79.50) \\
+Post-Tata acquisition (Jan 2022) & 449.31\textsuperscript{**} (78.08) & 899.79\textsuperscript{**} (82.94) & 843.69\textsuperscript{**} (82.94) \\
+Post-Go First exit (Jun 2023) & 481.99\textsuperscript{**} (50.45) & 640.03\textsuperscript{**} (56.18) & 632.96\textsuperscript{**} (55.21) \\
+Post-legal mergers (Dec 2024) & 290.97\textsuperscript{**} (73.85) & 137.13\textsuperscript{*} (54.72) & 128.51\textsuperscript{*} (55.59) \\
+COVID (Mar 2020--Dec 2021) & 517.84\textsuperscript{**} (44.59) & 543.41\textsuperscript{**} (45.53) & 547.56\textsuperscript{**} (45.25) \\
+Sum of the four steps & 1{,}563 (222) & 1{,}988 (222) & 1{,}935 (223) \\
+\midrule
+$R^2$ & 0.972 & 0.981 & 0.981 \\
+Durbin--Watson & 0.92 & 0.93 & 0.94 \\
+\bottomrule
+\end{tabular}\par}
+\vspace{4pt}
+{\footnotesize\setstretch{1.1}\raggedright\textit{Note:} Newey--West standard errors (12 lags) in parentheses; $n=138$. \textsuperscript{*}$p<0.05$, \textsuperscript{**}$p<0.01$. Constant and eleven month-of-year dummies included. Breusch--Godfrey (12 lags) rejects no autocorrelation and the ADF test rejects a unit root in the residuals ($p<0.001$ in all three models).\par
+\textit{Source:} DGCA monthly airline traffic via \href{https://github.com/mkubicek/india-aviation-stats/tree/16770ac59dae61ce7b80fd8bd67dd7f4cef280a6}{Kubicek (2026)}; authors' calculations.\par}
+\end{minipage}
+
+CR2 on ownership groups averages 72.0\%, rising from 58.7\% to 90.7\% across the periods and reaching 91.3\% in July 2026 (IndiGo 67.4\%, Air India Group 24.0\%). Its steps are $+5.7$, $+17.9$, $+9.3$ and $+1.4$ points (total 34.4); at brand level the Tata step is only 1.9 and the merger step 6.5. January 2022 is its largest monthly move ($+12.1$). CR2 and Ownership-HHI correlate at 0.983 in levels but 0.794 in monthly changes (Appendix~\ref{app:o1-cr2}).
+\par}
+
+\clearpage
 \subsection{O4: National concentration and dominance}
 IndiGo and the Air India Group are the two largest ownership groups in all 20 months from December 2024 to July 2026, with IndiGo ranked first throughout. Their combined passenger share ranges from 89.13\% to 91.70\%, and the gap between them ranges from 30.01 to 43.39 percentage points. Thus the specified pair, CR2 and gap conditions occur together in every month of this period (Table~\ref{tab:o4-national-results}).
 
@@ -405,41 +470,48 @@ Rivals' offered capacity rises from 6.385 to 6.619 billion seat-km, but their pa
 
 The ratios correspond to 9.79 and 8.19 unused rival seat-km per 100 IndiGo passenger-km in the respective months. They compare the aggregate buffer with all IndiGo traffic, rather than the traffic affected by cancellations. Monthly national totals do not identify whether those unused seats matched passengers' routes and travel dates, or whether airlines could add flights using available aircraft, crews and airport slots. The calculation therefore measures the size of the aggregate buffer; it does not establish actual passenger accommodation. Appendix~\ref{app:o4-capacity-buffer} gives the airline-level contributions and worked calculations.
 
-\clearpage
-\subsection{O1: Event steps in concentration}
-All four event steps are positive and significant in every model (Table~\ref{tab:o1-regression}). The Tata acquisition (900 vs.\ 449 points) and the Go First exit (640 vs.\ 482) are larger once brands are grouped by owner; the mergers are smaller (137 vs.\ 291) because they combined brands already grouped. The steps sum to 1,988 points for Ownership-HHI against 1,563 for Brand-HHI, so brand-level counting misses about a fifth of the event-driven rise. MHHI's Tata step is 56 points smaller than Ownership-HHI's because the partial-ownership wedge ends there. Re-dating the Jet and Go First steps to their drift months (March 2019, May 2023) lifts the Ownership-HHI sum to 2,211 and $R^2$ from 0.981 to 0.985 without changing the ranking.
-
-\begin{minipage}{\linewidth}
-\captionsetup{font=small,labelfont=bf,justification=raggedright,singlelinecheck=false,hypcap=false}
-\captionof{table}{O1: Segmented regression of monthly concentration indices (Equation~O1.2).}
-\label{tab:o1-regression}
-\centering
-{\small\setstretch{1.1}\setlength{\tabcolsep}{5pt}
-\begin{tabular}{@{}lrrr@{}}
-\toprule
-Regressor & Brand HHI & Ownership HHI & MHHI \\
-\midrule
-Time trend (points per month) & 6.34\textsuperscript{**} (1.94) & 4.68\textsuperscript{*} (2.00) & 5.12\textsuperscript{*} (2.01) \\
-Post-Jet exit (May 2019) & 340.83\textsuperscript{**} (78.99) & 311.51\textsuperscript{**} (79.12) & 330.33\textsuperscript{**} (79.50) \\
-Post-Tata acquisition (Jan 2022) & 449.31\textsuperscript{**} (78.08) & 899.79\textsuperscript{**} (82.94) & 843.69\textsuperscript{**} (82.94) \\
-Post-Go First exit (Jun 2023) & 481.99\textsuperscript{**} (50.45) & 640.03\textsuperscript{**} (56.18) & 632.96\textsuperscript{**} (55.21) \\
-Post-legal mergers (Dec 2024) & 290.97\textsuperscript{**} (73.85) & 137.13\textsuperscript{*} (54.72) & 128.51\textsuperscript{*} (55.59) \\
-COVID (Mar 2020--Dec 2021) & 517.84\textsuperscript{**} (44.59) & 543.41\textsuperscript{**} (45.53) & 547.56\textsuperscript{**} (45.25) \\
-Sum of the four steps & 1{,}563 (222) & 1{,}988 (222) & 1{,}935 (223) \\
-\midrule
-$R^2$ & 0.972 & 0.981 & 0.981 \\
-Durbin--Watson & 0.92 & 0.93 & 0.94 \\
-\bottomrule
-\end{tabular}\par}
-\vspace{4pt}
-{\footnotesize\setstretch{1.1}\raggedright\textit{Note:} Newey--West standard errors (12 lags) in parentheses; $n=138$. \textsuperscript{*}$p<0.05$, \textsuperscript{**}$p<0.01$. Constant and eleven month-of-year dummies included. Breusch--Godfrey (12 lags) rejects no autocorrelation and the ADF test rejects a unit root in the residuals ($p<0.001$ in all three models).\par
-\textit{Source:} DGCA monthly airline traffic via \href{https://github.com/mkubicek/india-aviation-stats/tree/16770ac59dae61ce7b80fd8bd67dd7f4cef280a6}{Kubicek (2026)}; authors' calculations.\par}
-\end{minipage}
-
-CR2 on ownership groups averages 72.0\%, rising from 58.7\% to 90.7\% across the periods and reaching 91.3\% in July 2026 (IndiGo 67.4\%, Air India Group 24.0\%). Its steps are $+5.7$, $+17.9$, $+9.3$ and $+1.4$ points (total 34.4); at brand level the Tata step is only 1.9 and the merger step 6.5. January 2022 is its largest monthly move ($+12.1$). CR2 and Ownership-HHI correlate at 0.983 in levels but 0.794 in monthly changes (Appendix~\ref{app:o1-cr2}).
 
 \clearpage
 \section{Discussion}
+{\oneHL \subsection{O1: Economic interpretation}
+\textbf{From oligopoly towards asymmetric duopoly.} Ownership-HHI rose from a mean of 2,408 before the Jet Airways exit to 4,877 after the mergers, equivalent to falling from 4.2 to 2.1 equal-sized airlines; nine in ten passengers now fly IndiGo or the Air India Group. Concentration never left the highly concentrated band, so what changed is the distance above it, and it changed in steps tied to exits and changes of control rather than through gradual drift.
+
+\textbf{Ownership matters more than brands.} The Tata acquisition is the largest step (about 900 points), and half of it is the Grouping Effect: brands that remained separate in DGCA reports came under one owner. Brand shares alone would understate that step by half. Partial ownership is small: the wedge averages 23 points before 2022 and never exceeds 77.
+
+\textbf{Course lenses.} Read through structure--conduct--performance \parencite{gandhi2026marketstructure}, the rise signals greater potential market power. Under Cournot competition the industry Lerner index is HHI$/|\varepsilon|$; with $|\varepsilon|=1.5$ the permanent drifts D1 and D5 imply margins 3.5 and 4.6 points higher. This is an implication of structure, not a measured markup. IndiGo's large aircraft orders act as Stackelberg-style capacity commitments, and its share rose from 57.5\% to 63.2\% across D5 and was held. Both exits occurred with HHI already above 1,800, and Akasa Air's entry in August 2022 was followed only by a slow fall of about 390 points over six months, so entry has not offset consolidation.
+
+\begin{minipage}{\linewidth}
+\captionsetup{font={small,color=blue},labelfont=bf,justification=raggedright,singlelinecheck=false,hypcap=false}
+\captionof{table}{O1: Hypotheses revisited.}
+\label{tab:o1-hypotheses}
+\centering
+{\footnotesize\setstretch{1.05}\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}p{3.0cm}p{2.6cm}p{8.4cm}@{}}
+\toprule
+Hypothesis & Verdict & Evidence in one line \\
+\midrule
+H1: lasting event steps & Supported (Jet, Tata, Go First); weak for mergers & Drifts $+531$, $+367$, $+693$ never reverse and steps are significant at 1\%; the mergers add 137 points ($t=2.5$), and D2, D3, D7 reverse. \\
+H2: partial-ownership wedge & Partly supported; negligible & MHHI exceeds Ownership-HHI before January 2022 by 22.9 points on average (0.8\%, maximum 2.2\%) and the wedge vanishes at D4. \\
+Grouping gap (supplementary) & Always $\geq0$ & Moves only at regrouping drifts: $+316$ at D4, $-100$ at D6, against $-27$ and $+29$ at the exits. \\
+\bottomrule
+\end{tabular}\par}
+\vspace{4pt}
+{\footnotesize\setstretch{1.0}\raggedright\textit{Note:} Steps stay significant at 6 or 18 lags and with COVID months dropped ($t\geq2.2$), and CR2 agrees. The wedge changes no month's concentration classification (Appendix~\ref{app:o1-wedge}). These are dated level shifts in national structure, not causal estimates of effects on fares, profits or passengers.\par
+\textit{Source:} DGCA monthly airline traffic via \href{https://github.com/mkubicek/india-aviation-stats/tree/16770ac59dae61ce7b80fd8bd67dd7f4cef280a6}{Kubicek (2026)}; authors' calculations.\par}
+\end{minipage}
+\par}
+
+\clearpage
+{\oneHL \subsection{O1: Ownership structure and partial stakes}
+Measuring concentration by owner requires knowing who controls each airline and who holds minority stakes in rivals \parencite{obriensalop2000}. Only two airlines had such cross-holdings before the Tata Group placed them in the Air India Group in January 2022 (schedule: Table~\ref{tab:o1-stakes}, Appendix~\ref{app:o1-stakes}).
+
+\textbf{Vistara.} Tata Sons held 51\% from the start of the sample. The other 49\% belonged to a foreign partner with no stake in any other Indian airline, so it adds no cross-holding term; it enters Equation~O1.1b only through the denominator of $\lambda$, diluting Tata's weight in Vistara's decisions.
+
+\textbf{AirAsia India.} Tata Sons started at 30\% beside AirAsia Investment (49\%) and Telestra (21\%) \parencite{airasia2013jv}, rose to 41.06\% in 2015 and 49\% in March 2016 \parencite{tata2016airasia,airasia2018q4}, held 51\% by 2020, and reached 83.67\% after the December 2020 sale \parencite{airasia2021disposal,airasia2021results}.
+
+\textbf{Inference.} Tata is the only owner with stakes in two rivals, so it alone creates the MHHI wedge: the more of AirAsia India it owns, the more Vistara internalises that rival's profit. The wedge therefore grows with Tata's stake, from about 1 point in 2015 (30\%) to 58 in 2021 (83.67\%), peaks at 76.6 points, and is zero from January 2022 when Tata controls both. At 0.8\% of Ownership-HHI on average, partial ownership matters far less than the full-control grouping of brands. Because stakes are company-reported rather than observed in operating decisions, MHHI measures market structure, not conduct.
+\par}
+
 \subsection{O4: Economic interpretation}
 \textbf{National asymmetry within a concentrated oligopoly.} During December 2024--July 2026, IndiGo and Air India Group carry a median 90.91\% of national passengers, leaving a median 9.09\% to the other airlines (Table~\ref{tab:o4-route-focus}). IndiGo's median lead over Air India Group is 37.35 percentage points. This pattern is consistent with an asymmetric duopoly and a small competitive fringe. Strategic interdependence is central to such a structure: capacity or pricing decisions by either large group can affect the demand faced by its rival. The shares establish the relative scale of the groups, while their actual pricing and output strategies remain unobserved.
 
@@ -470,23 +542,6 @@ H6 concerns high route concentration, rather than requiring IndiGo to lead Air I
 
 \textcite{gupta2025antitrust} warn that dependence on a dominant airline can magnify disruption risks. Our capacity comparison adds descriptive evidence of a declining buffer, without establishing that concentration caused the disruption or prevented recovery.
 
-\clearpage
-\subsection{O1: Economic interpretation}
-\textbf{From oligopoly towards asymmetric duopoly.} Ownership-HHI rose from a mean of 2,408 before the Jet Airways exit to 4,877 after the mergers, equivalent to falling from 4.2 to 2.1 equal-sized airlines; nine in ten passengers now fly IndiGo or the Air India Group. Concentration never left the highly concentrated band, so what changed is the distance above it, and it changed in steps tied to exits and changes of control rather than through gradual drift.
-
-\textbf{Ownership matters more than brands.} The Tata acquisition is the largest step (about 900 points), and half of it is the Grouping Effect: brands that remained separate in DGCA reports came under one owner. Brand shares alone would understate that step by half. Partial ownership is small: the wedge averages 23 points before 2022 and never exceeds 77.
-
-\textbf{Course lenses.} Read through structure--conduct--performance \parencite{gandhi2026marketstructure}, the rise signals greater potential market power. Under Cournot competition the industry Lerner index is HHI$/|\varepsilon|$; with $|\varepsilon|=1.5$ the permanent drifts D1 and D5 imply margins 3.5 and 4.6 points higher. This is an implication of structure, not a measured markup. IndiGo's large aircraft orders act as Stackelberg-style capacity commitments, and its share rose from 57.5\% to 63.2\% across D5 and was held. Both exits occurred with HHI already above 1,800, and Akasa Air's entry in August 2022 was followed only by a slow fall of about 390 points over six months, so entry has not offset consolidation.
-
-\clearpage
-\subsection{O1: Hypotheses revisited}
-\textbf{H1 (lasting event steps): supported for the Jet, Tata and Go First events; weak for the mergers.} Their drifts ($+531$, $+367$ and $+693$ points) never reverse, and their regression steps are significant at 1\%. D6 adds only 54 points and is not flagged by the jump detector; its regression step is 137 points ($t=2.5$). All four steps stay significant at 6 or 18 lags and with COVID months dropped ($t\geq2.2$), and CR2 agrees. The transient drifts D2, D3 and D7 reverse, so a lasting rise requires an exit or a change of control.
-
-\textbf{H2 (partial-ownership wedge): partially supported, economically negligible.} MHHI exceeds Ownership-HHI before January 2022, but the wedge averages 22.9 points (0.8\% of Ownership-HHI, maximum 2.2\%) and disappears at D4. It changes no month's concentration classification (Appendix~\ref{app:o1-wedge}).
-
-\textbf{Grouping gap.} Ownership-HHI is never below Brand-HHI. The gap moves only at the reclassification drifts, widening by 316 points at D4 and narrowing by 100 at D6, against $-27$ and $+29$ at the exits (Appendix~\ref{app:o1-wedge}).
-
-These outcomes describe dated level shifts in national structure; they are not causal estimates of the events' effects on fares, profits or passengers.
 
 \section{Implications and Recommendations}
 Discuss the implications of the findings for the relevant stakeholders.
@@ -501,6 +556,13 @@ Provide 2--3 specific recommendations where appropriate. Recommendations should 
 
 \clearpage
 \section{Limitations}
+{\oneHL \subsection{O1: Measurement and inference}
+\textbf{Coarse controls and data gaps.} A single indicator covers March 2020--December 2021. AirAsia India is missing from the source in 2017, so headline HHI is overstated by about 165--171 points in those months, and the zero wedge then is a data gap.
+
+\textbf{Grouping and scale.} Alliance Air stays separate before 2022 (grouping it would add 22.5 points on average). The analysis is national, shares are based on passengers rather than capacity, and only 20 months follow the mergers. Without fares or costs, the indices describe market structure, not market power.
+\par}
+
+\clearpage
 \subsection{O4: Measurement, coverage and interpretation}
 \textbf{Scheduled frequency versus passengers carried.} Route concentration uses approved scheduled-flight frequencies, while national concentration uses passenger shares. Flights differ in aircraft size and occupancy, and schedules may differ from actual operations. Consequently, the smaller IndiGo--Air India gap on busy airport pairs describes scheduled frequency; it does not establish an equally balanced division of route passengers. The findings also cannot determine how much of the national--route difference comes from network coverage, aircraft size or occupancy. Airline-by-route passenger and operated-flight data would allow a closer comparison.
 
@@ -510,15 +572,6 @@ Provide 2--3 specific recommendations where appropriate. Recommendations should 
 
 \textbf{Ownership conventions and limits to inference.} The January 2022 ownership regrouping mechanically changes concentration, so movements around that date cannot be attributed entirely to passenger redistribution. April 2020 is missing nationally and is not imputed; pandemic-era changes also complicate comparisons across the full series. The gap and IndiGo-exposure thresholds are study-defined descriptive flags. The observed persistence of the national pattern does not establish that it will continue beyond July 2026. Without fare, marginal-cost and recovery data, concentration and buffer measures cannot establish collusion, fare effects, profitability or passenger harm.
 
-\clearpage
-\subsection{O1: Measurement and inference}
-\textbf{Steps, not causes.} The $\gamma_k$ are dated level shifts with autocorrelated residuals. Akasa Air's ramp-up, SpiceJet's decline and slot reallocations are absorbed into the steps and trend, and four events allow no counterfactual. Drift detectors locate changes; they do not identify causes.
-
-\textbf{Coarse controls and data gaps.} A single indicator covers March 2020--December 2021. AirAsia India is missing from the source in 2017, so headline HHI is overstated by about 165--171 points in those months, and the zero wedge then is a data gap.
-
-\textbf{Assembled ownership stakes.} MHHI relies on three press-sourced points, an undated step from 49\% to 51\% in AirAsia India, and modelled control; only the Tata, Singapore Airlines, AirAsia Investment and Telestra stakes are included.
-
-\textbf{Grouping and scale.} Alliance Air stays separate before 2022 (grouping it would add 22.5 points on average). The analysis is national, shares are based on passengers rather than capacity, and only 20 months follow the mergers. Without fares or costs, the indices describe market structure, not market power.
 
 \section{Conclusion}
 Summarise the research question, main findings, key economic interpretation, and main implications.
@@ -531,6 +584,47 @@ Summarise the research question, main findings, key economic interpretation, and
 \appendix
 \section{Variable Dictionary}
 \label{app:o4-dictionary}
+{\oneHL \subsection{O1: Variables and measures}
+\label{app:o1-dictionary}
+Shares are passenger percentages within each market-month, so each HHI ranges from near zero to 10,000. $s_i$ denotes a brand share, $S_g$ an ownership-group share and $S_{(1)}, S_{(2)}$ the largest and second-largest group shares.
+
+\begin{minipage}{\linewidth}
+\captionsetup{font={small,color=blue},labelfont=bf,justification=raggedright,singlelinecheck=false,hypcap=false}
+\captionof{table}{O1: Variables, construction and units.}
+\label{tab:o1-dictionary}
+\centering
+{\footnotesize\setstretch{1.0}\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}p{3.6cm}p{9.2cm}p{1.9cm}@{}}
+\toprule
+Variable & Definition and construction & Unit \\
+\midrule
+\multicolumn{3}{@{}l}{\textit{Dependent (outcome) variables}} \\
+Brand-HHI & $\sum_i s_i^2$, each operating brand treated as a firm & points \\
+Ownership-HHI & $\sum_g S_g^2$, brands summed into ownership groups & points \\
+MHHI & Ownership-HHI plus the partial-ownership term of Equation~O1.1b, with stakes $\beta$ from Table~\ref{tab:o1-stakes} and proportional control & points \\
+CR2 & $S_{(1)}+S_{(2)}$, combined share of the two largest ownership groups; a brand-level version uses the two largest brands & \% \\
+Grouping Effect & Ownership-HHI minus Brand-HHI & points \\
+Partial-Ownership Effect & MHHI minus Ownership-HHI (the wedge) & points \\
+Effective number of firms & $10{,}000/\text{Ownership-HHI}$ & firms \\
+Share gap & $S_{(1)}-S_{(2)}$ & pp \\
+Fringe share & $100-\mathrm{CR2}$ & \% \\
+IndiGo ratio & IndiGo's share divided by the second-largest group's share & ratio \\
+\midrule
+\multicolumn{3}{@{}l}{\textit{Main explanatory variables}} \\
+Post-event indicators & 1 from the first full month after each event: Jet exit (May 2019), Tata acquisition (Jan 2022), Go First exit (Jun 2023), legal mergers (Dec 2024) & 0/1 \\
+Time trend & Calendar month index (January 2015 $=1$; April 2020 keeps its index) & months \\
+\midrule
+\multicolumn{3}{@{}l}{\textit{Control variables}} \\
+COVID period & 1 for March 2020 to December 2021 & 0/1 \\
+Month of year & Eleven month indicators (January is the base) & 0/1 \\
+\bottomrule
+\end{tabular}\par}
+\vspace{4pt}
+{\footnotesize\setstretch{1.0}\raggedright\textit{Source:} Definitions implemented in the O1 analysis code (\texttt{o1\_analysis.py}).\par}
+\end{minipage}
+\par}
+
+\clearpage
 \subsection{O4: Observation keys and inputs}
 The dictionary covers the inputs, measures and flags used in O4's reported analysis and supporting outputs. National observations are market-months; route observations are airport-pair/months. Detailed extraction-column and CSV documentation accompanies the code repository.
 
@@ -580,45 +674,6 @@ Boolean flags are saved as True/False. Table~\ref{tab:o4-dictionary-flags} defin
 
 \textbf{Missingness.} Unavailable or excluded pair-months are absent from analysis tables and blank in the heatmap matrix (grey in the figure). Zero available pairs means no retained data, not zero flights. Coverage checks do not prove all filings are present. Observed zero gaps, fringe shares or exposure counts remain valid values. Preparation and workings are in Appendix~\ref{app:o4-route-preparation}.
 
-\clearpage
-\subsection{O1: Variables and measures}
-\label{app:o1-dictionary}
-Shares are passenger percentages within each market-month, so each HHI ranges from near zero to 10,000. $s_i$ denotes a brand share, $S_g$ an ownership-group share and $S_{(1)}, S_{(2)}$ the largest and second-largest group shares.
-
-\begin{minipage}{\linewidth}
-\captionsetup{font=small,labelfont=bf,justification=raggedright,singlelinecheck=false,hypcap=false}
-\captionof{table}{O1: Variables, construction and units.}
-\label{tab:o1-dictionary}
-\centering
-{\footnotesize\setstretch{1.0}\setlength{\tabcolsep}{4pt}
-\begin{tabular}{@{}p{3.6cm}p{9.2cm}p{1.9cm}@{}}
-\toprule
-Variable & Definition and construction & Unit \\
-\midrule
-\multicolumn{3}{@{}l}{\textit{Dependent (outcome) variables}} \\
-Brand-HHI & $\sum_i s_i^2$, each operating brand treated as a firm & points \\
-Ownership-HHI & $\sum_g S_g^2$, brands summed into ownership groups & points \\
-MHHI & Ownership-HHI plus the partial-ownership term of Equation~O1.1b, with stakes $\beta$ from Table~\ref{tab:o1-stakes} and proportional control & points \\
-CR2 & $S_{(1)}+S_{(2)}$, combined share of the two largest ownership groups; a brand-level version uses the two largest brands & \% \\
-Grouping Effect & Ownership-HHI minus Brand-HHI & points \\
-Partial-Ownership Effect & MHHI minus Ownership-HHI (the wedge) & points \\
-Effective number of firms & $10{,}000/\text{Ownership-HHI}$ & firms \\
-Share gap & $S_{(1)}-S_{(2)}$ & pp \\
-Fringe share & $100-\mathrm{CR2}$ & \% \\
-IndiGo ratio & IndiGo's share divided by the second-largest group's share & ratio \\
-\midrule
-\multicolumn{3}{@{}l}{\textit{Main explanatory variables}} \\
-Post-event indicators & 1 from the first full month after each event: Jet exit (May 2019), Tata acquisition (Jan 2022), Go First exit (Jun 2023), legal mergers (Dec 2024) & 0/1 \\
-Time trend & Calendar month index (January 2015 $=1$; April 2020 keeps its index) & months \\
-\midrule
-\multicolumn{3}{@{}l}{\textit{Control variables}} \\
-COVID period & 1 for March 2020 to December 2021 & 0/1 \\
-Month of year & Eleven month indicators (January is the base) & 0/1 \\
-\bottomrule
-\end{tabular}\par}
-\vspace{4pt}
-{\footnotesize\setstretch{1.0}\raggedright\textit{Source:} Definitions implemented in the O1 analysis code (\texttt{o1\_analysis.py}).\par}
-\end{minipage}
 
 \clearpage
 \section{Additional Tables and Figures}
@@ -635,10 +690,10 @@ Month of year & Eleven month indicators (January is the base) & 0/1 \\
 \end{minipage}
 
 \clearpage
-\subsection{O1: Summary statistics and drift points}
+{\oneHL \subsection{O1: Summary statistics}
 \label{app:o1-tables}
 \begin{minipage}{\linewidth}
-\captionsetup{font=small,labelfont=bf,justification=raggedright,singlelinecheck=false,hypcap=false}
+\captionsetup{font={small,color=blue},labelfont=bf,justification=raggedright,singlelinecheck=false,hypcap=false}
 \captionof{table}{O1: Descriptive statistics, January 2015--July 2026.}
 \label{tab:o1-summary}
 \centering
@@ -661,35 +716,169 @@ IndiGo ratio & 2.68 & 0.92 & 1.44 & 6.47 & ratio \\
 {\footnotesize\setstretch{1.1}\raggedright\textit{Note:} 138 observed market-months, equally weighted; April 2020 is missing and not imputed. Brand- and Ownership-HHI nearly coincide between mid-2019 and January 2022 (mean gap 1.4 points) and separate afterwards; MHHI lies within 80 points of Ownership-HHI throughout.\par
 \textit{Source:} DGCA monthly airline traffic via Kubicek (2026); authors' calculations.\par}
 \end{minipage}
+\par}
 
-\vspace{1.2em}
-\begin{minipage}{\linewidth}
-\captionsetup{font=small,labelfont=bf,justification=raggedright,singlelinecheck=false,hypcap=false}
-\captionof{table}{O1: Drift points in the concentration indices.}
-\label{tab:o1-drift}
-\centering
-{\footnotesize\setstretch{1.0}\setlength{\tabcolsep}{3pt}
-\begin{tabular}{@{}lp{2.0cm}rrrrp{3.6cm}p{3.3cm}@{}}
-\toprule
-ID & Window & $\Delta$Br. & $\Delta$Own. & $\Delta$MHHI & $\Delta$CR2 & Largest share movers (pp) & Reading \\
-\midrule
-D1 & Feb--Apr 2019 & $+558$ & $+531$ & $+540$ & $+5.8$ & Jet group $-10.4$; IndiGo $+6.4$ & Share shift (Jet exit); permanent \\
-D2 & Jun--Jul 2020 & $+741$ & $+739$ & $+724$ & $+6.5$ & IndiGo $+7.6$; Air India Group $-3.3$ & Share shift (post-lockdown restart); retraced by Nov 2020 \\
-D3 & Apr--May 2021 & $+321$ & $+321$ & $+292$ & $+6.0$ & Air India Group $+6.1$; AirAsia India $-3.2$ & Share shift (second COVID wave); retraced by Oct 2021 \\
-D4 & Dec 2021--Jan 2022 & $+51$ & $+367$ & $+297$ & $+12.1$ & Air India Group $+13.9$ (Vistara $-7.7$, AirAsia India $-6.3$ now inside it) & Reclassification (Tata grouping); Ownership and MHHI only \\
-D5 & Apr--Jun 2023 & $+664$ & $+693$ & $+693$ & $+6.6$ & Go First $-6.4$; IndiGo $+5.7$ & Share shift (Go First exit); permanent \\
-D6 & Nov--Dec 2024 & $+153$ & $+54$ & $+54$ & $0.0$ & Vistara and AIX Connect folded into Air India and Air India Express & Reclassification (legal mergers); Brand only \\
-D7 & Nov--Dec 2025 & $-411$ & $-330$ & $-330$ & $-1.2$ & IndiGo $-4.0$; Air India Group $+2.8$ & Share shift (IndiGo disruption); reversed in Jan 2026 \\
-\bottomrule
-\end{tabular}\par}
-\vspace{4pt}
-{\footnotesize\setstretch{1.0}\raggedright\textit{Note:} Changes are in index points between the months shown; $\Delta$CR2 is in percentage points on ownership groups. D1 and D5 windows start in the last month before the drift and end when the exiting airline's share reaches about zero. A flagged May 2020 change spans two months because April 2020 is missing.\par
-\textit{Source:} DGCA monthly airline traffic via Kubicek (2026); authors' calculations.\par}
-\end{minipage}
+
 
 \clearpage
 \section{Additional Analysis}
 \label{app:o4-route-preparation}
+{\oneHL \subsection{O1: Data cleaning rules and log}
+\label{app:o1-cleaning}
+Rules in \texttt{clean()} drop only structurally empty rows, flag others for sensitivity runs, or aggregate; no observed value is overwritten.
+
+\textbf{C1 Schema:} coerce numeric fields; drop rows missing a key. \textbf{C2 Names:} trim spaces; the AirAsia India $\to$ AIX Connect rebrand (January 2024) is kept as reported. \textbf{C3 Scope:} scheduled domestic, January 2015--July 2026. \textbf{C4 Duplicates:} sum rows for the same airline-month. \textbf{C5 Structural zeros:} drop rows with passengers $\leq0$. \textbf{C6 Consistency:} flag seat-km $\leq0$ with passengers $>0$, or passenger-km above seat-km; keep. \textbf{C7 Outliers:} flag $|\Delta\ln q|>0.7$; explained if in the COVID window or a market-wide move above 0.5 log points, an entry or exit ramp, or the merger month; otherwise immaterial (share $<1\%$) or material (checked by hand); never deleted, tested by dropping. \textbf{C8 Completeness:} list missing months and runs inside operating spells; April 2020 is left empty, COVID suspensions are real zeros, and material gaps are interpolated in a sensitivity run only. \textbf{C9 Share closure:} recompute shares from passengers; shares sum to 100 each month.
+
+\begin{minipage}{\linewidth}
+\captionsetup{font={small,color=blue},labelfont=bf,justification=raggedright,singlelinecheck=false,hypcap=false}
+\captionof{table}{O1: Cleaning log, what each rule found and did.}
+\label{tab:o1-cleaning}
+\centering
+{\footnotesize\setstretch{1.0}\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lp{9.6cm}p{4.2cm}@{}}
+\toprule
+Rule & Finding & Action \\
+\midrule
+C1 & 0 rows with a missing key field & None needed \\
+C3 & 1,773 rows outside scheduled domestic service; none after July 2026 & Excluded \\
+C4 & 0 duplicate airline-months & None needed \\
+C5 & 132 scheduled-domestic rows with zero passengers & Dropped (not flying) \\
+C6 & 2 rows with passengers $>0$ but seat-km $=0$ (Air Odisha, Sep 2018; Air Deccan, Mar 2020); no row with passenger-km $>$ seat-km & Flagged, kept \\
+C7 & 92 outlier flags: 45 COVID or market-wide, 23 entry/exit ramp, 1 merger month, 23 unexplained but immaterial ($<1\%$ share), 0 material & Explained flags kept; immaterial ones tested by dropping \\
+C8 & April 2020 missing for every airline; 12 runs missing inside operating spells, of which 2 are material: AirAsia India January--December 2017 (bracketing share 3.6\%) and Go First May 2020 (lockdown suspension) & 2017 gap interpolated in the sensitivity run only; Go First not imputed \\
+C9 & Shares sum to 100 in all 138 months & Passes \\
+\bottomrule
+\end{tabular}\par}
+\vspace{4pt}
+{\footnotesize\setstretch{1.0}\raggedright\textit{Source:} \texttt{carrier\_monthly.csv} (SHA-256 \texttt{30412b65\ldots}); rules implemented in \texttt{o1\_analysis.py}.\par}
+\end{minipage}
+\par}
+
+\clearpage
+{\oneHL \subsection{O1: MHHI algorithm and stake schedule}
+\label{app:o1-stakes}
+For each market-month: (S1) compute brand shares and Brand-HHI; (S2) map brands to ownership groups by date, sum to $S_{gt}$, and compute Ownership-HHI, CR2 and the effective number of firms; (S3) load each owner's stake $\beta_{ik}$ from Table~\ref{tab:o1-stakes}; (S4) set control $\gamma_{ik}=\beta_{ik}$ (proportional) or $\gamma=1$ for a majority owner; (S5) compute $\lambda_{jk}$ and MHHI from Equation~O1.1b. Only the stakes in the table are modelled; a firm with no listed stake is wholly owned.
+
+\begin{minipage}{\linewidth}
+\captionsetup{font={small,color=blue},labelfont=bf,justification=raggedright,singlelinecheck=false,hypcap=false}
+\captionof{table}{O1: Partial-ownership schedule used for MHHI (financial stakes $\beta$).}
+\label{tab:o1-stakes}
+\centering
+{\footnotesize\setstretch{1.0}\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}p{2.1cm}p{4.9cm}p{2.6cm}p{5.4cm}@{}}
+\toprule
+Firm & Owners and stakes & Months applied & Sources \\
+\midrule
+Vistara & Tata Sons 51\%; foreign minority partner 49\% & Jan 2015--Dec 2021 & \textcite{sia2015annual}; \textcite{sia2022merger} \\
+AirAsia India & Tata Sons 30\%; AirAsia Investment 49\%; Telestra 21\% & Jan--Aug 2015 & \textcite{airasia2013jv} \\
+AirAsia India & Tata Sons 41.06\%; AirAsia Investment 49\%; Telestra 9.94\% & Sep 2015--Mar 2016 & \textcite{tata2016airasia} \\
+AirAsia India & Tata Sons 49\%; AirAsia Investment 49\%; two individuals 2\% & Apr 2016--Dec 2019 & \textcite{tata2016airasia}; \textcite{airasia2018q4} \\
+AirAsia India & Tata Sons 51\%; AirAsia Investment 49\% & Jan--Dec 2020 & \textcite{airasia2021disposal} \\
+AirAsia India & Tata Sons 83.67\%; AirAsia Investment 16.33\% & Jan--Dec 2021 & \textcite{airasia2021disposal}; \textcite{airasia2021results} \\
+\bottomrule
+\end{tabular}\par}
+\vspace{4pt}
+{\footnotesize\setstretch{1.0}\raggedright\textit{Note:} All sources are company-published documents (annual report, stock-exchange announcements, press release and results release). A change is applied from the first month after the reported date. The step from 49\% to 51\% is undated in these documents, and 51\% is applied from January 2020; applying it from April 2016 instead changes the pre-2022 mean wedge from 22.9 to 23.1 points. The foreign minority partners (in Vistara and AirAsia India) hold no stake in any other Indian airline, so they add no cross-holding term; they enter only the denominator of $\lambda$, diluting Tata's weight. A firm with no listed stake is wholly owned.\par}
+\end{minipage}
+\par}
+
+\clearpage
+{\oneHL \subsection{O1: CR2 regression}
+\label{app:o1-cr2}
+Table~\ref{tab:o1-cr2reg} gives Equation~O1.2 for CR2. The ownership-group ratio first reaches 80\% in July 2022 and 90\% in July 2024 (48 months at or above 80\%, 22 at or above 90\%). Before 2022 the group and brand versions nearly coincide; afterwards the brand version understates by 15.9 points (85.5\% vs.\ 69.6\%) and, after the mergers, by 11.1. Trend breaks fall at March 2019, June 2020, January 2022 and May 2023, plus July 2016, which matches no dated event and is not interpreted. Drift-dated steps are 6.2, 18.6, 9.8 and 2.0 points.
+
+\begin{minipage}{\linewidth}
+\captionsetup{font={small,color=blue},labelfont=bf,justification=raggedright,singlelinecheck=false,hypcap=false}
+\captionof{table}{O1: Segmented regression of CR2, percentage points.}
+\label{tab:o1-cr2reg}
+\centering
+{\small\setstretch{1.1}\setlength{\tabcolsep}{5pt}
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Coefficient & Ownership-group CR2 & Brand-level CR2 \\
+\midrule
+Post-Jet exit (May 2019) & 5.72\textsuperscript{**} (0.95) & 6.95\textsuperscript{**} (1.07) \\
+Post-Tata acquisition (Jan 2022) & 17.95\textsuperscript{**} (1.18) & 1.90\textsuperscript{*} (0.92) \\
+Post-Go First exit (Jun 2023) & 9.29\textsuperscript{**} (1.31) & 6.47\textsuperscript{**} (0.76) \\
+Post-legal mergers (Dec 2024) & 1.41\textsuperscript{*} (0.58) & 6.53\textsuperscript{**} (0.74) \\
+Sum of four steps & 34.4 (2.6) & 21.9 (2.8) \\
+Trend (points per month) & $-0.02$ (0.02) & 0.01 (0.03) \\
+COVID window & 5.03\textsuperscript{**} (0.73) & 4.44\textsuperscript{**} (0.77) \\
+\midrule
+$R^2$ & 0.984 & 0.958 \\
+Durbin--Watson & 0.80 & 0.84 \\
+\bottomrule
+\end{tabular}\par}
+\vspace{4pt}
+{\footnotesize\setstretch{1.1}\raggedright\textit{Note:} Newey--West standard errors (12 lags) in parentheses; $n=138$. \textsuperscript{*}$p<0.05$, \textsuperscript{**}$p<0.01$. Constant and month-of-year dummies included. Breusch--Godfrey (12 lags) rejects no autocorrelation ($p<0.001$); the ADF test rejects a unit root in both residuals ($p<0.001$).\par}
+\end{minipage}
+
+\vspace{1.2em}
+\par}
+{\oneHL \subsection{O1: Robustness of the steps}
+\label{app:o1-robust}
+The Ownership-HHI steps do not depend on the lag choice or the COVID treatment: no coefficient moves by more than 19 points and every $t$-statistic stays at 2.2 or above (Table~\ref{tab:o1-robust}). Interpolating AirAsia India's 2017 raises the Jet step by 59 points and the others by at most 20. Re-dating the Jet and Go First steps to the drifts gives steps of 396, 933, 696 and 186 points (sum 2,211, $R^2=0.985$); the Brand-HHI sum is 1,801 and the MHHI sum 2,162, all steps significant at 1\%.
+
+\begin{minipage}{\linewidth}
+\captionsetup{font={small,color=blue},labelfont=bf,justification=raggedright,singlelinecheck=false,hypcap=false}
+\captionof{table}{O1: Robustness of the Ownership-HHI steps (coefficient, $t$-statistic).}
+\label{tab:o1-robust}
+\centering
+{\small\setstretch{1.1}\setlength{\tabcolsep}{5pt}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Specification & Jet exit & Tata & Go First & Mergers \\
+\midrule
+Baseline (Newey--West 12 lags) & 312 (3.9) & 900 (10.8) & 640 (11.4) & 137 (2.5) \\
+Newey--West 6 lags & 312 (3.8) & 900 (9.8) & 640 (10.4) & 137 (2.2) \\
+Newey--West 18 lags & 312 (4.6) & 900 (12.1) & 640 (12.0) & 137 (2.8) \\
+COVID months dropped & 330 (4.6) & 899 (10.6) & 656 (12.0) & 136 (2.5) \\
+AirAsia India 2017 interpolated & 371 (4.0) & 920 (10.0) & 652 (10.6) & 148 (2.6) \\
+\bottomrule
+\end{tabular}\par}
+\end{minipage}
+\par}
+
+\clearpage
+{\oneHL \subsection{O1: Partial-ownership wedge and grouping gap}
+\label{app:o1-wedge}
+\textbf{Partial-ownership wedge.} With the stake schedule, the MHHI minus Ownership-HHI wedge exists only before January 2022. Under proportional control it averages 22.9 points (0.8\% of Ownership-HHI) and peaks at 76.6 in September 2021 (2.2\%). It rises with Tata's stake in AirAsia India: about 1.2 points in January--August 2015 (Tata 30\%), 3.8 to March 2016 (41.06\%), 6.7 in April--December 2016 (49\%), 26.2 in 2018--2019, 43.6 in 2020 (51\%) and 58.1 in 2021 (83.67\%). The zero wedge in 2017 is a source gap; interpolating gives 13.5 on average and a pre-2022 mean of 24.9. Treating Tata's 51\% of Vistara as full control raises the pre-2022 mean to 36.9 (maximum 119.6).
+
+\textbf{Grouping gap.} Ownership-HHI is never below Brand-HHI; the gap is under 0.5 points in 10 months (September 2020, February--October 2021) when Air India Express carried almost no scheduled traffic. It steps up by 450 points at the Tata acquisition ($t=17.6$), widens about 5.5 points a month to a peak of 598.7, then falls by 154 points ($t=-5.3$) to 284.5 in July 2026 as Vistara and AIX Connect stop being separate brands. The remaining gap is the Air India--Air India Express split (Table~\ref{tab:o1-gap}).
+
+\begin{minipage}{\linewidth}
+\captionsetup{font={small,color=blue},labelfont=bf,justification=raggedright,singlelinecheck=false,hypcap=false}
+\captionof{table}{O1: Grouping gap (Ownership-HHI minus Brand-HHI): period means and regression.}
+\label{tab:o1-gap}
+\centering
+{\small\setstretch{1.1}\setlength{\tabcolsep}{5pt}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Period & Mean & Min & Max \\
+\midrule
+Pre-Jet exit & 84.2 & 4.1 & 199.9 \\
+Jet exit to Tata & 1.4 & 0.0 & 3.6 \\
+Tata to mergers & 461.0 & 312.5 & 598.7 \\
+Post mergers & 338.7 & 284.5 & 429.6 \\
+\midrule
+Regression coefficient & Standard model & \multicolumn{2}{r}{With post-Tata trend} \\
+\midrule
+Post-Tata step & 450.48\textsuperscript{**} (25.58) & \multicolumn{2}{r}{427.96\textsuperscript{**} (18.97)} \\
+Post-Tata trend (points per month) & -- & \multicolumn{2}{r}{5.52\textsuperscript{**} (1.95)} \\
+Post-Go First step & 158.05\textsuperscript{**} (38.93) & \multicolumn{2}{r}{72.18 (40.93)} \\
+Post-legal mergers step & $-153.84$\textsuperscript{**} (28.98) & \multicolumn{2}{r}{$-247.66$\textsuperscript{**} (38.79)} \\
+$R^2$ & 0.968 & \multicolumn{2}{r}{0.976} \\
+\bottomrule
+\end{tabular}\par}
+\vspace{4pt}
+{\footnotesize\setstretch{1.1}\raggedright\textit{Note:} Values in index points; Newey--West standard errors (12 lags) in parentheses. \textsuperscript{**}$p<0.01$. The Jet exit step is not significant in either model; trend, COVID and month dummies are included.\par}
+\end{minipage}
+
+\vspace{1.2em}
+\textbf{O1 reproduction.} The script \texttt{o1\_analysis.py} recomputes every O1 number from the passenger file \texttt{carrier\_monthly.csv}, covering cleaning, indices, drift detection, regressions and robustness checks. The script \texttt{plot\_index\_over\_\allowbreak months.py} reproduces Figure~\ref{fig:o1-its}.
+\par}
+
+\clearpage
 \subsection{O4: National concentration calculations}
 \label{app:o4-national-calculations}
 For ownership group $g$ in month $t$, let $q_{gt}$ be passengers and $Q_t=\sum_g q_{gt}$. Its percentage share is $s_{gt}=100q_{gt}/Q_t$. Rank shares each month as $s_{1t}\geq s_{2t}\geq\cdots$. Calculate
@@ -792,7 +981,7 @@ Let $I$ denote IndiGo and $j$ a retained rival airline brand. For month $t$, unu
 U_t=\sum_{j\ne I}(\mathrm{ASK}_{jt}-\mathrm{RPK}_{jt}),
 \qquad B_t=100\frac{U_t}{\mathrm{RPK}_{It}}.
 \]
-The same positive-passenger scheduled-domestic filter is used as in Section~4.3. All 19 selected airline records have valid ASK/RPK inputs. The source reports thousands of seat-km and passenger-km; dividing by 1,000,000 expresses them in billions. Summing the airline-level unused amounts gives the numerator in Table~\ref{tab:o4-capacity-buffer}.
+The same positive-passenger scheduled-domestic filter is used as in Section~4.4. All 19 selected airline records have valid ASK/RPK inputs. The source reports thousands of seat-km and passenger-km; dividing by 1,000,000 expresses them in billions. Summing the airline-level unused amounts gives the numerator in Table~\ref{tab:o4-capacity-buffer}.
 
 \begin{minipage}{\linewidth}
 \captionsetup{font=small,labelfont=bf,justification=raggedright,singlelinecheck=false,hypcap=false}
@@ -820,156 +1009,6 @@ The denominator is all IndiGo RPK in each December. The CSV outputs preserve eve
 
 The source-quality screen requires full-month source coverage, a sum of absolute airline endpoint-count differences no greater than 5\% of departures, and at least ten retained pairs per month. Chennai--Hyderabad in February and March 2022 is excluded because the archived TruJet plan extends beyond its suspension. This removes two observations from the earlier 1,152-observation panel, consistently with the O3 treatment. Of the 1,150 retained observations, 303 have exactly matching endpoint counts. Missing carrier filings can escape these checks; the series describes recovered approved schedules, not actual operations or airline passenger shares.
 
-\clearpage
-\subsection{O1: Data cleaning rules and log}
-\label{app:o1-cleaning}
-Rules in \texttt{clean()} drop only structurally empty rows, flag others for sensitivity runs, or aggregate; no observed value is overwritten.
-
-\textbf{C1 Schema:} coerce numeric fields; drop rows missing a key. \textbf{C2 Names:} trim spaces; the AirAsia India $\to$ AIX Connect rebrand (January 2024) is kept as reported. \textbf{C3 Scope:} scheduled domestic, January 2015--July 2026. \textbf{C4 Duplicates:} sum rows for the same airline-month. \textbf{C5 Structural zeros:} drop rows with passengers $\leq0$. \textbf{C6 Consistency:} flag seat-km $\leq0$ with passengers $>0$, or passenger-km above seat-km; keep. \textbf{C7 Outliers:} flag $|\Delta\ln q|>0.7$; explained if in the COVID window or a market-wide move above 0.5 log points, an entry or exit ramp, or the merger month; otherwise immaterial (share $<1\%$) or material (checked by hand); never deleted, tested by dropping. \textbf{C8 Completeness:} list missing months and runs inside operating spells; April 2020 is left empty, COVID suspensions are real zeros, and material gaps are interpolated in a sensitivity run only. \textbf{C9 Share closure:} recompute shares from passengers; shares sum to 100 each month.
-
-\begin{minipage}{\linewidth}
-\captionsetup{font=small,labelfont=bf,justification=raggedright,singlelinecheck=false,hypcap=false}
-\captionof{table}{O1: Cleaning log, what each rule found and did.}
-\label{tab:o1-cleaning}
-\centering
-{\footnotesize\setstretch{1.0}\setlength{\tabcolsep}{4pt}
-\begin{tabular}{@{}lp{9.6cm}p{4.2cm}@{}}
-\toprule
-Rule & Finding & Action \\
-\midrule
-C1 & 0 rows with a missing key field & None needed \\
-C3 & 1,773 rows outside scheduled domestic service; none after July 2026 & Excluded \\
-C4 & 0 duplicate airline-months & None needed \\
-C5 & 132 scheduled-domestic rows with zero passengers & Dropped (not flying) \\
-C6 & 2 rows with passengers $>0$ but seat-km $=0$ (Air Odisha, Sep 2018; Air Deccan, Mar 2020); no row with passenger-km $>$ seat-km & Flagged, kept \\
-C7 & 92 outlier flags: 45 COVID or market-wide, 23 entry/exit ramp, 1 merger month, 23 unexplained but immaterial ($<1\%$ share), 0 material & Explained flags kept; immaterial ones tested by dropping \\
-C8 & April 2020 missing for every airline; 12 runs missing inside operating spells, of which 2 are material: AirAsia India January--December 2017 (bracketing share 3.6\%) and Go First May 2020 (lockdown suspension) & 2017 gap interpolated in the sensitivity run only; Go First not imputed \\
-C9 & Shares sum to 100 in all 138 months & Passes \\
-\bottomrule
-\end{tabular}\par}
-\vspace{4pt}
-{\footnotesize\setstretch{1.0}\raggedright\textit{Source:} \texttt{carrier\_monthly.csv} (SHA-256 \texttt{30412b65\ldots}); rules implemented in \texttt{o1\_analysis.py}.\par}
-\end{minipage}
-
-\clearpage
-\subsection{O1: MHHI algorithm and stake schedule}
-\label{app:o1-stakes}
-For each market-month: (S1) compute brand shares and Brand-HHI; (S2) map brands to ownership groups by date, sum to $S_{gt}$, and compute Ownership-HHI, CR2 and the effective number of firms; (S3) load each owner's stake $\beta_{ik}$ from Table~\ref{tab:o1-stakes}; (S4) set control $\gamma_{ik}=\beta_{ik}$ (proportional) or $\gamma=1$ for a majority owner; (S5) compute $\lambda_{jk}$ and MHHI from Equation~O1.1b. Only the stakes in the table are modelled; a firm with no listed stake is wholly owned.
-
-\begin{minipage}{\linewidth}
-\captionsetup{font=small,labelfont=bf,justification=raggedright,singlelinecheck=false,hypcap=false}
-\captionof{table}{O1: Partial-ownership schedule used for MHHI (financial stakes $\beta$).}
-\label{tab:o1-stakes}
-\centering
-{\footnotesize\setstretch{1.0}\setlength{\tabcolsep}{4pt}
-\begin{tabular}{@{}p{2.1cm}p{4.9cm}p{2.6cm}p{5.4cm}@{}}
-\toprule
-Firm & Owners and stakes & Months applied & Sources \\
-\midrule
-Vistara & Tata Sons 51\%; Singapore Airlines 49\% & Jan 2015--Dec 2021 & \textcite{sia2015annual}; \textcite{sia2022merger} \\
-AirAsia India & Tata Sons 30\%; AirAsia Investment 49\%; Telestra 21\% & Jan--Aug 2015 & \textcite{airasia2013jv} \\
-AirAsia India & Tata Sons 41.06\%; AirAsia Investment 49\%; Telestra 9.94\% & Sep 2015--Mar 2016 & \textcite{tata2016airasia} \\
-AirAsia India & Tata Sons 49\%; AirAsia Investment 49\%; two individuals 2\% & Apr 2016--Dec 2019 & \textcite{tata2016airasia}; \textcite{airasia2018q4} \\
-AirAsia India & Tata Sons 51\%; AirAsia Investment 49\% & Jan--Dec 2020 & \textcite{airasia2021disposal} \\
-AirAsia India & Tata Sons 83.67\%; AirAsia Investment 16.33\% & Jan--Dec 2021 & \textcite{airasia2021disposal}; \textcite{airasia2021results} \\
-\bottomrule
-\end{tabular}\par}
-\vspace{4pt}
-{\footnotesize\setstretch{1.0}\raggedright\textit{Note:} All sources are company-published documents (annual report, stock-exchange announcements, press release and results release). A change is applied from the first month after the reported date. The step from 49\% to 51\% is undated in these documents, and 51\% is applied from January 2020; applying it from April 2016 instead changes the pre-2022 mean wedge from 22.9 to 23.1 points. A firm with no listed stake is wholly owned.\par}
-\end{minipage}
-
-\clearpage
-\subsection{O1: CR2 regression}
-\label{app:o1-cr2}
-Table~\ref{tab:o1-cr2reg} gives Equation~O1.2 for CR2. The ownership-group ratio first reaches 80\% in July 2022 and 90\% in July 2024 (48 months at or above 80\%, 22 at or above 90\%). Before 2022 the group and brand versions nearly coincide; afterwards the brand version understates by 15.9 points (85.5\% vs.\ 69.6\%) and, after the mergers, by 11.1. Trend breaks fall at March 2019, June 2020, January 2022 and May 2023, plus July 2016, which matches no dated event and is not interpreted. Drift-dated steps are 6.2, 18.6, 9.8 and 2.0 points.
-
-\begin{minipage}{\linewidth}
-\captionsetup{font=small,labelfont=bf,justification=raggedright,singlelinecheck=false,hypcap=false}
-\captionof{table}{O1: Segmented regression of CR2, percentage points.}
-\label{tab:o1-cr2reg}
-\centering
-{\small\setstretch{1.1}\setlength{\tabcolsep}{5pt}
-\begin{tabular}{@{}lrr@{}}
-\toprule
-Coefficient & Ownership-group CR2 & Brand-level CR2 \\
-\midrule
-Post-Jet exit (May 2019) & 5.72\textsuperscript{**} (0.95) & 6.95\textsuperscript{**} (1.07) \\
-Post-Tata acquisition (Jan 2022) & 17.95\textsuperscript{**} (1.18) & 1.90\textsuperscript{*} (0.92) \\
-Post-Go First exit (Jun 2023) & 9.29\textsuperscript{**} (1.31) & 6.47\textsuperscript{**} (0.76) \\
-Post-legal mergers (Dec 2024) & 1.41\textsuperscript{*} (0.58) & 6.53\textsuperscript{**} (0.74) \\
-Sum of four steps & 34.4 (2.6) & 21.9 (2.8) \\
-Trend (points per month) & $-0.02$ (0.02) & 0.01 (0.03) \\
-COVID window & 5.03\textsuperscript{**} (0.73) & 4.44\textsuperscript{**} (0.77) \\
-\midrule
-$R^2$ & 0.984 & 0.958 \\
-Durbin--Watson & 0.80 & 0.84 \\
-\bottomrule
-\end{tabular}\par}
-\vspace{4pt}
-{\footnotesize\setstretch{1.1}\raggedright\textit{Note:} Newey--West standard errors (12 lags) in parentheses; $n=138$. \textsuperscript{*}$p<0.05$, \textsuperscript{**}$p<0.01$. Constant and month-of-year dummies included. Breusch--Godfrey (12 lags) rejects no autocorrelation ($p<0.001$); the ADF test rejects a unit root in both residuals ($p<0.001$).\par}
-\end{minipage}
-
-\vspace{1.2em}
-\subsection{O1: Robustness of the steps}
-\label{app:o1-robust}
-The Ownership-HHI steps do not depend on the lag choice or the COVID treatment: no coefficient moves by more than 19 points and every $t$-statistic stays at 2.2 or above (Table~\ref{tab:o1-robust}). Interpolating AirAsia India's 2017 raises the Jet step by 59 points and the others by at most 20. Re-dating the Jet and Go First steps to the drifts gives steps of 396, 933, 696 and 186 points (sum 2,211, $R^2=0.985$); the Brand-HHI sum is 1,801 and the MHHI sum 2,162, all steps significant at 1\%.
-
-\begin{minipage}{\linewidth}
-\captionsetup{font=small,labelfont=bf,justification=raggedright,singlelinecheck=false,hypcap=false}
-\captionof{table}{O1: Robustness of the Ownership-HHI steps (coefficient, $t$-statistic).}
-\label{tab:o1-robust}
-\centering
-{\small\setstretch{1.1}\setlength{\tabcolsep}{5pt}
-\begin{tabular}{@{}lrrrr@{}}
-\toprule
-Specification & Jet exit & Tata & Go First & Mergers \\
-\midrule
-Baseline (Newey--West 12 lags) & 312 (3.9) & 900 (10.8) & 640 (11.4) & 137 (2.5) \\
-Newey--West 6 lags & 312 (3.8) & 900 (9.8) & 640 (10.4) & 137 (2.2) \\
-Newey--West 18 lags & 312 (4.6) & 900 (12.1) & 640 (12.0) & 137 (2.8) \\
-COVID months dropped & 330 (4.6) & 899 (10.6) & 656 (12.0) & 136 (2.5) \\
-AirAsia India 2017 interpolated & 371 (4.0) & 920 (10.0) & 652 (10.6) & 148 (2.6) \\
-\bottomrule
-\end{tabular}\par}
-\end{minipage}
-
-\clearpage
-\subsection{O1: Partial-ownership wedge and grouping gap}
-\label{app:o1-wedge}
-\textbf{Partial-ownership wedge.} With the stake schedule, the MHHI minus Ownership-HHI wedge exists only before January 2022. Under proportional control it averages 22.9 points (0.8\% of Ownership-HHI) and peaks at 76.6 in September 2021 (2.2\%). It rises with Tata's stake in AirAsia India: about 1.2 points in January--August 2015 (Tata 30\%), 3.8 to March 2016 (41.06\%), 6.7 in April--December 2016 (49\%), 26.2 in 2018--2019, 43.6 in 2020 (51\%) and 58.1 in 2021 (83.67\%). The zero wedge in 2017 is a source gap; interpolating gives 13.5 on average and a pre-2022 mean of 24.9. Treating Tata's 51\% of Vistara as full control raises the pre-2022 mean to 36.9 (maximum 119.6).
-
-\textbf{Grouping gap.} Ownership-HHI is never below Brand-HHI; the gap is under 0.5 points in 10 months (September 2020, February--October 2021) when Air India Express carried almost no scheduled traffic. It steps up by 450 points at the Tata acquisition ($t=17.6$), widens about 5.5 points a month to a peak of 598.7, then falls by 154 points ($t=-5.3$) to 284.5 in July 2026 as Vistara and AIX Connect stop being separate brands. The remaining gap is the Air India--Air India Express split (Table~\ref{tab:o1-gap}).
-
-\begin{minipage}{\linewidth}
-\captionsetup{font=small,labelfont=bf,justification=raggedright,singlelinecheck=false,hypcap=false}
-\captionof{table}{O1: Grouping gap (Ownership-HHI minus Brand-HHI): period means and regression.}
-\label{tab:o1-gap}
-\centering
-{\small\setstretch{1.1}\setlength{\tabcolsep}{5pt}
-\begin{tabular}{@{}lrrr@{}}
-\toprule
-Period & Mean & Min & Max \\
-\midrule
-Pre-Jet exit & 84.2 & 4.1 & 199.9 \\
-Jet exit to Tata & 1.4 & 0.0 & 3.6 \\
-Tata to mergers & 461.0 & 312.5 & 598.7 \\
-Post mergers & 338.7 & 284.5 & 429.6 \\
-\midrule
-Regression coefficient & Standard model & \multicolumn{2}{r}{With post-Tata trend} \\
-\midrule
-Post-Tata step & 450.48\textsuperscript{**} (25.58) & \multicolumn{2}{r}{427.96\textsuperscript{**} (18.97)} \\
-Post-Tata trend (points per month) & -- & \multicolumn{2}{r}{5.52\textsuperscript{**} (1.95)} \\
-Post-Go First step & 158.05\textsuperscript{**} (38.93) & \multicolumn{2}{r}{72.18 (40.93)} \\
-Post-legal mergers step & $-153.84$\textsuperscript{**} (28.98) & \multicolumn{2}{r}{$-247.66$\textsuperscript{**} (38.79)} \\
-$R^2$ & 0.968 & \multicolumn{2}{r}{0.976} \\
-\bottomrule
-\end{tabular}\par}
-\vspace{4pt}
-{\footnotesize\setstretch{1.1}\raggedright\textit{Note:} Values in index points; Newey--West standard errors (12 lags) in parentheses. \textsuperscript{**}$p<0.01$. The Jet exit step is not significant in either model; trend, COVID and month dummies are included.\par}
-\end{minipage}
-
-\vspace{1.2em}
-\textbf{O1 reproduction.} The script \texttt{o1\_analysis.py} recomputes every O1 number from the passenger file \texttt{carrier\_monthly.csv}, covering cleaning, indices, drift detection, regressions and robustness checks. The script \texttt{plot\_index\_over\_\allowbreak months.py} reproduces Figure~\ref{fig:o1-its}.
 
 \section{Survey Questionnaire or Interview Guide}
 Include the survey questionnaire or interview guide where applicable.
@@ -986,7 +1025,7 @@ Provide a short statement covering:
 Provide one line for each team member describing their contribution to the project.
 
 This statement is intended only to confirm that all team members have contributed to the project. It is not an individual assessment of the quality or quantity of each member's contribution, and differences in individual contributions will not result in different marks for team members.
-\templatebullet{\textbf{[Member 1]:} [Brief description of contribution.]}
+\templatebullet{\textbf{Sowmya K:} Built the HHI and CR2 calculations and the interrupted time-series index model, with the drift analysis and causal-inference caveats for O1.}
 \templatebullet{\textbf{[Member 2]:} [Brief description of contribution.]}
 \templatebullet{\textbf{[Member 3]:} [Brief description of contribution.]}
 \templatebullet{\textbf{[Member 4]:} [Brief description of contribution.]}
