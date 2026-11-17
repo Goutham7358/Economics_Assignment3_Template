@@ -186,35 +186,15 @@ Together, these studies show that entry and traffic growth do not necessarily su
 The sources reviewed here do not jointly trace India's sequence of exits, acquisitions and mergers from 2015 to 2026 while distinguishing airline brands from ownership groups. Nor do they combine that comparison with entrant persistence, explicit national duopoly criteria and route-level evidence. The present study brings these dimensions together, rather than treating each event as an isolated case.
 
 \subsection{Relevance to the Present Study}
-The literature motivates four connected analyses: tracking concentration around dated events; identifying which groups gained passenger and capacity shares after exits; assessing whether entrants became persistent competitors; and comparing national duopoly patterns with route concentration and disruption resilience. For O2, the Air Berlin study provides a comparative basis for examining whether the largest incumbent gains most after an exit. The consolidation cases motivate separating fixed-share ownership effects from observed market-wide changes, without interpreting their difference as a causal merger effect.
+The literature motivates four connected analyses: tracking concentration around dated events; identifying which groups gained passenger and capacity shares after exits; assessing whether entrants became persistent competitors; and comparing national duopoly patterns with route concentration and disruption resilience.\ The consolidation cases motivate separating fixed-share ownership effects from observed market-wide changes, without interpreting their difference as a causal merger effect.
 
 \section{Data and Methodology}
-\subsection{Research Design}
-Briefly describe the research design used in the study.
-
 \subsection{Data Sources}
 Table~\ref{tab:data-sources} summarises the data sources, periods, samples and uses.
 \input{tables/data_sources.tex}
 
 \subsection{Unit of Analysis}
-\begin{authorcontribution}{authorSowmya}
-\textbf{O1.} The national market in each month, built from airline-brand observations and ownership groups.
-\end{authorcontribution}
-\begin{authorcontribution}{authorMeena}
-\textbf{O2.} The ownership group in each month for market shares and the national market in each month for HHI. These measures are compared over the stated periods before and after each exit or consolidation event.
-\end{authorcontribution}
-\begin{authorcontribution}{authorSweta}
-\textbf{O3.} The airline brand in each month for national shares and the airline in each financial year for financial comparisons. For route analysis, we examine each airline's scheduled flights on individual airport pairs. Monthly observations show changes over time, while selected summer or winter schedules show the airline's route presence during that season.
-\end{authorcontribution}
-\begin{authorcontribution}{authorGoutham}
-\textbf{O4.} The national market by month for concentration and capacity, and one airport pair in one month for route concentration.
-\end{authorcontribution}
-Route measures pool both directions of each airport pair.
-
-\subsection{Variables and Measures}
-Table~\ref{tab:variables-summary} summarises the main measures. For O1, concentration measures are the dependent variables. Event indicators and a time trend are explanatory variables, with controls for COVID-19 and the month of the year. National shares use passengers, O2's capacity shares use ASK, and route shares use scheduled flights. O3 retains airline brands for route analysis, while O4 combines brands by ownership. Detailed definitions are in Appendix~\ref{app:team-variables} for \hyperref[app:o1-definitions]{O1}, \hyperref[app:o2-definitions]{O2} and \hyperref[app:o3-definitions]{O3}, and Appendices~\ref{app:o4-input-definitions}--\ref{app:o4-flags} for O4.
-
-\input{tables/variables_summary.tex}
+O1 and O4 use the national market in each month for concentration, with O4 also assessing capacity. These measures are built from monthly airline records grouped by brand or ownership. O2 compares ownership-group shares and national HHI before and after exits and consolidation events. O3 follows airline brands each month and compares their finances by financial year. Route measures combine both directions of each airport pair. O3 examines each airline's scheduled flights by month or in selected summer and winter schedules, while O4 measures concentration for each airport pair in each month. Variable definitions, units and calculation rules are provided in Appendix~\ref{app:variable-dictionary}.
 
 \subsection{Method of Analysis}
 \begin{authorcontribution}{authorSowmya}
@@ -268,12 +248,23 @@ For Tata consolidation, compare the mechanical \HHI{} rise from common ownership
 
 \begin{authorcontribution}{authorSweta}
 \label{sec:method-o3}
-\textbf{O3.} Event-time tracking: $\tau=0$ is the first month in which an entrant recorded passengers, with subsequent months numbered sequentially. Each entrant's share is recorded at $\tau=12,24,36$, alongside its peak share, number of traffic months and operating outcome. An entrant is \emph{meaningful} if its share reaches 1\% in at least one month and \emph{persistent} if it stays at or above 1\% for 24 consecutive months; both cut-offs are study-defined. Airlines still flying are right-censored at July 2026. An airline's scheduled-frequency share on an airport pair is $100\times$ its scheduled flights divided by all recorded scheduled flights that month. Event time compares airlines at the same stage; route and financial evidence are added because national share understates a regional airline's local role and does not show whether growth was sustainable. For route presence, an entrant is the \emph{sole recorded operator} on an airport pair if it has all recorded weekly departures, and \emph{dominant} if it has at least half. Net profit or loss for FY2024-25 is compared across the operating entrants using the ministry's reported figures.
+\textbf{O3.}
+\begin{itemize}[leftmargin=2em]
+    \item \textbf{Entrant growth and persistence.} Set $\tau=0$ at the first month with recorded passengers and number later months sequentially to compare entrants at the same stage. Record shares at $\tau=12,24,36$, peak share, traffic months and operating outcome. An entrant is \emph{meaningful} if its share reaches 1\% in any month and \emph{persistent} if it remains at or above 1\% for 24 consecutive months. Both cut-offs are study-defined. Airlines still flying are right-censored at July 2026.
+    \item \textbf{Route presence.} National shares can understate a regional airline's local role. Calculate an airline's scheduled-frequency share as $100\times$ its flights divided by all recorded scheduled flights on that airport pair that month. An entrant is the \emph{sole recorded operator} if it has all recorded weekly departures on an airport pair, and \emph{dominant} if it has at least half.
+    \item \textbf{Financial comparison.} Compare operating entrants' net profit or loss for FY2024-25 using the ministry's reported figures. Financial evidence helps assess sustainability, which national share growth alone cannot establish.
+\end{itemize}
 \end{authorcontribution}
 
 \begin{authorcontribution}{authorGoutham}
 \label{sec:method-o4}
-\textbf{O4.} We calculate monthly HHI, CR2, share gap and fringe share after grouping airlines by ownership. National shares use passenger counts from January 2015 to July 2026. Route shares use scheduled flights in both directions of the 20 busiest airport pairs, ranked by 2025 passengers, with observations available from April 2019 to September 2026. We define December 2024 to July 2026 as the focus period to assess whether an asymmetric duopoly has formed and persisted towards the end of the study. We compare national concentration with concentration on the top 20 and top 10 busiest airport pairs during this period. We also report the percentage of available pairs where IndiGo is the only operator or supplies at least 60\% of scheduled flights. Rivals' combined unused capacity, calculated as ASK minus RPK, is expressed as a percentage of IndiGo's RPK for December 2024 and December 2025. Missing observations are excluded. Appendix~\ref{app:o4-flags} defines the thresholds, and Appendix~\ref{app:o4-route-preparation} provides preparation details and worked calculations.
+\textbf{O4.}
+\begin{itemize}[leftmargin=2em]
+    \item \textbf{National and route concentration.} Calculate monthly HHI, CR2, share gap and fringe share by ownership group. National shares use passengers from January 2015 to July 2026. Route shares use scheduled flights in both directions of the 20 busiest airport pairs, ranked by 2025 passengers, with observations from April 2019 to September 2026.
+    \item \textbf{Focus-period comparison.} Use December 2024 to July 2026 to assess whether an asymmetric duopoly has formed and persisted towards the end of the study. Compare national concentration with concentration on the top 20 and top 10 busiest airport pairs during this period.
+    \item \textbf{Dependence and spare capacity.} Report the percentage of available airport pairs where IndiGo is the only operator or supplies at least 60\% of scheduled flights. Express rivals' combined unused capacity (ASK minus RPK) as a percentage of IndiGo's RPK for December 2024 and December 2025.
+\end{itemize}
+Missing observations are excluded. Appendix~\ref{app:o4-flags} defines the thresholds, and Appendix~\ref{app:o4-route-preparation} provides preparation details and worked calculations.
 \end{authorcontribution}
 
 \subsection{Hypotheses or Expected Relationships}
@@ -289,9 +280,9 @@ For Tata consolidation, compare the mechanical \HHI{} rise from common ownership
 \end{authorcontribution}
 
 \begin{authorcontribution}{authorMeena}
-\textbf{H3 (O2):} IndiGo has the largest absorption ratio after both exits, larger after Go First.
+\textbf{H3 (O2):} \textbf{Exit absorption:} We expect IndiGo's absorption ratio to be the largest of any group after both exits, and larger after Go First than after Jet Airways.
 
-\textbf{H4 (O2):} IndiGo's gain accounts for over half of the \HHI{} rise after each exit.
+\textbf{H4 (O2):} \textbf{Exit-driven concentration:} We expect IndiGo's gain to account for more than half of the rise in \HHI{} after each exit.
 \end{authorcontribution}
 
 \begin{authorcontribution}{authorGoutham}

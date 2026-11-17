@@ -1,0 +1,152 @@
+\clearpage
+\section{O2: Additional analysis}
+\label{app:workings}
+\begin{authorcontribution}{authorMeena}
+\renewcommand{\arraystretch}{1.2}
+\subsection*{O2: Exit decomposition and Tata consolidation}
+\textbf{A. Airline exits: worked example for Jet Airways and IndiGo.}
+The same steps are repeated for every ownership group and for Go First's exit. Shares are entered as percentages: use 42.78, not 0.4278.
+\begin{enumerate}[leftmargin=2em]
+	\item \textbf{Choose the before and after periods.} Exclude the exit month and use up to 12 months on each side. For Jet, compare April 2018--March 2019 with May 2019--February 2020; the after period stops before the pandemic. For Go First, compare May 2022--April 2023 with June 2023--May 2024.
+
+	\item \textbf{Calculate average market shares.} Each month, divide a group's passengers by total market passengers and multiply by 100. Then average these monthly shares within each period. Before Jet's exit, Jet's average share was 13.82\%; IndiGo's was 42.78\%. After the exit, IndiGo's was 47.99\%.
+
+	\item \textbf{Find how much IndiGo's share increased.}
+	\[
+	\text{Share gain} = \text{after share} - \text{before share}
+	= 47.99 - 42.78 = 5.21\text{ percentage points}.
+	\]
+
+	\item \textbf{Express that gain relative to Jet's former share.}
+	\[
+	\begin{aligned}
+	\text{Absorption (\%)} &= 100\times\frac{\text{group's share gain}}{\text{exiting group's average share before exit}}\\
+	&= 100\times\frac{5.21}{13.82} = 37.7\%.
+	\end{aligned}
+	\]
+	IndiGo's gain was equivalent to 37.7\% of Jet's former market share. This is a comparison of market shares, not evidence that 37.7\% of Jet's individual passengers switched to IndiGo. Repeat using seat-km instead of passengers to obtain capacity absorption. A negative value means a surviving group lost share; signed absorption values across all survivors sum to 100\%.
+
+	\item \textbf{Calculate IndiGo's contribution to concentration ($c_g$).} \HHI{} adds the squared shares of all groups. Here $c_g$ denotes group $g$'s contribution, matching the column in Table~\ref{tab:o2-absorption}. Therefore, IndiGo's contribution is:
+	\[
+	c_g = \text{Contribution} = (\text{after share})^2-(\text{before share})^2
+	= 47.99^2-42.78^2 \approx 473\text{ points}.
+	\]
+	The code uses unrounded shares; displayed inputs are rounded. A larger group generally adds more \HHI{} points for the same share gain because its share is squared.
+
+	\item \textbf{Add all contributions, including Jet's disappearance.} Jet's own contribution is $0^2-13.82^2\approx-191$ points. Adding this to all surviving groups' contributions gives about $+444$ points (Table~\ref{tab:o2-absorption}). This is the change in \HHI{} calculated from average shares. It need not equal the change in average monthly \HHI{}, since squaring an average differs from averaging squares.
+\end{enumerate}
+
+\textbf{B. Tata consolidation: worked example for January 2022.}
+Here the question is how much concentration rises simply because separate groups become one, even if their shares do not change.
+\begin{enumerate}[leftmargin=2em]
+	\item \textbf{Hold the pre-acquisition shares fixed.} Use December 2021 shares from Table~\ref{tab:o2-tata}: Air India and Air India Express together, 8.46\%; Vistara, 7.72\%; AirAsia India, 6.28\%. Air India and Air India Express were already one ownership group.
+
+	\item \textbf{Compare separate ownership with common ownership.}
+	\[
+	\begin{aligned}
+	\text{Separate contribution} &= 8.46^2+7.72^2+6.28^2,\\
+	\text{Combined contribution} &= (8.46+7.72+6.28)^2,\\
+	\text{Mechanical rise} &= \text{combined contribution}-\text{separate contribution}\\
+	&= 2(8.46\times7.72+8.46\times6.28+7.72\times6.28)\\
+	&\approx334\text{ points}.
+	\end{aligned}
+	\]
+	Other groups' shares are unchanged in this calculation, so their contributions cancel out.
+
+	\item \textbf{Compare with the observed change.} Subtract average monthly ownership \HHI{} for January--December 2021 from that for January--December 2022. The observed rise is 373 points; the difference from the mechanical calculation is $373-334=39$ points. This difference includes changes in market shares and the different measurement periods; it is not a causal estimate of the acquisition's effects.
+\end{enumerate}
+
+\textbf{Late-2024 mergers.} Use September 2024 brand shares from Table~\ref{tab:o2-tata} and calculate the two merger pairs separately:
+\[
+\begin{aligned}
+\Delta\HHI_{\text{AI--Vistara}} &= 2(11.14)(10.04) \approx 223.7,\\
+\Delta\HHI_{\text{AI Express--AIX Connect}} &= 2(3.97)(4.11) \approx 32.6,\\
+\Delta\HHI_{\text{total}} &\approx 223.7+32.6 \approx 256\text{ points}.
+\end{aligned}
+\]
+The 256 points cover both mergers, not Vistara alone. Compare average monthly brand \HHI{} in October 2023--September 2024 with December 2024--November 2025: the observed rise is 493 points, giving a difference of $493-256=237$ points. The additional squared-average-share breakdown gives Tata brands $+135$, IndiGo $+380$, SpiceJet $-12$ and Akasa Air $+5$. It indicates which brands drove the rise, but is not an exact decomposition of the 493-point change in average monthly \HHI{}.
+
+\textbf{C. Economic interpretation of exits: effective firms and Cournot markups.}
+With \HHI{} on the 0--10,000 scale, the effective number of equal-sized firms is
+\[
+N_{\text{effective}}=\frac{10{,}000}{\HHI}.
+\]
+Using rounded mean monthly ownership \HHI{} values for the before and after windows gives:
+\[
+\begin{aligned}
+\text{Jet Airways:}\quad &\frac{10{,}000}{2{,}440}\approx4.1
+\quad\longrightarrow\quad\frac{10{,}000}{2{,}870}\approx3.5,\\
+\text{Go First:}\quad &\frac{10{,}000}{3{,}940}\approx2.5
+\quad\longrightarrow\quad\frac{10{,}000}{4{,}620}\approx2.2.
+\end{aligned}
+\]
+These are equivalent equal-sized-firm counts, not actual airline counts. They use the reciprocal of each window's mean monthly \HHI{}, not the average of monthly effective-firm counts.
+
+For the illustrative Cournot calculation, use the passenger-based \HHI{} changes of 444 and 690 points in Table~\ref{tab:o2-absorption} and assume $|\varepsilon|=1.5$:
+\[
+\begin{aligned}
+\Delta\overline{L}&=\frac{\Delta\HHI/10{,}000}{|\varepsilon|},\\
+\text{Jet Airways:}\quad \Delta\overline{L}&=\frac{444/10{,}000}{1.5}
+=0.0296\approx3.0\text{ percentage points},\\
+\text{Go First:}\quad \Delta\overline{L}&=\frac{690/10{,}000}{1.5}
+=0.0460=4.6\text{ percentage points}.
+\end{aligned}
+\]
+The 444- and 690-point changes are calculated from squared period-average shares (part~A), so they need not equal differences between the rounded mean monthly \HHI{} values used above. Multiplying the markup fractions by 100 expresses the changes in percentage points of price. Elasticity is assumed, not estimated, and held constant across windows. These are model-based illustrations, not measured fare changes or causal effects of the exits.
+
+\clearpage
+\subsection*{O2: Supporting tables}
+\begin{table}[H]
+\centering
+\captionsetup{font={small,color=authorMeena},labelfont=bf,justification=centering,singlelinecheck=false,skip=6pt}
+\color{authorMeena}
+\caption{Share of the exiting airline absorbed by each group, and contribution to the change in \HHI{}}\label{tab:o2-absorption}
+\small
+\begin{tabular}{|l|r|r|r|r|r|r|}
+\hline
+ & \multicolumn{3}{c|}{Jet Airways exit (Apr 2019)} & \multicolumn{3}{c|}{Go First exit (May 2023)} \\
+\hline
+\textbf{Group} & \shortstack{\textbf{Passengers}\\$a_g$ (\%)} & \shortstack{Seat-km\\$a_g$ (\%)} & $c_g$ & \shortstack{Passengers\\$a_g$ (\%)} & \shortstack{Seat-km\\$a_g$ (\%)} & $c_g$ \\
+\hline
+IndiGo & 37.7 & 28.5 & 473 & 66.0 & 66.0 & 632 \\
+\hline
+SpiceJet & 22.9 & 30.4 & 90 & $-$33.7 & $-$36.2 & $-$34 \\
+\hline
+Air India Group & $-$1.0 & 1.5 & $-$3 & 33.7 & 30.3 & 141 \\
+\hline
+Akasa Air & -- & -- & -- & 35.3 & 40.7 & 18 \\
+\hline
+Go First & 14.1 & 11.4 & 39 & -- & -- & -- \\
+\hline
+Vistara & 14.3 & 14.2 & 19 & \multicolumn{3}{c|}{in Air India Group} \\
+\hline
+AirAsia India & 10.6 & 13.3 & 17 & \multicolumn{3}{c|}{in Air India Group} \\
+\hline
+Others & 1.4 & 0.7 & 0 & $-$1.3 & $-$0.8 & 0 \\
+\hline
+Exiting airline removed & & & $-$191 & & & $-$65 \\
+\hline
+Total change in \HHI{} & 100 & 100 & +444 & 100 & 100 & +690 \\
+\hline
+\end{tabular}
+\sourcenote{DGCA monthly airline statistics via \textcite{kubicek2026aviationstats}; authors' calculations. Passengers and Seat-km: absorption $a_g$ (\%), a group's change in mean share divided by the exiting airline's pre-exit mean share. $c_g$: contribution to the change in \HHI{} (points), using passenger shares. Windows: Apr 2018--Mar 2019 vs May 2019--Feb 2020 (Jet Airways); May 2022--Apr 2023 vs Jun 2023--May 2024 (Go First).}
+\end{table}
+
+\begin{table}[H]
+\centering
+\captionsetup{font={small,color=authorMeena},labelfont=bf,justification=centering,singlelinecheck=false,skip=6pt}
+\color{authorMeena}
+\caption{Passenger shares of the Tata brands before each consolidation step (\%)}\label{tab:o2-tata}
+\small
+\begin{tabularx}{\linewidth}{|>{\raggedright\arraybackslash}X|r|r|r|r|r|}
+\hline
+\textbf{Step (shares in)} & \textbf{Air India} & \textbf{AI Express} & \textbf{Vistara} & \textbf{AirAsia India}\textsuperscript{a} & \textbf{Total} \\
+\hline
+Acquisition, Jan 2022 (Dec 2021) & 8.39 & 0.07 & 7.72 & 6.28 & 22.46 \\
+\hline
+Mergers, Dec 2024 (Sep 2024) & 11.14 & 3.97 & 10.04 & 4.11 & 29.26 \\
+\hline
+\end{tabularx}
+\sourcenote{DGCA monthly airline statistics via \textcite{kubicek2026aviationstats}; authors' calculations. \textsuperscript{a}Renamed AIX Connect. September 2024 is the last month before the AIX Connect merger (October 2024) and the Vistara merger (November 2024).}
+\end{table}
+\end{authorcontribution}
