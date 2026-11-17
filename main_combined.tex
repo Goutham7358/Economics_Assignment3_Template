@@ -1,5 +1,5 @@
 % Working report based on the supplied DA241O final term paper template.
-% Overleaf main document: main.tex. Build with pdfLaTeX, Biber, then pdfLaTeX twice.
+% Overleaf main document: main_combined.tex. Build with pdfLaTeX, Biber, then pdfLaTeX twice.
 % Unfinished sections retain the template's instructional placeholders.
 % The explicit page breaks before References and the back matter reproduce
 % the supplied template; remove/adapt those breaks when writing the report.
@@ -151,7 +151,7 @@ How did major consolidation events (exits, acquisitions and mergers) reshape con
 \end{authorcontribution}
 
 \subsection{Scope of the Study}
-The study covers India's scheduled domestic passenger aviation market from January 2015 to July 2026, with supplementary analysis of the twenty busiest airport pairs using available schedules from April 2019 to September 2026.
+The study covers scheduled domestic passenger aviation in India, January 2015--July 2026. Route evidence uses full seasons through Summer 2026 for entrants and April 2019--September 2026 monthly schedules for the twenty busiest airport pairs.
 
 \section{Literature Review}
 \subsection{Literature Review and Synthesis}
@@ -191,72 +191,20 @@ The literature motivates four connected analyses: tracking concentration around 
 \section{Data and Methodology}
 \subsection{Data Sources}
 Table~\ref{tab:data-sources} summarises the data sources, periods, samples and uses.
-\input{tables/data_sources.tex}
+\input{review/shortening/data_sources.tex}
 
 \subsection{Unit of Analysis}
-O1 and O4 use the national market in each month for concentration, with O4 also assessing capacity. These measures are built from monthly airline records grouped by brand or ownership. O2 compares ownership-group shares and national HHI before and after exits and consolidation events. O3 follows airline brands each month and compares their finances by financial year. Route measures combine both directions of each airport pair. O3 examines each airline's scheduled flights by month or in selected summer and winter schedules, while O4 measures concentration for each airport pair in each month. Variable definitions, units and calculation rules are provided in Appendix~\ref{app:variable-dictionary}.
+O1 and O4 use the national market in each month for concentration, with O4 also assessing capacity. These measures are built from monthly airline records grouped by brand or ownership. O2 compares ownership-group shares and national HHI before and after exits and consolidation events. O3 follows airline brands each month and compares their finances by financial year. Route measures combine both directions of each airport pair. O3 observes each airline on an airport pair over a full selected summer or winter season and also uses separate monthly route records, while O4 measures concentration for each airport pair in each month. Variable definitions, units and calculation rules are provided in Appendix~\ref{app:variable-dictionary}.
 
 \subsection{Method of Analysis}
-\begin{authorcontribution}{authorSowmya}
-\label{sec:method-o1}
-\textbf{O1.} Table~\ref{tab:o1-cleansing} lists the cleansing applied. Brand shares are $s_{it}=100\,q_{it}/\sum_j q_{jt}$ from cleansed passengers $q_{it}$, summed into ownership groups $S_{gt}$ (Air India with Air India Express; Jet Airways with JetLite; Vistara and AirAsia India/AIX Connect join Air India from January 2022). HHI runs from 0 to 10,000, with values above 1,800 highly concentrated \parencite{dojftc2023merger}; $\mathrm{CR2}=S_{(1)}+S_{(2)}$ is reported with it \parencite{gandhi2026marketstructure}. Grouping Effect $=$ Ownership-HHI $-$ Brand-HHI; Partial-Ownership Effect $=$ MHHI $-$ Ownership-HHI. Drift points use a jump rule $|M|>3.5$ on monthly changes \parencite{iglewicz1993outliers} and trend breaks by dynamic programming \parencite{baiperron2003}.
+\input{review/shortening/method_o1.tex}
 
-\begin{minipage}{\linewidth}
-\captionsetup{font={small,color=authorSowmya},labelfont=bf,justification=raggedright,singlelinecheck=false,hypcap=false}
-\captionof{table}{O1: Data cleansing applied (full log in Appendix~\ref{app:o1-cleaning}).}
-\label{tab:o1-cleansing}
-\centering
-{\footnotesize\setstretch{1.0}\setlength{\tabcolsep}{4pt}
-\renewcommand{\arraystretch}{1.2}\begin{tabularx}{\linewidth}{|>{\raggedright\arraybackslash}p{0.19\linewidth}|>{\raggedright\arraybackslash}p{0.34\linewidth}|>{\raggedright\arraybackslash}X|}
-\hline
-\textbf{Rules} & \textbf{Treatment} & \textbf{Effect} \\
-\hline
-C1--C3 Schema, names, scope & Coerce numeric fields; keep scheduled domestic service & 1,773 out-of-scope rows excluded \\
-\hline
-C4--C5 Duplicates, zeros & Sum duplicate airline-months; drop zero-passenger rows & 132 zero rows dropped \\
-\hline
-C6--C7 Consistency, outliers & Flag, never overwrite & 92 outlier flags, none material \\
-\hline
-C8 Gaps & April 2020 left empty; AirAsia India 2017 interpolated only as a sensitivity run & 138 market-months \\
-\hline
-C9 Shares & Recomputed from passengers & Sum to 100\% in all months \\
-\hline
-\end{tabularx}\par}
-\end{minipage}
+\input{review/shortening/method_o2.tex}
 
-\begin{align}
-\text{Brand-HHI}_t &= \sum_i s_{it}^2, \qquad \text{Ownership-HHI}_t = \sum_g S_{gt}^2 \tag{O1.1a}\\
-\text{MHHI}_t &= \text{Ownership-HHI}_t+\sum_{j}\sum_{k\neq j}\lambda_{jk}S_{jt}S_{kt},\qquad
-\lambda_{jk}=\frac{\sum_i \gamma_{ij}\beta_{ik}}{\sum_i \gamma_{ij}\beta_{ij}} \tag{O1.1b}
-\end{align}
-with $\beta_{ik}$ owner $i$'s stake in firm $k$ and $\gamma_{ik}$ its control share \parencite{obriensalop2000}, and
-\begin{equation}
-\text{Index}_t = \alpha + \beta t + \sum_{k=1}^{4}\gamma_k\,\text{Post}_{kt} + \delta\,\text{COVID}_t + \sum_{m=2}^{12}\mu_m M_{mt} + \varepsilon_t \tag{O1.2}
-\end{equation}
-where $\text{Post}_{kt}$ starts at the Jet Airways exit (May 2019), Tata acquisition (January 2022), Go First exit (June 2023) and legal mergers (December 2024); COVID spans March 2020--December 2021; errors are Newey--West with 12 lags \parencite{neweywest1987}. The $\gamma_k$ are descriptive level shifts, not causal effects (robustness: Appendix~\ref{app:o1-robust}).
-\end{authorcontribution}
-
-\begin{authorcontribution}{authorMeena}
-\label{sec:method-o2}
-\textbf{O2.}
-\begin{itemize}[leftmargin=2em]
-	\item \textbf{Who absorbed the exits?} Compare each group's average passenger and seat-km shares over up to 12 months before and after each exit, excluding the exit month. Absorption is the group's share gain divided by the exiting group's average share before exit, expressed as a percentage. Check whether IndiGo ranks first after both exits and absorbs more after Go First.
-	\item \textbf{Who drove concentration?} Calculate each group's contribution to the change in \HHI{} as its squared average share after minus before each exit. Sum all contributions, including the exiting group's disappearance, and check whether IndiGo accounts for over half of the net rise, using both passenger and seat-km shares.
-\end{itemize}
-For Tata consolidation, compare the mechanical \HHI{} rise from common ownership at fixed shares with the observed change, alongside CCI's combination order \parencite{cci2023vistara}. Full workings are in Appendix~\ref{app:workings}.
-\end{authorcontribution}
-
-\begin{authorcontribution}{authorSweta}
-\label{sec:method-o3}
-\textbf{O3.}
-\begin{itemize}[leftmargin=2em]
-    \item \textbf{Entrant growth and persistence.} Set $\tau=0$ at the first month with recorded passengers and number later months sequentially to compare entrants at the same stage. Record shares at $\tau=12,24,36$, peak share, traffic months and operating outcome. An entrant is \emph{meaningful} if its share reaches 1\% in any month and \emph{persistent} if it remains at or above 1\% for 24 consecutive months. Both cut-offs are study-defined. Airlines still flying are right-censored at July 2026.
-    \item \textbf{Route presence.} National shares can understate a regional airline's local role. Calculate an airline's scheduled-frequency share as $100\times$ its flights divided by all recorded scheduled flights on that airport pair that month. An entrant is the \emph{sole recorded operator} if it has all recorded weekly departures on an airport pair, and \emph{dominant} if it has at least half.
-    \item \textbf{Financial comparison.} Compare operating entrants' net profit or loss for FY2024-25 using the ministry's reported figures. Financial evidence helps assess sustainability, which national share growth alone cannot establish.
-\end{itemize}
-\end{authorcontribution}
+\input{review/shortening/method_o3.tex}
 
 \begin{authorcontribution}{authorGoutham}
+\pagebreak[4]
 \label{sec:method-o4}
 \textbf{O4.}
 \begin{itemize}[leftmargin=2em]
@@ -295,23 +243,13 @@ Missing observations are excluded. Appendix~\ref{app:o4-flags} defines the thres
 \endgroup
 
 \clearpage
-\input{sections/section4_combined.tex}
+\input{review/shortening/section4.tex}
 \clearpage
-\input{sections/section5_combined.tex}
+\input{review/shortening/section5.tex}
 \clearpage
-\input{sections/section6_combined.tex}
+\input{review/shortening/section6_refs.tex}
 \clearpage
-\section{Implications and Recommendations}
-Discuss the implications of the findings for the relevant stakeholders.
-
-Depending on the topic, these may include:
-\templatebullet{Firms and managers}
-\templatebullet{Consumers}
-\templatebullet{Regulators}
-\templatebullet{Policymakers}
-\templatebullet{Industry participants}
-Provide 2--3 specific recommendations where appropriate. Recommendations should follow from the findings of the study.
-
+\input{review/shortening/recommendations.tex}
 \clearpage
 \section{Limitations}
 \subsection{O4: Measurement and data availability}
@@ -332,7 +270,8 @@ Summarise the research question, main findings, key economic interpretation, and
 
 \newpage
 \appendix
-\input{appendices/combined_supporting_material.tex}
+\input{review/shortening/supporting_material.tex}
+\input{review/shortening/results_support.tex}
 
 \clearpage
 \section{Survey Questionnaire or Interview Guide}

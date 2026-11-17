@@ -1,0 +1,409 @@
+\clearpage
+\section{Supporting results and checks}
+\label{app:results-details}
+\subsection{O1: Concentration changes and ownership effects}
+\label{app:results-o1}
+\begin{mergedcontribution}{authorSowmya}
+\input{review/shortening/o1_model_appendix.tex}
+\subsubsection{O1: Index over months and drift points}
+ Figure~\ref{fig:o1-its} plots observed and fitted HHI against the 5,000 symmetric-duopoly reference, CR2, and the concealed wedge, with events T1--T4 and drift points D1--D7. Ownership-HHI rises as a staircase, with steps of $+312$, $+900$, $+640$ and $+137$ points and no plateau revisited. The series coincide at the two exits (share shifts) and separate at T2 (regrouping), when Brand-HHI falls 300--600 points below the others. CR2 steps by $+5.7$, $+17.9$, $+9.3$ and $+1.4$ points. The wedge peaks near 600 points in late 2024.
+
+\begin{minipage}{\linewidth}
+\centering
+\includegraphics[width=\linewidth]{review/shortening/figures/o1_indices_review.pdf}
+\captionof{figure}{O1: Interrupted time-series view of national concentration, January 2015--July 2026.}
+\label{fig:o1-its}
+\vspace{2pt}
+\par\footnotesize\setstretch{1.1}
+\textit{Note:} (a) Brand-, Ownership- and MHHI: observed (thin) and fitted (thick) values from Equation~O1.2, keeping the trend and the four event steps, with COVID and month-of-year terms netted out; figures beside each step are Ownership-HHI steps in points. (b) CR2 with its steps in percentage points. (c) Grouping Effect, Partial-Ownership Effect and their sum, the total concealed wedge. T1--T4: Jet exit, Tata acquisition, Go First exit, legal mergers. D1--D7: selected dates. Filled markers have a jump flag within 40 days; hollow markers do not. Grey band: COVID window.\par
+\textit{Source:} DGCA monthly traffic via \href{https://github.com/mkubicek/india-aviation-stats/tree/16770ac59dae61ce7b80fd8bd67dd7f4cef280a6}{Kubicek (2026)}; authors' calculations.
+\end{minipage}
+
+Table~\ref{tab:detail-o1-drift} gives, for each drift point, the index change and the reason for the shift in level.
+
+\begin{minipage}{\linewidth}
+\captionsetup{font={small,color=authorSowmya},labelfont=bf,justification=raggedright,singlelinecheck=false,hypcap=false}
+\captionof{table}{O1: Drift points and the reason for each level shift.}
+\label{tab:detail-o1-drift}
+\centering
+{\footnotesize\setstretch{1.0}\setlength{\tabcolsep}{3pt}
+\fontsize{9}{10.8}\selectfont\setstretch{1}\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{|>{\raggedright\arraybackslash}p{\dimexpr0.045\linewidth-2\tabcolsep-1.125\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.12\linewidth-2\tabcolsep-1.125\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.09\linewidth-2\tabcolsep-1.125\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.09\linewidth-2\tabcolsep-1.125\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.09\linewidth-2\tabcolsep-1.125\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.19\linewidth-2\tabcolsep-1.125\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.13\linewidth-2\tabcolsep-1.125\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.245\linewidth-2\tabcolsep-1.125\arrayrulewidth\relax}|}
+\hline
+\textbf{ID} & \textbf{Window} & \textbf{$\Delta$Br.} & \textbf{$\Delta$Own.} & \textbf{$\Delta$CR2} & \textbf{Largest share movers (pp)} & \textbf{Type} & \textbf{Reason for the shift} \\
+\hline
+D1 & Feb--Apr 2019 & $+558$ & $+531$ & $+5.8$ & Jet group $-10.4$; IndiGo $+6.4$ & Share shift; permanent & Jet Airways exit; IndiGo took most of its passengers \\
+\hline
+D2 & Jun--Jul 2020 & $+741$ & $+739$ & $+6.5$ & IndiGo $+7.6$; Air India Group $-3.3$ & Share shift; retraced by Nov 2020 & Post-lockdown restart; IndiGo regained volume first \\
+\hline
+D3 & Apr--May 2021 & $+321$ & $+321$ & $+6.0$ & Air India Group $+6.1$; AirAsia India $-3.2$ & Share shift; retraced by Oct 2021 & Second COVID wave \\
+\hline
+D4 & Dec 2021--Jan 2022 & $+51$ & $+367$ & $+12.1$ & Air India Group $+13.9$ (Vistara $-7.7$, AirAsia India $-6.3$) & Regrouping; Own.\ and MHHI only & Tata grouping: Vistara and AirAsia India reported inside Air India \\
+\hline
+D5 & Apr--Jun 2023 & $+664$ & $+693$ & $+6.6$ & Go First $-6.4$; IndiGo $+5.7$ & Share shift; permanent & Go First exit; IndiGo took most of its passengers \\
+\hline
+D6 & Nov--Dec 2024 & $+153$ & $+54$ & $0.0$ & Vistara, AIX Connect folded into Air India, Air India Express & Regrouping; Brand only & Legal mergers; fewer reported brands, no share change \\
+\hline
+D7 & Nov--Dec 2025 & $-411$ & $-330$ & $-1.2$ & IndiGo $-4.0$; Air India Group $+2.8$ & Share shift; reversed Jan 2026 & IndiGo operational disruption \parencite{moca2026indigo} \\
+\hline
+\end{tabular}\par}
+\vspace{4pt}
+{\footnotesize\setstretch{1.0}\raggedright\textit{Note:} Changes are index points between the months shown; $\Delta$CR2 is in percentage points on ownership groups. A flagged May 2020 change spans two months because April 2020 is missing. Reasons are the events coinciding with each drift, not causal estimates.\par
+\textit{Source:} DGCA monthly airline traffic via \href{https://github.com/mkubicek/india-aviation-stats/tree/16770ac59dae61ce7b80fd8bd67dd7f4cef280a6}{Kubicek (2026)}; authors' calculations.\par}
+\end{minipage}
+
+The two exits (D1, D5) raise all indices alike and never reverse; Jet's group share was zero by May 2019, so its drift starts in March. The reclassifications (D4, D6) move only the indices that depend on grouping or reporting. The transient drifts (D2, D3, D7) reverse within months; D2 ($M=8.3$--9.1) is 94\% reversed by November 2020.
+
+\subsubsection{O1: Event steps in concentration}
+All four event steps are positive and significant in every model (Table~\ref{tab:detail-o1-regression}). The Tata acquisition (900 vs.\ 449 points) and the Go First exit (640 vs.\ 482) are larger once brands are grouped by owner; the mergers are smaller (137 vs.\ 291) because they combined brands already grouped. The steps sum to 1,988 points for Ownership-HHI against 1,563 for Brand-HHI, so brand-level counting misses about a fifth of the event-driven rise. MHHI's Tata step is 56 points smaller than Ownership-HHI's because the partial-ownership wedge ends there. Re-dating the Jet and Go First steps to their drift months (March 2019, May 2023) lifts the Ownership-HHI sum to 2,211 and $R^2$ from 0.981 to 0.985 without changing the ranking.
+
+\begin{minipage}{\linewidth}
+\captionsetup{font={small,color=authorSowmya},labelfont=bf,justification=raggedright,singlelinecheck=false,hypcap=false}
+\captionof{table}{O1: Segmented regression of monthly concentration indices (Equation~O1.2).}
+\label{tab:detail-o1-regression}
+\centering
+{\small\setstretch{1.1}\setlength{\tabcolsep}{5pt}
+\fontsize{10}{12}\selectfont\setstretch{1}\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{|>{\raggedright\arraybackslash}p{\dimexpr0.34\linewidth-2\tabcolsep-1.25\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.22\linewidth-2\tabcolsep-1.25\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.22\linewidth-2\tabcolsep-1.25\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.22\linewidth-2\tabcolsep-1.25\arrayrulewidth\relax}|}
+\hline
+\textbf{Regressor} & \textbf{Brand HHI} & \textbf{Ownership HHI} & \textbf{MHHI} \\
+\hline
+Time trend (points per month) & 6.34\textsuperscript{**} (1.94) & 4.68\textsuperscript{*} (2.00) & 5.12\textsuperscript{*} (2.01) \\
+\hline
+Post-Jet exit (May 2019) & 340.83\textsuperscript{**} (78.99) & 311.51\textsuperscript{**} (79.12) & 330.33\textsuperscript{**} (79.50) \\
+\hline
+Post-Tata acquisition (Jan 2022) & 449.31\textsuperscript{**} (78.08) & 899.79\textsuperscript{**} (82.94) & 843.69\textsuperscript{**} (82.94) \\
+\hline
+Post-Go First exit (Jun 2023) & 481.99\textsuperscript{**} (50.45) & 640.03\textsuperscript{**} (56.18) & 632.96\textsuperscript{**} (55.21) \\
+\hline
+Post-legal mergers (Dec 2024) & 290.97\textsuperscript{**} (73.85) & 137.13\textsuperscript{*} (54.72) & 128.51\textsuperscript{*} (55.59) \\
+\hline
+COVID (Mar 2020--Dec 2021) & 517.84\textsuperscript{**} (44.59) & 543.41\textsuperscript{**} (45.53) & 547.56\textsuperscript{**} (45.25) \\
+\hline
+Sum of the four steps & 1{,}563 (222) & 1{,}988 (222) & 1{,}935 (223) \\
+\hline
+$R^2$ & 0.972 & 0.981 & 0.981 \\
+\hline
+Durbin--Watson & 0.92 & 0.93 & 0.94 \\
+\hline
+\end{tabular}\par}
+\vspace{4pt}
+{\footnotesize\setstretch{1.1}\raggedright\textit{Note:} Newey--West standard errors (12 lags) in parentheses; $n=138$. \textsuperscript{*}$p<0.05$, \textsuperscript{**}$p<0.01$. Constant and eleven month-of-year dummies included. Breusch--Godfrey (12 lags) rejects no autocorrelation and the ADF test rejects a unit root in the residuals ($p<0.001$ in all three models).\par
+\textit{Source:} DGCA monthly airline traffic via \href{https://github.com/mkubicek/india-aviation-stats/tree/16770ac59dae61ce7b80fd8bd67dd7f4cef280a6}{Kubicek (2026)}; authors' calculations.\par}
+\end{minipage}
+
+CR2 on ownership groups averages 72.0\%, rising from 58.7\% to 90.7\% across the periods and reaching 91.3\% in July 2026 (IndiGo 67.4\%, Air India Group 24.0\%). Its steps are $+5.7$, $+17.9$, $+9.3$ and $+1.4$ points (total 34.4); at brand level the Tata step is only 1.9 and the merger step 6.5. January 2022 is its largest monthly move ($+12.1$). CR2 and Ownership-HHI correlate at 0.983 in levels but 0.794 in monthly changes (Appendix~\ref{app:o1-cr2}).
+
+\subsubsection{O1: Partial-ownership wedge and grouping gap}
+\label{app:o1-wedge}
+\textbf{Partial-ownership wedge.} With the stake schedule, the MHHI minus Ownership-HHI wedge exists only before January 2022. Under proportional control it averages 22.9 points (0.8\% of Ownership-HHI) and peaks at 76.6 in September 2021 (2.2\%). It rises with Tata's stake in AirAsia India: about 1.2 points in January--August 2015 (Tata 30\%), 3.8 to March 2016 (41.06\%), 6.7 in April--December 2016 (49\%), 26.2 in 2018--2019, 43.6 in 2020 (51\%) and 58.1 in 2021 (83.67\%). The zero wedge in 2017 is a source gap; interpolating gives 13.5 on average and a pre-2022 mean of 24.9. Treating Tata's 51\% of Vistara as full control raises the pre-2022 mean to 36.9 (maximum 119.6).
+
+\textbf{Grouping gap.} Ownership-HHI is never below Brand-HHI; the gap is under 0.5 points in 10 months (September 2020, February--October 2021) when Air India Express carried almost no scheduled traffic. It steps up by 450 points at the Tata acquisition ($t=17.6$), widens about 5.5 points a month to a peak of 598.7, then falls by 154 points ($t=-5.3$) to 284.5 in July 2026 as Vistara and AIX Connect stop being separate brands. The remaining gap is the Air India--Air India Express split (Table~\ref{tab:o1-gap}).
+
+\begin{minipage}{\linewidth}
+\captionsetup{font={small,color=authorSowmya},labelfont=bf,justification=raggedright,singlelinecheck=false,hypcap=false}
+\captionof{table}{O1: Grouping gap (Ownership-HHI minus Brand-HHI): period means and regression.}
+\label{tab:o1-gap}
+\centering
+{\small\setstretch{1.1}\setlength{\tabcolsep}{5pt}
+\fontsize{10}{12}\selectfont\setstretch{1}\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{|>{\raggedright\arraybackslash}p{\dimexpr0.46\linewidth-2\tabcolsep-1.25\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.18\linewidth-2\tabcolsep-1.25\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.18\linewidth-2\tabcolsep-1.25\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.18\linewidth-2\tabcolsep-1.25\arrayrulewidth\relax}|}
+\hline
+\textbf{Period} & \textbf{Mean} & \textbf{Min} & \textbf{Max} \\
+\hline
+Pre-Jet exit & 84.2 & 4.1 & 199.9 \\
+\hline
+Jet exit to Tata & 1.4 & 0.0 & 3.6 \\
+\hline
+Tata to mergers & 461.0 & 312.5 & 598.7 \\
+\hline
+Post mergers & 338.7 & 284.5 & 429.6 \\
+\hline
+Regression coefficient & Standard model & \multicolumn{2}{r|}{With post-Tata trend} \\
+\hline
+Post-Tata step & 450.48\textsuperscript{**} (25.58) & \multicolumn{2}{r|}{427.96\textsuperscript{**} (18.97)} \\
+\hline
+Post-Tata trend (points per month) & -- & \multicolumn{2}{r|}{5.52\textsuperscript{**} (1.95)} \\
+\hline
+Post-Go First step & 158.05\textsuperscript{**} (38.93) & \multicolumn{2}{r|}{72.18 (40.93)} \\
+\hline
+Post-legal mergers step & $-153.84$\textsuperscript{**} (28.98) & \multicolumn{2}{r|}{$-247.66$\textsuperscript{**} (38.79)} \\
+\hline
+$R^2$ & 0.968 & \multicolumn{2}{r|}{0.976} \\
+\hline
+\end{tabular}\par}
+\vspace{4pt}
+{\footnotesize\setstretch{1.1}\raggedright\textit{Note:} Values in index points; Newey--West standard errors (12 lags) in parentheses. \textsuperscript{**}$p<0.01$. The Jet exit step is not significant in either model; trend, COVID and month dummies are included.\par}
+\end{minipage}
+\begin{resultstable}{Partial-ownership adjustment: MHHI minus Ownership-HHI.}{tab:detail-o1-wedge}
+\color{authorSowmya}
+\begin{tabular}{|>{\raggedright\arraybackslash}p{\dimexpr0.44\linewidth-2\tabcolsep-1.3333333333333333\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.25\linewidth-2\tabcolsep-1.3333333333333333\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.31\linewidth-2\tabcolsep-1.3333333333333333\arrayrulewidth\relax}|}
+\hline
+\textbf{Period} & \textbf{Mean wedge (points)} & \textbf{Maximum wedge (points)} \\
+\hline
+Before January 2022 & 22.9 & 76.6 (September 2021) \\
+\hline
+January 2022--July 2026 & 0 & 0 \\
+\hline
+\end{tabular}
+\par\vspace{5pt}{\footnotesize\setstretch{1.05}\raggedright \textbf{Note:} Proportional-control specification. Before January 2022 the reported mean is 0.8\% of Ownership-HHI and the maximum is 2.2\%. AirAsia India\textquotesingle s missing 2017 records produce a zero wedge in that year; the interpolation and alternative-control checks are reported above and in Appendix~\ref{app:o1-stakes}.\par\textbf{Source:} DGCA monthly traffic and the ownership-stake schedule; authors\textquotesingle\ calculations.\par}
+\end{resultstable}
+
+\end{mergedcontribution}
+
+\FloatBarrier
+\clearpage
+\begin{mergedcontribution}{authorMeena}
+\subsection{O2: Who gained from exits and consolidation}\label{app:results-o2}
+\textbf{Who absorbed the exits.} IndiGo led passenger-share absorption after both exits: 37.7\% for Jet Airways and 66.0\% for Go First (Table~\ref{tab:detail-o2-absorption}). SpiceJet ranked second after Jet Airways (22.9\%); Akasa Air (35.3\%) and Air India Group (33.7\%) also gained after Go First. Positive absorption exceeds 100\% because SpiceJet and other survivors also lost share; including these losses gives 100\%.
+
+\begin{table}[H]
+\centering
+\color{authorMeena}
+\caption{Share of the exiting airline absorbed by each group, and contribution to the change in \HHI{}}\label{tab:detail-o2-absorption}
+\small
+\small\setstretch{1}\setlength{\tabcolsep}{5pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{|l|r|r|r|r|r|r|}
+\hline
+ & \multicolumn{3}{c|}{Jet Airways exit (Apr 2019)} & \multicolumn{3}{c|}{Go First exit (May 2023)} \\
+\hline
+\textbf{Group} & \textbf{\shortstack{Passengers\\$a_g$ (\%)}} & \textbf{\shortstack{Seat-km\\$a_g$ (\%)}} & \textbf{$c_g$} & \textbf{\shortstack{Passengers\\$a_g$ (\%)}} & \textbf{\shortstack{Seat-km\\$a_g$ (\%)}} & \textbf{$c_g$} \\
+\hline
+IndiGo & 37.7 & 28.5 & 473 & 66.0 & 66.0 & 632 \\
+\hline
+SpiceJet & 22.9 & 30.4 & 90 & $-$33.7 & $-$36.2 & $-$34 \\
+\hline
+Air India Group & $-$1.0 & 1.5 & $-$3 & 33.7 & 30.3 & 141 \\
+\hline
+Akasa Air & -- & -- & -- & 35.3 & 40.7 & 18 \\
+\hline
+Go First & 14.1 & 11.4 & 39 & -- & -- & -- \\
+\hline
+Vistara & 14.3 & 14.2 & 19 & \multicolumn{3}{c|}{in Air India Group} \\
+\hline
+AirAsia India & 10.6 & 13.3 & 17 & \multicolumn{3}{c|}{in Air India Group} \\
+\hline
+Others & 1.4 & 0.7 & 0 & $-$1.3 & $-$0.8 & 0 \\
+\hline
+Exiting airline removed & & & $-$191 & & & $-$65 \\
+\hline
+Total change in \HHI{} & 100 & 100 & +444 & 100 & 100 & +690 \\
+\hline
+\end{tabular}
+\sourcenote{DGCA monthly airline statistics via \textcite{kubicek2026aviationstats}; authors' calculations. Passengers and Seat-km: absorption $a_g$ (\%), a group's change in mean share divided by the exiting airline's pre-exit mean share. $c_g$: contribution to the change in \HHI{} (points), using passenger shares. Windows: Apr 2018--Mar 2019 vs May 2019--Feb 2020 (Jet Airways); May 2022--Apr 2023 vs Jun 2023--May 2024 (Go First).}
+\end{table}
+
+\begin{resultstable}{Capacity-based contributions to the change in concentration after each exit.}{tab:review-o2-capacity-contribution}
+\color{authorMeena}
+\begin{tabular}{|>{\raggedright\arraybackslash}p{\dimexpr0.38\linewidth-2\tabcolsep-1.3333333333333333\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.32\linewidth-2\tabcolsep-1.3333333333333333\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.3\linewidth-2\tabcolsep-1.3333333333333333\arrayrulewidth\relax}|}
+\hline
+\textbf{Exit} & \textbf{IndiGo contribution (HHI points)} & \textbf{Total HHI change (points)} \\
+\hline
+Jet Airways & 352 & 354 \\
+\hline
+Go First & 599 & 653 \\
+\hline
+\end{tabular}
+\par\vspace{5pt}{\footnotesize\setstretch{1.05}\raggedright \textbf{Note:} Shares use available seat-kilometres. The contribution is IndiGo\textquotesingle s squared average share after the exit minus its squared average share before it. Windows follow Table~\ref{tab:detail-o2-absorption}; the total includes all groups and the exiting airline. Values are rounded.\par\textbf{Source:} DGCA monthly airline statistics; authors\textquotesingle\ capacity-share calculations.\par}
+\end{resultstable}
+
+
+\textbf{Who drove concentration.} IndiGo added 473 \HHI{} points after Jet Airways' exit, exceeding the net rise of 444 because Jet's 191 points disappeared. It added 632 of 690 points (92\%) after Go First. Seat-km results similarly show IndiGo driving both increases.
+
+\textbf{Capacity versus filling seats.} SpiceJet's seat-km absorption exceeded its passenger absorption after Jet Airways (30.4\% versus 22.9\%). Its annual report confirms that it received 74 vacated slots and inducted 31 aircraft made available by Jet's suspension \parencite[p.~62]{spicejet2020annual}. IndiGo showed the reverse pattern, but this alone does not establish fuller seats. Akasa's higher seat-km absorption after Go First partly reflects its ramp-up since August 2022. Go First's engine-related groundings predated its exit \parencite[p.~35]{goair2021drhp}.
+
+\textbf{Tata consolidation.} Ownership \HHI{} rose 373 points in January 2022 against a mechanical 334 from common ownership alone (Table~\ref{tab:detail-o2-mech}); COVID-19 recovery also affects this comparison. At the December 2024 mergers, brand \HHI{} rose 493 points against a mechanical 256. Tata's combined share fell from 28.3\% to 26.7\%, limiting its contribution to about 135 points; IndiGo's growth from 61.5\% to 64.5\% added about 380. Observed increases exceeded mechanical increases at both steps.
+
+\begin{table}[H]
+\centering
+\color{authorMeena}
+\caption{Mechanical and observed change in \HHI{} at each Tata consolidation step (points)}\label{tab:detail-o2-mech}
+\small
+\fontsize{10}{12}\selectfont\setstretch{1}\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{|>{\raggedright\arraybackslash}p{\dimexpr0.36\linewidth-2\tabcolsep-1.2\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.19\linewidth-2\tabcolsep-1.2\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.15\linewidth-2\tabcolsep-1.2\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.15\linewidth-2\tabcolsep-1.2\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.15\linewidth-2\tabcolsep-1.2\arrayrulewidth\relax}|}
+\hline
+\textbf{Step} & \textbf{Measure} & \textbf{Mechanical} & \textbf{Observed} & \textbf{Difference} \\
+\hline
+\raggedright\textbf{Acquisition (Jan 2022)}\newline Tata acquired Air India and Air India Express. & Ownership \HHI{} & +334 & +373 & +39 \\
+\hline
+\raggedright\textbf{Mergers (Oct--Nov 2024)}\newline AIX Connect into Air India Express; Vistara into Air India. & Brand \HHI{} & +256 & +493 & +237 \\
+\hline
+\end{tabular}
+\sourcenote{DGCA monthly airline statistics via \textcite{kubicek2026aviationstats}; authors' calculations. The January 2022 ownership grouping also includes Tata's existing interests in Vistara and AirAsia India. AIX Connect merged on 1 October 2024; Vistara on 12 November 2024. Mechanical: common-ownership effect at fixed shares from Table~\ref{tab:o2-tata}; formula in Appendix~\ref{app:workings}. Observed: 12-month mean after minus 12-month mean before (Jan--Dec 2021 vs Jan--Dec 2022; Oct 2023--Sep 2024 vs Dec 2024--Nov 2025, merger months omitted).}
+\end{table}
+
+\textbf{CCI's combination order: Air India--Vistara.} Approval was required under Sections 5--6 of the Competition Act. CCI assessed city pairs, finding 48 domestic overlaps, some above 40\% combined share \parencite[paras.~19, 109--111]{cci2023vistara}. Approval included minimum-capacity commitments on seven domestic routes for up to four years \parencite[paras.~115--118, 126--127]{cci2023vistara}, but no national concentration assessment; our mechanical estimate is 256 points.
+\end{mergedcontribution}
+
+\FloatBarrier
+\clearpage
+\begin{mergedcontribution}{authorSweta}
+% Section 5, O3 part. Each result answers one question; large tables are referenced, not re-narrated.
+\subsection{O3: Entrant outcomes, route presence and finances}
+\label{app:results-o3}
+
+Table~\ref{tab:detail-o3-summary} and Figures~\ref{fig:o3-life} and~\ref{fig:o3-age} provide an overview of the nine entrants. The analysis is organised into five results, each addressing a distinct aspect of their competitive performance: whether entrants achieved meaningful and persistent national market shares (Result 1); the extent of their presence on individual routes (Result 2); whether market share translated into financial viability for the two scale entrants (Result 3); what the available financial evidence reveals about the seven regional entrants (Result 4); and the common characteristics of these regional entrants (Result 5).
+
+\begin{minipage}{\textwidth}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\captionof{table}{O3: Passenger share at $\tau=12,24,36$, peak share and outcome of the nine entrants}
+\label{tab:detail-o3-summary}
+\fontsize{10}{12}\selectfont\setstretch{1}\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{|>{\raggedright\arraybackslash}p{\dimexpr0.15\linewidth-2\tabcolsep-1.1111111111111112\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.12\linewidth-2\tabcolsep-1.1111111111111112\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.12\linewidth-2\tabcolsep-1.1111111111111112\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.1\linewidth-2\tabcolsep-1.1111111111111112\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.09\linewidth-2\tabcolsep-1.1111111111111112\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.09\linewidth-2\tabcolsep-1.1111111111111112\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.09\linewidth-2\tabcolsep-1.1111111111111112\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.1\linewidth-2\tabcolsep-1.1111111111111112\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.14\linewidth-2\tabcolsep-1.1111111111111112\arrayrulewidth\relax}|}
+\hline
+\textbf{Airline} & \textbf{First} & \textbf{Last} & \textbf{Traffic months} & \textbf{$\tau{=}12$} & \textbf{$\tau{=}24$} & \textbf{$\tau{=}36$} & \textbf{Peak} & \textbf{Outcome} \\
+\hline
+Vistara & Jan 2015 & Nov 2024 & 118 & 1.97 & 3.27 & 3.58 & 10.44 & Merged \\
+\hline
+Akasa Air & Aug 2022 & Jul 2026 & 48 & 4.24 & 4.51 & 5.43 & 6.36 & Operating \\
+\hline
+TruJet & Jul 2015 & Feb 2022 & 79 & 0.35 & 0.48 & 0.44 & 0.76 & Ceased \\
+\hline
+Star Air & Jan 2019 & Jul 2026 & 90 & 0.09 & 0.20 & 0.23 & 0.73 & Operating \\
+\hline
+Fly91 & Mar 2024 & Jul 2026 & 29 & 0.08 & 0.23 & -- & 0.47 & Operating \\
+\hline
+Flybig & Jan 2021 & Oct 2025 & 58 & 0.11 & 0.17 & $<$0.01 & 0.24 & Ceased \\
+\hline
+Zoom Air & Feb 2017 & Jun 2018 & 16 & 0.03 & -- & -- & 0.04 & Ceased \\
+\hline
+India One Air & Oct 2022 & Jul 2026 & 46 & 0.01 & 0.02 & 0.02 & 0.02 & Operating \\
+\hline
+Air Deccan & Dec 2017 & Mar 2020 & 13 & -- & -- & -- & 0.01 & Ceased \\
+\hline
+\end{tabular}
+\\
+\par\footnotesize Shares are percent of all scheduled domestic passengers in the month; $\tau$ is calendar months since the first month with passengers; ``--'' means the airline had stopped, or had not yet reached that age, by July 2026.
+\end{minipage}\par\medskip
+
+
+
+Figure~\ref{fig:o3-age} follows each entrant by months since first service.
+
+\begin{minipage}{\textwidth}
+\centering
+\includegraphics[width=0.82\textwidth]{figures/fig_o3_age.png}
+\captionof{figure}{O3: Passenger share of the nine entrants by months since first service (log scale). One panel per entrant (coloured); the other eight are shown in grey for reference, and the dashed line marks 1\%. Each line ends at the airline's last observed month; gaps are months missing from the data (April 2020 for Vistara, TruJet and Star Air). Shares below 0.0002\% are drawn at the axis floor, and Vistara's last point (November 2024) is a partial month. Source: DGCA via Kubicek (2026); authors' calculations.}
+\label{fig:o3-age}
+\end{minipage}\par\medskip
+
+\textbf{Result 1: only two entrants achieved meaningful and persistent national market shares.} The 1\% market-share and 24-month persistence thresholds are study-defined measures, not industry standards. Only Vistara and Akasa Air ever exceeded 1\% of domestic passenger traffic. Together, they accounted for 93\% of the passengers carried by the nine entrants, while the other seven collectively never exceeded 1.17\% of national passenger traffic in any month. Akasa Air crossed the 1\% threshold in its third month of operations and Vistara in its fourth. Both maintained a share of at least 1\% for almost their entire observed operating periods: 46 of 48 months for Akasa Air and 115 of 118 months for Vistara. Both therefore meet the study's persistence criterion (Figure~\ref{fig:o3-age}). Akasa Air also grew faster, reaching a 5.43\% share at $\tau=36$, compared with Vistara's 3.58\% (Table~\ref{tab:detail-o3-summary}). By contrast, all four entrants that ceased flying: TruJet, Flybig, Zoom Air and Air Deccan, had peak national shares below 0.8\%.
+
+\textbf{Result 2: regional entrants established local route positions without gaining national scale.} Table~\ref{tab:o3-routes} measures each entrant's share of recorded scheduled departures over a full season on its airport pairs, so services that started or stopped during the season contribute only on their scheduled operating dates; these figures represent scheduled capacity presence, not passenger market share. Vistara was the only recorded operator on just 1 of its 63 pairs, while Akasa Air held this position on 2 of 57. In contrast, the seven regional entrants were the sole recorded operators on 75 of their 109 pairs (69\%) and accounted for at least half of scheduled departures on 80 pairs (73\%). TruJet's monthly filings provide a further indication of this local concentration: in November 2019, it accounted for at least half of recorded flights on 17 of the 22 pairs that could be screened. On Chennai--Salem, TruJet accounted for all 60 recorded scheduled departures (route \HHI{} of 10,000), despite the route carrying only 3,281 passengers across all airlines and TruJet holding just 0.63\% of the national market.
+
+The scale entrants, meanwhile, competed alongside other airlines on most of their routes. Monthly data show Vistara's share of scheduled flights on Mumbai--Delhi increasing from 20.01\% in April 2019 to 31.27\% in February 2024, while Akasa Air's share rose from 2.65\% in December 2022 to 8.75\% in July 2026. Across the major routes examined, Vistara's frequency share increased on 16 of 20 routes, compared with 10 of 18 for Akasa Air. Taken together, these findings distinguish two forms of competitive presence: the regional entrants often occupied dominant positions on a limited number of routes, whereas the two scale entrants built substantial shares of the national passenger market. These route comparisons are not matched by airline age and cover different observation periods. Route \HHI{} also treats Vistara and Air India as separate firms, although both were Tata-owned by 2023. Zoom Air's route evidence is particularly limited, covering only two airport pairs.
+% >>> LARGE TABLE: candidate to move to Appendix B (keep the \label; the text refers to it by \ref).
+\input{review/shortening/o3_full_season_workings.tex}
+\begin{minipage}{\textwidth}
+\footnotesize
+\captionof{table}{O3: Route presence of the nine entrants over a full schedule season}
+\label{tab:o3-routes}
+\setlength{\tabcolsep}{3pt}\fontsize{10}{12}\selectfont\setstretch{1}\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{|>{\raggedright\arraybackslash}p{\dimexpr0.18\linewidth-2\tabcolsep-1.125\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.18\linewidth-2\tabcolsep-1.125\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.08\linewidth-2\tabcolsep-1.125\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.12\linewidth-2\tabcolsep-1.125\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.11\linewidth-2\tabcolsep-1.125\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.08\linewidth-2\tabcolsep-1.125\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.13\linewidth-2\tabcolsep-1.125\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.12\linewidth-2\tabcolsep-1.125\arrayrulewidth\relax}|}
+\hline
+\textbf{Airline} & \textbf{Season} & \textbf{Pairs} & \textbf{Season deps.} & \textbf{$\geq$50\%} & \textbf{Sole} & \textbf{Median (\%)} & \textbf{Airlines} \\
+\hline
+Vistara & Winter 2023 & 63 & 43,523 & 3 & 1 & 20.3 & 9 \\
+\hline
+Akasa Air & Summer 2026 & 57 & 32,340 & 7 & 2 & 22.8 & 9 \\
+\hline
+TruJet & Winter 2021 & 31 & 9,463 & 21 & 18 & 100.0 & 10 \\
+\hline
+Star Air & Summer 2026 & 37 & 11,589 & 29 & 28 & 100.0 & 9 \\
+\hline
+Fly91 & Summer 2026 & 15 & 7,503 & 9 & 8 & 100.0 & 9 \\
+\hline
+Flybig & Summer 2022 & 12 & 4,894 & 9 & 9 & 100.0 & 9 \\
+\hline
+Zoom Air & Winter 2017 & 2 & 588 & 1 & 1 & 66.7 & 11 \\
+\hline
+India One Air & Summer 2026 & 7 & 3,777 & 7 & 7 & 100.0 & 9 \\
+\hline
+Air Deccan & Winter 2019 & 5 & 1,188 & 4 & 4 & 100.0 & 11 \\
+\hline
+\end{tabular}
+\par\raggedright\footnotesize
+Notes: Pairs are airport pairs served. Season deps. is the entrant's scheduled departures over the season, counted from each service's operating days and start and end dates. $\geq$50\% and Sole count pairs where the entrant accounted for at least half, or all, of recorded season departures, respectively. Median is the median entrant share across its pairs. Airlines is the number of airlines with recorded filings in that season. The season is the entrant's latest usable filing season before closure or merger, or the latest available. Both directions are pooled. Source: DGCA-approved domestic schedules; authors' calculations.
+\end{minipage}\par\medskip
+
+\textbf{Result 3: Financial performance and funding of the two scale entrants.} Vistara and Akasa Air are examined here because they were the only two entrants to exceed 1\% of domestic passenger traffic, reaching peak shares of 10.44\% and 6.36\%, respectively. Their sustained market presence makes them the clearest cases for examining whether scale translated into financial viability. The seven regional entrants did not reach the 1\% threshold; their financial evidence is discussed in Results 4 and 5.
+
+As shown in Table~\ref{tab:detail-o3-fin}, both airlines recorded substantial revenue growth, but their margin trajectories differed. Vistara's revenue grew by 24.87\%, while its net margin improved from $-11.36\%$ to $-3.80\%$, a gain of 7.57 percentage points. Akasa Air's revenue grew faster, by 34.59\%, but its net margin deteriorated slightly from $-43.28\%$ to $-44.03\%$. Thus, revenue growth did not necessarily translate into improved profitability. Akasa Air's FY2026 loss of Rs~2,716 crore is equivalent to approximately Rs~3,150 per domestic passenger carried (8.6 million). This is only an indicative comparison, since the reported loss also includes its international operations.
+
+To illustrate the scale of the losses, even under a hypothetical 100\% incremental contribution margin, additional revenue equal to the accounting loss would be required to offset it: Rs~2,716 crore for Akasa Air (approximately 44\% of its FY2026 revenue) and Rs~581 crore for Vistara (approximately 3.8\% of its FY2024 revenue). These are illustrative lower-bound estimates. At contribution margins below 100\%, the additional revenue required would be higher, assuming other costs remain unchanged.
+
+Both airlines also incurred substantial losses in their early years. Vistara's DGCA-reported operating result was negative in each of FY2017--FY2019, with operating margins ranging from $-39.5\%$ to $-24.2\%$ (Rajya Sabha, 2019). Akasa Air reported a loss of Rs~1,669.59 crore in FY2024 in the Ministry's data. Their continued operations therefore depended on access to funding as well as revenue growth. ICRA notes that equity infusions and aircraft sale-and-leaseback proceeds supported Akasa Air's continuing losses (ICRA, 2026). In Vistara's case, its owners described the merger with Air India as a way to combine Air India's slots and traffic rights with Vistara's customer base and capabilities (Singapore Airlines, 2022).
+
+\begin{minipage}{\textwidth}
+\footnotesize
+\captionof{table}{O3: Audited results and funding evidence for Vistara and Akasa Air, the two entrants above 1\% of passengers}
+\label{tab:detail-o3-fin}
+\fontsize{10}{12}\selectfont\setstretch{1}\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{|>{\raggedright\arraybackslash}p{\dimexpr0.3\linewidth-2\tabcolsep-1.3333333333333333\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.35\linewidth-2\tabcolsep-1.3333333333333333\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.35\linewidth-2\tabcolsep-1.3333333333333333\arrayrulewidth\relax}|}
+\hline
+ & \textbf{Vistara (FY2023$\to$FY2024)} & \textbf{Akasa Air (FY2025$\to$FY2026)} \\
+\hline
+Operating income (Rs crore) & 12,261.4 $\to$ 15,310.3 & 4,582.7 $\to$ 6,167.9 \\
+\hline
+Profit after tax (Rs crore) & $-1{,}393.3\to-581.1$ & $-1{,}983.5\to-2{,}716.0$ \\
+\hline
+Net margin & $-11.36\%\to-3.80\%$ & $-43.28\%\to-44.03\%$ \\
+\hline
+Year-3 load factor & 84.67\% & 91.01\% \\
+\hline
+Funding & Rs~10,020 crore from Tata and Singapore Airlines by Aug 2024 & Equity round completed 19 Aug 2025; about US\$125 million is a press estimate \\
+\hline
+\end{tabular}
+\end{minipage}\par\medskip
+
+\textbf{Result 4: the regional entrants' financial records show a mix of losses, small profits and funding support, with no clear relationship to market share.} Table~\ref{tab:o3-fy25} compiles the available public financial figures for the seven regional entrants. Although each has at least one reported figure, the data are not available on a consistent basis: they include Ministry of Civil Aviation net profits after tax for FY2023--FY2025 (with FY2025 figures provisional) and DGCA operating results for FY2017--FY2021 (Ministry of Civil Aviation, 2025; Rajya Sabha, 2019, 2021). Comparisons are therefore restricted to figures reported on the same basis.
+
+FY2024--25 provides a useful, though limited, comparison among operating entrants. Fly91 reported a loss of Rs~67.65 crore, while Star Air and India One Air reported profits of Rs~68.75 crore and Rs~3.34 crore, respectively. Akasa Air, the larger scale entrant, reported a loss of Rs~1,986.25 crore in the same Ministry dataset. These figures illustrate the variation in reported financial outcomes but are insufficient to establish a relationship between profitability and market share. Both profitable regional carriers had reported losses in the preceding two years. Moreover, Star Air's FY2025 profit was smaller than the approximately Rs~200 crore in UDAN viability gap funding it reportedly received that year (Aviation A2Z, 2026). This is a descriptive comparison only: the available evidence does not establish how the funding was accounted for or what the airline's result would have been without it.
+
+Financial evidence for the entrants that ceased operations covers only parts of their operating histories. TruJet's reported operating margin improved from $-64.0\%$ in FY2017 to $-15.5\%$ in FY2019 (provisional), but a later parliamentary reply records an operating loss of Rs~143.16 crore in FY2021, a year before it ceased flying (Rajya Sabha, 2021). Zoom Air's operating margin moved from $+4.7\%$ to $-13.5\%$ in its final reported year. Air Deccan reported negative operating results in both available years, although these figures may include non-scheduled operations. Flybig, by contrast, reported net profits in FY2023 and FY2024, but no FY2025 figure is available. TruJet's funding difficulties provide further context: a 2021 report stated that an agreed investment had not materialised and that its main investor had returned ownership to the founder. By February 2022, reports described widespread groundings, with only one aircraft still flying (Hindu BusinessLine, 2021; ch-aviation, 2022). The Comptroller and Auditor General of India's UDAN audit records 52 route awards and 42 commencements for TruJet, but no routes operational as of March 2023 (CAG, 2023).
+
+\textbf{Result 5: local dominance and reported profits did not guarantee regional entrants' survival.} Table~\ref{tab:o3-seven} compares the seven regional entrants across traffic history, peak national share, route presence and reported financial outcomes. The four entrants that ceased flying: TruJet, Flybig, Zoom Air and Air Deccan, were the sole recorded operators on 32 of their 50 route pairs (64\%). Thus, even substantial local presence did not ensure continued operations. Reported profits were not a guarantee of survival either: Flybig recorded net profits in FY2023 and FY2024, while Zoom Air reported positive operating results in FY2017 and FY2018, yet both subsequently ceased flying. TruJet, in contrast, reported operating losses in all the years for which figures are available.
+
+The three regional entrants still operating at the July 2026 study cutoff also differed considerably in their observed scale. Star Air had recorded passenger traffic for 90 months and reached a peak national share of 0.73\%; Fly91 had operated for 29 traffic months and reached 0.47\%; and India One Air had recorded traffic for 46 months but remained near 0.02\%. These seven cases suggest that neither local route dominance nor isolated years of reported profit were sufficient to ensure survival. However, the small sample, incomplete financial records and differences in operating age do not allow the analysis to identify why some entrants survived while others exited.
+
+\begin{minipage}{\textwidth}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\captionof{table}{O3: The seven regional entrants compared}
+\label{tab:o3-seven}
+\fontsize{10}{12}\selectfont\setstretch{1}\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{|>{\raggedright\arraybackslash}p{\dimexpr0.13\linewidth-2\tabcolsep-1.2\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.18\linewidth-2\tabcolsep-1.2\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.11\linewidth-2\tabcolsep-1.2\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.23\linewidth-2\tabcolsep-1.2\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.35\linewidth-2\tabcolsep-1.2\arrayrulewidth\relax}|}
+\hline
+\textbf{Airline} & \textbf{Traffic months (outcome)} & \textbf{Peak share (\%)} & \textbf{Route season: pairs; $\geq$50\%; sole} & \textbf{Reported financial results (Rs crore)} \\
+\hline
+TruJet & 79, Jul 2015--Feb 2022 (ceased) & 0.76 & 31; 21; 18 (winter 2021) & $-80.77$, $-85.15$, $-41.00$ (FY2017--19, operating); later years in Table~\ref{tab:o3-fy25} \\
+\hline
+Star Air & 90, from Jan 2019 (operating) & 0.73 & 37; 29; 28 (summer 2026) & $-20.84$, $-33.31$, $+68.75$ (FY2023--25, net) \\
+\hline
+Fly91 & 29, from Mar 2024 (operating) & 0.47 & 15; 9; 8 (summer 2026) & $-31.42$, $-67.65$ (FY2024--25, net) \\
+\hline
+Flybig & 58, Jan 2021--Oct 2025 (ceased) & 0.24 & 12; 9; 9 (summer 2022) & $+5.59$, $+4.83$ (FY2023--24, net); none for FY2025 \\
+\hline
+Zoom Air & 16, Feb 2017--Jun 2018 (ceased) & 0.04 & 2; 1; 1 (winter 2017) & $+0.14$, $+0.81$, $-1.40$ (FY2017--19, operating) \\
+\hline
+India One Air & 46, from Oct 2022 (operating) & 0.02 & 7; 7; 7 (summer 2026) & $-8.73$, $-3.23$, $+3.34$ (FY2023--25, net) \\
+\hline
+Air Deccan & 13, Dec 2017--Mar 2020 (ceased) & 0.01 & 5; 4; 4 (winter 2019) & $-13.55$, $-28.90$ (FY2018--19, operating) \\
+\hline
+\end{tabular}
+\par\raggedright\footnotesize Sources: DGCA via Kubicek (2026); DGCA-approved domestic schedules; Ministry of Civil Aviation (2025); Rajya Sabha (2019); authors' calculations. Route season columns are defined under Table~\ref{tab:o3-routes}. Financial figures are reported on different bases; see Table~\ref{tab:o3-fy25}.
+\end{minipage}\par\medskip
+\end{mergedcontribution}
+
+\FloatBarrier
+\clearpage
