@@ -1,0 +1,121 @@
+\begingroup
+\color{black}\small\setstretch{1.0}
+\renewcommand{\arraystretch}{1.2}
+\setlength{\tabcolsep}{5pt}
+\captionsetup{font=small,labelfont=bf,justification=centering,singlelinecheck=false,skip=6pt}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{\dimexpr0.26\linewidth-2\tabcolsep-1.3333333333333333\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.57\linewidth-2\tabcolsep-1.3333333333333333\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.17\linewidth-2\tabcolsep-1.3333333333333333\arrayrulewidth\relax}|}
+\caption{O1: Index and regression definitions.}\label{tab:team-o1-variables}\\
+\hline
+\textbf{Variable} & \textbf{Construction and interpretation} & \textbf{Unit} \\
+\hline
+\endfirsthead
+\multicolumn{3}{c}{\small Table~\thetable\ (continued)}\\[4pt]
+\hline
+\textbf{Variable} & \textbf{Construction and interpretation} & \textbf{Unit} \\
+\hline
+\endhead
+Passenger shares & $s_{it}=100q_{it}/\sum_i q_{it}$ for brand $i$. Ownership-group share $S_{gt}$ sums the brands in group $g$. & \% \\
+\hline
+Brand / ownership HHI & $\sum_i s_{it}^{2}$ for brands; $\sum_g S_{gt}^{2}$ for ownership groups. & Index points \\
+\hline
+MHHI & Ownership-HHI plus the stake/control-weighted partial-ownership term defined below. Proportional control uses equity stakes as control shares. & Index points \\
+\hline
+CR2, gap and fringe & $S_{(1)t}+S_{(2)t}$; $S_{(1)t}-S_{(2)t}$; $100-\mathrm{CR2}_t$. Groups are ranked separately each month. & \%; pp \\
+\hline
+Ownership effects & Grouping effect = Ownership-HHI minus Brand-HHI. Partial-ownership effect = MHHI minus Ownership-HHI. & Index points \\
+\hline
+Effective firms and IndiGo ratio & $10{,}000/\mathrm{Ownership\mbox{-}HHI}$; IndiGo share divided by the second-largest ownership group's share. & Firms; ratio \\
+\hline
+Post-event indicators & Four indicators switch to 1 in May 2019 (Jet exit), January 2022 (Tata acquisition), June 2023 (Go First exit) and December 2024 (legal mergers). & 0/1 \\
+\hline
+Calendar trend & Calendar-month index with January 2015 = 1; missing April 2020 retains its calendar position. & Months \\
+\hline
+COVID and seasonal controls & COVID = 1 for March 2020--December 2021. Eleven month-of-year indicators use January as the reference category. & 0/1 \\
+\hline
+\end{longtable}
+{\footnotesize\setstretch{1.05}\raggedright \textbf{Source:} Authors' definitions based on the study's DGCA and company/regulatory inputs.\par}
+\endgroup
+
+For MHHI, with ownership-group percentage shares $S_j$, investor equity stakes $\beta_{ik}$ and control shares $\gamma_{ij}$, the partial-ownership adjustment follows \textcite{obriensalop2000}:
+\[
+\mathrm{MHHI}=\mathrm{Ownership\mbox{-}HHI}+\sum_j\sum_{k\ne j}\lambda_{jk}S_jS_k,
+\qquad
+\lambda_{jk}=\frac{\sum_i\gamma_{ij}\beta_{ik}}{\sum_i\gamma_{ij}\beta_{ij}}.
+\]
+The baseline uses proportional control; alternative control assumptions belong to O1's robustness analysis.
+
+\begingroup
+\color{black}\small\setstretch{1.0}
+\renewcommand{\arraystretch}{1.2}
+\setlength{\tabcolsep}{5pt}
+\captionsetup{font=small,labelfont=bf,justification=centering,singlelinecheck=false,skip=6pt}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{\dimexpr0.26\linewidth-2\tabcolsep-1.3333333333333333\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.57\linewidth-2\tabcolsep-1.3333333333333333\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.17\linewidth-2\tabcolsep-1.3333333333333333\arrayrulewidth\relax}|}
+\caption{O2: Exit and consolidation definitions.}\label{tab:team-o2-variables}\\
+\hline
+\textbf{Variable} & \textbf{Construction and interpretation} & \textbf{Unit} \\
+\hline
+\endfirsthead
+\multicolumn{3}{c}{\small Table~\thetable\ (continued)}\\[4pt]
+\hline
+\textbf{Variable} & \textbf{Construction and interpretation} & \textbf{Unit} \\
+\hline
+\endhead
+Mean shares before/after & Average monthly ownership-group share within each stated event window, calculated separately from passengers and ASK. & \% \\
+\hline
+Absorption ratio & $100(\bar{s}_{g,\mathrm{after}}-\bar{s}_{g,\mathrm{before}})/\bar{s}_{e,\mathrm{before}}$, where $e$ is the exiting group. This measures share redistribution, not traced passenger switching. & \% \\
+\hline
+Group HHI contribution & $\bar{s}_{g,\mathrm{after}}^{2}-\bar{s}_{g,\mathrm{before}}^{2}$. Summing group contributions includes the exiting group's disappearance. This compares HHI formed from period-average shares. & Index points \\
+\hline
+Observed HHI change & Post-period minus pre-period HHI under the stated event-window calculation. Exit decomposition uses squared average shares; the Tata comparison uses changes in mean monthly HHI. & Index points \\
+\hline
+Mechanical ownership change & HHI after combining the relevant brands minus HHI with those brands separate, holding the stated pre-event shares fixed. & Index points \\
+\hline
+\end{longtable}
+{\footnotesize\setstretch{1.05}\raggedright \textbf{Source:} Authors' definitions based on the study's DGCA and company/regulatory inputs.\par}
+\endgroup
+
+\begingroup
+\color{black}\small\setstretch{1.0}
+\renewcommand{\arraystretch}{1.2}
+\setlength{\tabcolsep}{5pt}
+\captionsetup{font=small,labelfont=bf,justification=centering,singlelinecheck=false,skip=6pt}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{\dimexpr0.26\linewidth-2\tabcolsep-1.3333333333333333\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.57\linewidth-2\tabcolsep-1.3333333333333333\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.17\linewidth-2\tabcolsep-1.3333333333333333\arrayrulewidth\relax}|}
+\caption{O3: Entrant, route and financial definitions.}\label{tab:team-o3-variables}\\
+\hline
+\textbf{Variable} & \textbf{Construction and interpretation} & \textbf{Unit} \\
+\hline
+\endfirsthead
+\multicolumn{3}{c}{\small Table~\thetable\ (continued)}\\[4pt]
+\hline
+\textbf{Variable} & \textbf{Construction and interpretation} & \textbf{Unit} \\
+\hline
+\endhead
+National and peak share & Airline brand's passengers divided by all scheduled domestic passengers that month, times 100. Peak share is the maximum observed monthly share. & \% \\
+\hline
+Event time and traffic months & $\tau=0$ at the first observed month with passengers. Shares are compared at $\tau=12,24,36$. Traffic months count observed months with positive passengers; they need not equal elapsed calendar months. & Months \\
+\hline
+Operating outcome & Operating, ceased or merged, based on dated company/regulatory evidence. Operating airlines are observed only through July 2026. & Category \\
+\hline
+Meaningful / persistent & Meaningful: national share reaches 1\% in at least one month. Persistent: share stays at or above 1\% for 24 consecutive months. Both cut-offs are study-defined. & Flags \\
+\hline
+Route presence and frequency share & Airport pairs served and scheduled departures, pooling both directions. Share = $100\times$ the brand's departures divided by all recorded departures on that pair in the same month or snapshot. & Pairs; flights; \% \\
+\hline
+Snapshot and local-position flags & Snapshots use a mid-season date, 15 January or 15 July. Sole recorded operator = all recorded weekly departures; dominant = at least 50\%. Shares and counts refer to the same selected snapshot. & Date; flags; flights/week \\
+\hline
+Route brand HHI & Sum of squared percentage scheduled-flight shares across operating brands on the airport pair. & Index points \\
+\hline
+Revenue and financial result & Revenue and net profit/loss or operating result as reported. Net and operating results retain their source labels; unavailable values are not zero. & INR crore \\
+\hline
+Financial margins & Net margin = $100\times$ net result/revenue. Operating margin uses operating result instead. Only matching accounting periods and bases are compared. & \% \\
+\hline
+Revenue / loss growth & Revenue growth = $100(R_{\mathrm{new}}-R_{\mathrm{old}})/R_{\mathrm{old}}$. Loss-magnitude change uses absolute losses. Changes between percentage margins are in percentage points. & \%; pp \\
+\hline
+Capacity and load factor & ASK is offered seat-distance; RPK is passenger-distance. Load factor is $100\,\mathrm{RPK}/\mathrm{ASK}$ for the stated period. & Seat-km; passenger-km; \% \\
+\hline
+Funding evidence & Reported funding amounts, dates, investors and whether an announced investment was completed. Amounts retain their reported currency. & Currency; date/category \\
+\hline
+Indicative loss and break-even measures & Loss per passenger divides loss in rupees by the stated passenger total. Extra revenue to offset a loss is loss divided by the assumed incremental contribution fraction. These are illustrative comparisons, not forecasts. & INR per passenger; INR crore \\
+\hline
+\end{longtable}
+{\footnotesize\setstretch{1.05}\raggedright \textbf{Source:} Authors' definitions based on the study's DGCA and company/regulatory inputs.\par}
+\endgroup

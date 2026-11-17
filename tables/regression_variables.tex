@@ -1,0 +1,29 @@
+\begingroup
+\color{black}\small\setstretch{1.0}
+\renewcommand{\arraystretch}{1.2}
+\setlength{\tabcolsep}{5pt}
+\captionsetup{font=small,labelfont=bf,justification=centering,singlelinecheck=false,skip=6pt}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{\dimexpr0.24\linewidth-2\tabcolsep-1.25\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.49\linewidth-2\tabcolsep-1.25\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.11\linewidth-2\tabcolsep-1.25\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.16\linewidth-2\tabcolsep-1.25\arrayrulewidth\relax}|}
+\caption{O1 regression variables and roles.}\label{tab:regression-variables}\\
+\hline
+\textbf{Variable} & \textbf{Definition} & \textbf{Unit} & \textbf{Role} \\
+\hline
+\endfirsthead
+\multicolumn{4}{c}{\small Table~\thetable\ (continued)}\\[4pt]
+\hline
+\textbf{Variable} & \textbf{Definition} & \textbf{Unit} & \textbf{Role} \\
+\hline
+\endhead
+Concentration outcomes & Concentration indices or ownership effects used as the outcome in each fitted model; see Table~\ref{tab:variables-summary}. & Points; \% & Dependent \\
+\hline
+Post-event indicators & One indicator per event: 1 from May 2019, January 2022, June 2023 and December 2024, respectively; 0 before. & 0/1 & Explanatory \\
+\hline
+Time trend & Calendar-month index; January 2015 = 1, retaining calendar spacing. & Months & Explanatory \\
+\hline
+COVID period & 1 for March 2020--December 2021; 0 otherwise. & 0/1 & Control \\
+\hline
+Month of year & Eleven indicators for February--December; January is the reference month. & 0/1 & Control \\
+\hline
+\end{longtable}
+{\footnotesize\setstretch{1.05}\raggedright \textbf{Note:} The concentration indices are outcomes in O1's regression. O2--O4 use descriptive comparisons; regression roles do not apply to those measures.\par\textbf{Source:} Authors' definitions for the O1 specification in the study.\par}
+\endgroup
