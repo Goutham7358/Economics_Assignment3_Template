@@ -1,3 +1,5 @@
+\subsubsection{O1: Concentration and regression}
+\label{app:o1-definitions}
 \begingroup
 \color{black}\small\setstretch{1.0}
 \renewcommand{\arraystretch}{1.2}
@@ -20,9 +22,13 @@ Brand / ownership HHI & $\sum_i s_{it}^{2}$ for brands; $\sum_g S_{gt}^{2}$ for 
 \hline
 MHHI & Ownership-HHI plus the stake/control-weighted partial-ownership term defined below. Proportional control uses equity stakes as control shares. & Index points \\
 \hline
-CR2, gap and fringe & $S_{(1)t}+S_{(2)t}$; $S_{(1)t}-S_{(2)t}$; $100-\mathrm{CR2}_t$. Groups are ranked separately each month. & \%; pp \\
+CR2, gap and fringe & CR2 is $S_{(1)t}+S_{(2)t}$, the gap is $S_{(1)t}-S_{(2)t}$, and fringe is $100-\mathrm{CR2}_t$. Groups are ranked each month. Brand-level CR2 instead adds the two largest brand shares. & \%; pp \\
 \hline
 Ownership effects & Grouping effect = Ownership-HHI minus Brand-HHI. Partial-ownership effect = MHHI minus Ownership-HHI. & Index points \\
+\hline
+Total concealed gap & MHHI minus Brand-HHI, equal to the grouping effect plus the partial-ownership effect. & Index points \\
+\hline
+Drift-detection score, $M$ & Robust standardised change between successive observed monthly index values. A jump is flagged when $|M|>3.5$. The change after missing April 2020 spans two months. & Unitless; flag \\
 \hline
 Effective firms and IndiGo ratio & $10{,}000/\mathrm{Ownership\mbox{-}HHI}$; IndiGo share divided by the second-largest ownership group's share. & Firms; ratio \\
 \hline
@@ -30,20 +36,30 @@ Post-event indicators & Four indicators switch to 1 in May 2019 (Jet exit), Janu
 \hline
 Calendar trend & Calendar-month index with January 2015 = 1; missing April 2020 retains its calendar position. & Months \\
 \hline
+Post-Tata trend & Additional time trend from January 2022 in the grouping-gap regression, allowing its slope to change after the acquisition. This is an explanatory variable in the additional specification. & Months \\
+\hline
 COVID and seasonal controls & COVID = 1 for March 2020--December 2021. Eleven month-of-year indicators use January as the reference category. & 0/1 \\
 \hline
 \end{longtable}
-{\footnotesize\setstretch{1.05}\raggedright \textbf{Source:} Authors' definitions based on the study's DGCA and company/regulatory inputs.\par}
+\noindent\begin{minipage}{\linewidth}
+{\footnotesize\setstretch{1.05}\raggedright
+\textbf{Roles:} Concentration indices and ownership effects are dependent variables in the relevant regressions. Event indicators and time trends are explanatory variables. COVID and month-of-year indicators are controls.\par
+\textbf{Source:} Authors' definitions based on the study's DGCA and company/regulatory inputs.\par}
+\end{minipage}
 \endgroup
 
+\noindent\begin{minipage}{\linewidth}
 For MHHI, with ownership-group percentage shares $S_j$, investor equity stakes $\beta_{ik}$ and control shares $\gamma_{ij}$, the partial-ownership adjustment follows \textcite{obriensalop2000}:
 \[
 \mathrm{MHHI}=\mathrm{Ownership\mbox{-}HHI}+\sum_j\sum_{k\ne j}\lambda_{jk}S_jS_k,
 \qquad
 \lambda_{jk}=\frac{\sum_i\gamma_{ij}\beta_{ik}}{\sum_i\gamma_{ij}\beta_{ij}}.
 \]
-The baseline uses proportional control; alternative control assumptions belong to O1's robustness analysis.
+The baseline uses proportional control. Alternative control assumptions belong to O1's robustness analysis. The illustrative markup measure used in O1 and O2 is defined in Appendix~\ref{app:o2-definitions}.
+\end{minipage}\par
 
+\subsubsection{O2: Exits, consolidation and interpretation}
+\label{app:o2-definitions}
 \begingroup
 \color{black}\small\setstretch{1.0}
 \renewcommand{\arraystretch}{1.2}
@@ -66,14 +82,24 @@ Absorption ratio & $100(\bar{s}_{g,\mathrm{after}}-\bar{s}_{g,\mathrm{before}})/
 \hline
 Group HHI contribution & $\bar{s}_{g,\mathrm{after}}^{2}-\bar{s}_{g,\mathrm{before}}^{2}$. Summing group contributions includes the exiting group's disappearance. This compares HHI formed from period-average shares. & Index points \\
 \hline
+Contribution to the HHI increase & $100c_g/\Delta\mathrm{HHI}$, where $c_g$ is the group's HHI contribution and $\Delta\mathrm{HHI}$ is the sum of all contributions. A group's contribution may exceed 100\% if other contributions are negative. Calculated separately using passenger and ASK shares. & \% \\
+\hline
 Observed HHI change & Post-period minus pre-period HHI under the stated event-window calculation. Exit decomposition uses squared average shares; the Tata comparison uses changes in mean monthly HHI. & Index points \\
 \hline
 Mechanical ownership change & HHI after combining the relevant brands minus HHI with those brands separate, holding the stated pre-event shares fixed. & Index points \\
+\hline
+Effective number of firms & $10{,}000/\overline{\mathrm{Ownership\mbox{-}HHI}}$, using mean monthly ownership HHI within each event window. This is an equivalent equal-sized-firm count, not the number of operating airlines or the mean of monthly effective-firm counts. & Firms \\
+\hline
+Illustrative Cournot markup & Share-weighted price--cost markup as a fraction of price, $\overline{L}=(\mathrm{HHI}/10{,}000)/|\varepsilon|$. Absolute demand elasticity $|\varepsilon|=1.5$ is assumed and held fixed. It is not estimated from the data. & Fraction; assumed elasticity \\
+\hline
+Illustrative markup change & $100\Delta\overline{L}=\Delta\mathrm{HHI}/(100|\varepsilon|)$, using HHI changes from squared period-average passenger shares. This is a model-based comparison, not an observed fare change or causal effect. & pp of price \\
 \hline
 \end{longtable}
 {\footnotesize\setstretch{1.05}\raggedright \textbf{Source:} Authors' definitions based on the study's DGCA and company/regulatory inputs.\par}
 \endgroup
 
+\subsubsection{O3: Entrants, routes and finances}
+\label{app:o3-definitions}
 \begingroup
 \color{black}\small\setstretch{1.0}
 \renewcommand{\arraystretch}{1.2}
@@ -111,6 +137,8 @@ Financial margins & Net margin = $100\times$ net result/revenue. Operating margi
 Revenue / loss growth & Revenue growth = $100(R_{\mathrm{new}}-R_{\mathrm{old}})/R_{\mathrm{old}}$. Loss-magnitude change uses absolute losses. Changes between percentage margins are in percentage points. & \%; pp \\
 \hline
 Capacity and load factor & ASK is offered seat-distance; RPK is passenger-distance. Load factor is $100\,\mathrm{RPK}/\mathrm{ASK}$ for the stated period. & Seat-km; passenger-km; \% \\
+\hline
+Year-3 load factor & $100\sum\mathrm{RPK}/\sum\mathrm{ASK}$ over months 25--36 from the first month with passengers, counting that first month as month 1. Vistara uses January--December 2017 and Akasa Air uses August 2024--July 2025. These operating-year windows need not match financial years. & \% \\
 \hline
 Funding evidence & Reported funding amounts, dates, investors and whether an announced investment was completed. Amounts retain their reported currency. & Currency; date/category \\
 \hline
