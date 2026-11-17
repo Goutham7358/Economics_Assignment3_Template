@@ -340,19 +340,19 @@ Clearly state whether the hypotheses or expected relationships were supported, p
 
 \begin{mycontribution}
 \subsection{O2: Economic interpretation}
-\textbf{Exits.} Jet Airways' and Go First's exits reduced the effective number of equal-sized firms from 4.1 to 3.5 and 2.5 to 2.2, respectively. In the Cournot model, firms choose quantities simultaneously, taking rivals' output as given. Holding demand elasticity fixed, higher concentration implies a higher share-weighted markup:
+\textbf{Exits.} Jet Airways' and Go First's exits reduced the effective number of equal-sized firms from 4.1 to 3.5 and 2.5 to 2.2, respectively. In the Cournot model, firms choose quantities simultaneously, taking rivals' output as given. Applied to our study, this would mean each airline decides how many seats to offer, assuming its competitors keep their seat numbers unchanged. Holding demand elasticity fixed, higher concentration implies a higher share-weighted markup:
 \[
 \overline{L} = \frac{\HHI/10{,}000}{|\varepsilon|},
 \]
-where $\overline{L}$ is the share-weighted price--cost markup as a fraction of price, and $|\varepsilon|$ is absolute market demand elasticity. An illustrative elasticity of 1.5 implies markup increases of about 3.0 and 4.6 percentage points of price, not observed fare increases: we have no fare data.
+where $\overline{L}$ is the share-weighted price--cost markup as a fraction of price, and $|\varepsilon|$ is absolute market demand elasticity. An illustrative elasticity of 1.5 implies markup increases of about 3.0 and 4.6 percentage points of price, not observed fare increases: we have no fare data. Worked calculations are in Appendix~\ref{app:workings}, part~C.
 
-\textbf{Why IndiGo absorbed most.} IndiGo's capacity commitments, including its June 2023 order for 500 aircraft, fit a Stackelberg-leadership interpretation. Slot access also constrains rivals' expansion: SpiceJet received vacated Jet Airways slots and expanded capacity, illustrating an entry barrier. IndiGo's dominance may reflect cost leadership as well as weaker competition; without fare and cost data, we cannot distinguish them.
+\textbf{Why IndiGo absorbed most.} In the Stackelberg model, a leader commits to its output first, anticipating how rivals will respond; followers then choose their output after observing that commitment. Applied to our study, this would mean IndiGo commits to future capacity first, and rivals plan their own expansion around that commitment. Its June 2023 order for 500 aircraft fits this interpretation, rather than proving the model describes actual behaviour. Slot access also constrains rivals' expansion: SpiceJet received vacated Jet Airways slots and expanded capacity, illustrating an entry barrier. IndiGo's dominance may reflect cost leadership as well as weaker competition; without fare and cost data, we cannot distinguish them.
 
 \textbf{Tata consolidation and merger review.} For each set of entities combined, the fixed-share concentration effect is
 \[
 \Delta\HHI_{\text{mechanical}} = \left(\sum_i s_i\right)^2 - \sum_i s_i^2,
 \]
-where $s_i$ are pre-consolidation percentage shares, held fixed; effects are summed across separate mergers. Common ownership accounts for most of the January 2022 rise; the late-2024 mergers mechanically added 256 brand \HHI{} points. CCI's capacity commitments protected seven routes but did not address national concentration. Both perspectives matter: with two groups carrying about 90\% of passengers, national structure also affects slot access and exposure to single-airline disruption.
+where $s_i$ are pre-consolidation percentage shares, held fixed; effects are summed across separate mergers. Applied to our study, this means concentration can rise simply because airlines are counted as one entity rather than separate competitors, even if none gains any passengers. Common ownership accounts for most of the January 2022 rise; the late-2024 mergers mechanically added 256 brand \HHI{} points (worked calculations in Appendix~\ref{app:workings}, part~B). CCI's capacity commitments protected seven routes but did not address national concentration. Both perspectives matter: with two groups carrying about 90\% of passengers, national structure also affects slot access and exposure to single-airline disruption.
 
 \subsection{O2: Hypotheses revisited}
 \begin{table}[H]
@@ -471,7 +471,44 @@ Here the question is how much concentration rises simply because separate groups
 	\item \textbf{Compare with the observed change.} Subtract average monthly ownership \HHI{} for January--December 2021 from that for January--December 2022. The observed rise is 373 points; the difference from the mechanical calculation is $373-334=39$ points. This difference includes changes in market shares and the different measurement periods; it is not a causal estimate of the acquisition's effects.
 \end{enumerate}
 
-For the late-2024 mergers, repeat the fixed-share calculation using September 2024 brand shares: the mechanical rise is 256 points. Compare average monthly brand \HHI{} in October 2023--September 2024 with December 2024--November 2025: the observed rise is 493 points. The additional squared-average-share breakdown gives Tata brands $+135$, IndiGo $+380$, SpiceJet $-12$ and Akasa Air $+5$. It indicates which brands drove the rise, but is not an exact decomposition of the 493-point change in average monthly \HHI{}.
+\textbf{Late-2024 mergers.} Use September 2024 brand shares from Table~\ref{tab:o2-tata} and calculate the two merger pairs separately:
+\[
+\begin{aligned}
+\Delta\HHI_{\text{AI--Vistara}} &= 2(11.14)(10.04) \approx 223.7,\\
+\Delta\HHI_{\text{AI Express--AIX Connect}} &= 2(3.97)(4.11) \approx 32.6,\\
+\Delta\HHI_{\text{total}} &\approx 223.7+32.6 \approx 256\text{ points}.
+\end{aligned}
+\]
+The 256 points cover both mergers, not Vistara alone. Compare average monthly brand \HHI{} in October 2023--September 2024 with December 2024--November 2025: the observed rise is 493 points, giving a difference of $493-256=237$ points. The additional squared-average-share breakdown gives Tata brands $+135$, IndiGo $+380$, SpiceJet $-12$ and Akasa Air $+5$. It indicates which brands drove the rise, but is not an exact decomposition of the 493-point change in average monthly \HHI{}.
+
+\textbf{C. Economic interpretation of exits: effective firms and Cournot markups.}
+With \HHI{} on the 0--10,000 scale, the effective number of equal-sized firms is
+\[
+N_{\text{effective}}=\frac{10{,}000}{\HHI}.
+\]
+Using rounded mean monthly ownership \HHI{} values for the before and after windows gives:
+\[
+\begin{aligned}
+\text{Jet Airways:}\quad &\frac{10{,}000}{2{,}440}\approx4.1
+\quad\longrightarrow\quad\frac{10{,}000}{2{,}870}\approx3.5,\\
+\text{Go First:}\quad &\frac{10{,}000}{3{,}940}\approx2.5
+\quad\longrightarrow\quad\frac{10{,}000}{4{,}620}\approx2.2.
+\end{aligned}
+\]
+These are equivalent equal-sized-firm counts, not actual airline counts. They use the reciprocal of each window's mean monthly \HHI{}, not the average of monthly effective-firm counts.
+
+For the illustrative Cournot calculation, use the passenger-based \HHI{} changes of 444 and 690 points in Table~\ref{tab:o2-absorption} and assume $|\varepsilon|=1.5$:
+\[
+\begin{aligned}
+\Delta\overline{L}&=\frac{\Delta\HHI/10{,}000}{|\varepsilon|},\\
+\text{Jet Airways:}\quad \Delta\overline{L}&=\frac{444/10{,}000}{1.5}
+=0.0296\approx3.0\text{ percentage points},\\
+\text{Go First:}\quad \Delta\overline{L}&=\frac{690/10{,}000}{1.5}
+=0.0460=4.6\text{ percentage points}.
+\end{aligned}
+\]
+The 444- and 690-point changes are calculated from squared period-average shares (part~A), so they need not equal differences between the rounded mean monthly \HHI{} values used above. Multiplying the markup fractions by 100 expresses the changes in percentage points of price. Elasticity is assumed, not estimated, and held constant across windows. These are model-based illustrations, not measured fare changes or causal effects of the exits.
+
 \end{mycontribution}
 
 \textbf{O4 reproduction files.} Data preparation, Python plotting code, numerical tables and run instructions are available in the \href{https://github.com/Goutham7358/Assignment3_Code}{Assignment 3 code repository}.
