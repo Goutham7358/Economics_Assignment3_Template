@@ -25,6 +25,7 @@
 \usepackage{booktabs}
 \usepackage{array}
 \usepackage{enumitem}
+\usepackage{needspace}
 \usepackage{tabularx}
 \usepackage{longtable}
 \usepackage{amsmath}
@@ -84,6 +85,31 @@
 \graphicspath{{figures/}}
 \newenvironment{mergedcontribution}[1]{\par\begingroup\normalfont\normalsize\onehalfspacing\color{#1}\renewcommand{\HHI}{HHI}\captionsetup*[figure]{font={small,color=#1},labelfont=bf,hypcap=false}\captionsetup*[table]{font={small,color=#1},labelfont=bf,hypcap=false}}{\par\endgroup}
 
+
+% Body tables can continue between rows. Appendix table layouts are unchanged.
+\newlength{\flowtablewidth}
+\newlength{\flowcolumnwidth}
+\newlength{\flowmeasurewidth}
+\newcommand{\flowmeasure}[1]{%
+  \settowidth{\flowmeasurewidth}{#1}%
+  \ifdim\flowmeasurewidth>\flowcolumnwidth
+    \setlength{\flowcolumnwidth}{\flowmeasurewidth}%
+  \fi
+}
+\newcommand{\flowtablestyle}{%
+  \setlength{\parskip}{0pt}%
+  \captionsetup[longtable]{font=small,labelfont=bf,textfont=normalfont,justification=centering,singlelinecheck=false,hypcap=false,skip=6pt}%
+  \small\setstretch{1.0}%
+  \renewcommand{\arraystretch}{1.25}%
+  \setlength{\tabcolsep}{5pt}%
+  \setlength{\arrayrulewidth}{0.4pt}%
+  \setlength{\LTpre}{6pt}%
+  \setlength{\LTpost}{6pt}%
+  \setlength{\LTcapwidth}{\linewidth}%
+  \setlength{\LTleft}{0pt}%
+  \setlength{\LTright}{\fill}%
+}
+
 \begin{document}
 \hypersetup{pageanchor=false}
 \begin{titlepage}
@@ -111,12 +137,14 @@ Indian Institute of Science\\[0.5cm]
 \end{titlepage}
 \hypersetup{pageanchor=true}
 \setcounter{page}{1}
+\clubpenalty=10000
+\widowpenalty=10000
 
 \section*{Abstract}
-Briefly present the research problem, research question, data and methodology, main findings, and key implications.
+This study examines whether exits and consolidation shifted Indian domestic aviation towards an asymmetric duopoly. Using DGCA national traffic from January 2015 to July 2026, flight schedules and company records, we combine ownership-adjusted concentration measures, event regressions and comparisons of exits, entrants and routes. During December 2024--July 2026, IndiGo and Air India Group together carried about 90\% of domestic passengers, with IndiGo substantially ahead. Both groups also dominated scheduled flights on busy airport pairs, but the gap between them was smaller. Only two of nine entrants achieved sustained national scale, and rivals' unused capacity relative to IndiGo's traffic fell between December 2024 and December 2025. The findings support closer monitoring of route competition, sustainable entry and disruption planning. They do not establish fare effects or how many disrupted passengers rivals could accommodate.
 
 \vspace{0.5cm}
-\textbf{Keywords:} [Keyword 1]; [Keyword 2]; [Keyword 3]; [Keyword 4]
+\textbf{Keywords:} Indian domestic aviation, market concentration, airline consolidation, asymmetric duopoly
 
 \section{Introduction}
 \subsection{Background and Problem Statement}
@@ -125,29 +153,26 @@ In December 2025, Indian domestic aviation faced thousands of flight cancellatio
 \subsection{Research Question}
 How did major consolidation events (exits, acquisitions and mergers) reshape concentration in India's scheduled domestic passenger aviation market between 2015 and 2026 once common ownership is taken into account, and has the oligopoly narrowed into a durable asymmetric duopoly, judged against pre-defined thresholds?
 
+\Needspace{4\baselineskip}
 \subsection{Research Objectives}
 \begin{authorcontribution}{authorSowmya}
-\begin{minipage}{\linewidth}
 \hypertarget{objective:1}{\textbf{O1.}} Examine whether the four consolidation events between January 2015 and July 2026, namely the Jet Airways exit (April 2019), the Tata Group's acquisition of Air India (January 2022), the Go First exit (May 2023) and the Vistara and AIX Connect mergers (late 2024), produced lasting increases in market concentration by analysing monthly brand-level, ownership-level and modified \HHI{}, \CRtwo{} and the effective number of firms, and measuring how much ownership grouping and partial ownership (such as Tata's stakes in Vistara and AirAsia India before 2022) add to brand-level concentration.
-\par\end{minipage}
+\par
 \end{authorcontribution}
 
 \begin{authorcontribution}{authorMeena}
-\begin{minipage}{\linewidth}
 {\hypertarget{objective:2}{\textbf{O2.}} To measure which airline groups absorbed the passengers and seat capacity of Jet Airways (2019) and Go First (2023) after they exited, to explain these shifts with slot and fleet evidence, to measure how much the Tata Group consolidation (2022–2024) raised concentration through common ownership alone, and to discuss its competition-policy implications using CCI’s combination order as the primary source.}
-\par\end{minipage}
+\par
 \end{authorcontribution}
 
 \begin{authorcontribution}{authorSweta}
-\begin{minipage}{\linewidth}
 \hypertarget{objective:3}{\textbf{O3.}} Examine whether the nine airlines that entered India’s scheduled domestic passenger market between January 2015 and July 2026, including Vistara (entered in 2015; subsequently merged), TruJet (entered in 2015; ceased operations), and Akasa Air (entered in 2022; operating at the observation cutoff) developed into meaningful and persistent competitors by analysing their market-share growth, operating duration, and eventual outcomes, including continued operation, cessation, or merger.
-\par\end{minipage}
+\par
 \end{authorcontribution}
 
 \begin{authorcontribution}{authorGoutham}
-\begin{minipage}{\linewidth}
 \hypertarget{objective:4}{\textbf{O4.}} To evaluate whether IndiGo and the Air India Group form an asymmetric duopoly in Indian domestic aviation, using CR2, HHI, share gap and fringe share at the national level and on the top 20 routes where data is available. We also assess resilience using IndiGo's share of route flights and other airlines' spare capacity.
-\par\end{minipage}
+\par
 \end{authorcontribution}
 
 \subsection{Scope of the Study}
@@ -157,7 +182,7 @@ The study covers scheduled domestic passenger aviation in India, January 2015--J
 \subsection{Literature Review and Synthesis}
 The reviewed sources fall into six thematic clusters (Table~\ref{tab:lit-clusters}).
 
-\begin{table}[H]
+\begin{table}[!htbp]
 \centering
 \caption{Thematic clustering of the reviewed literature}\label{tab:lit-clusters}
 \small
@@ -179,6 +204,7 @@ Market Liberalisation, Privatisation & \textcite{findlay2004liberalization} & Li
 \hline
 \end{tabularx}
 \end{table}
+
 
 Together, these studies show that entry and traffic growth do not necessarily sustain competition: financial pressures, capacity constraints and consolidation can strengthen established carriers.
 
@@ -204,7 +230,7 @@ O1 and O4 use the national market in each month for concentration, with O4 also 
 \input{review/shortening/method_o3.tex}
 
 \begin{authorcontribution}{authorGoutham}
-\pagebreak[4]
+\Needspace{4\baselineskip}
 \label{sec:method-o4}
 \textbf{O4.}
 \begin{itemize}[leftmargin=2em]
@@ -242,26 +268,20 @@ Missing observations are excluded. Appendix~\ref{app:o4-flags} defines the thres
 \end{authorcontribution}
 \endgroup
 
-\clearpage
 \input{review/shortening/section4.tex}
-\clearpage
 \input{review/shortening/section5.tex}
-\clearpage
 \input{review/shortening/section6_refs.tex}
-\clearpage
 \input{review/shortening/recommendations.tex}
-\clearpage
-\section{Limitations}
-\subsection{O4: Measurement and data availability}
-Route concentration uses scheduled flights, which may differ from actual operations and do not account for aircraft size or occupancy. It therefore cannot establish how passengers are divided between airlines on each airport pair.
+\input{review/shortening/limitations.tex}
 
-Rivals' unused capacity gives an overall indication of spare capacity elsewhere in the market relative to IndiGo's total monthly traffic. It cannot tell us how many passengers affected by cancellations could have been accommodated, because we do not know whether spare seats were available on the routes and dates they needed.
-
-We could not obtain a consistent fare dataset for the study period. Our analysis therefore examines market structure through concentration and market shares, but cannot directly assess airlines' pricing power or whether greater concentration is associated with higher fares.
-
+\Needspace{6\baselineskip}
 \section{Conclusion}
-Summarise the research question, main findings, key economic interpretation, and main implications.
+This study finds that India's domestic passenger market moved towards an asymmetric duopoly between January 2015 and July 2026. IndiGo gained the most passenger share after the Jet Airways and Go First exits, while Tata's consolidation brought several brands under common control. Counting airline brands separately therefore understates concentration. IndiGo and Air India Group dominated national passenger traffic throughout December 2024--July 2026, with IndiGo substantially ahead. Both groups also dominated scheduled flights on the busiest airport pairs, but the gap between them was smaller. National shares therefore do not fully describe competition on individual routes.
 
+Entry alone did not ensure sustained competition. Only Vistara and Akasa Air met the national-share and persistence criteria, and Vistara subsequently merged into Air India. Strong local shares, revenue growth and occasional profits did not ensure survival. Rivals also had less unused capacity relative to IndiGo's traffic in December 2025 than a year earlier. These results describe market structure and aggregate capacity, without establishing fare effects or actual passenger recovery. Regulators should assess common ownership and route overlaps, while slot allocation should consider whether smaller airlines can sustain their services. Airlines and regulators should also agree disruption plans that match spare seats to passengers' routes and dates.
+
+\clubpenalty=150
+\widowpenalty=150
 \newpage
 \nocite{kubicek2026aviationstats,dgcaDomesticSchedules}
 \printbibliography[title={References}]
@@ -274,10 +294,6 @@ Summarise the research question, main findings, key economic interpretation, and
 \input{review/shortening/results_support.tex}
 
 \clearpage
-\section{Survey Questionnaire or Interview Guide}
-Include the survey questionnaire or interview guide where applicable.
-
-\newpage
 \section*{Methods and Tools Statement}
 \textbf{O4 data and tools.} The analysis uses DGCA monthly airline data distributed by Kubicek and DGCA approved domestic flight schedules. Data preparation, calculations and figures use Python; the report is prepared in LaTeX.
 
@@ -288,19 +304,6 @@ Include the survey questionnaire or interview guide where applicable.
 % Add the other objectives' data, software and AI-use statements during team integration.
 
 \section*{Team Member Contributions}
-Provide one line for each team member describing their contribution to the project.
-
-This statement is intended only to confirm that all team members have contributed to the project. It is not an individual assessment of the quality or quantity of each member's contribution, and differences in individual contributions will not result in different marks for team members.
 \templatebullet{\textbf{Goutham P:} Contributed to the literature review and group discussions, and completed O4's data preparation, analysis, figures and report sections.}
-\templatebullet{\textbf{[Member 2]:} [Brief description of contribution.]}
-\templatebullet{\textbf{[Member 3]:} [Brief description of contribution.]}
-\templatebullet{\textbf{[Member 4]:} [Brief description of contribution.]}
 
-\newpage
-\section*{General Note}
-The final report should be around 8--12 pages, excluding references and appendices. There is no strict maximum page limit; the length should be appropriate to the scope and depth of the study.
-
-The sections and subsections may be adapted according to the nature of the research question, data, and methodology. Not every subsection will be applicable to every project.
-
-The final report should maintain a clear connection between the research question, economic framework, data, methodology, analysis, findings, and implications.
 \end{document}
