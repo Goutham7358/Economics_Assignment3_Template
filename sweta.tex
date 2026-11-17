@@ -113,7 +113,7 @@ Examples may include demand and supply, market structure, information asymmetry,
 Specify the relevant market, geography, time period, population, firms, products, or other boundaries of the study.
 
 \begin{o3box}
-\textbf{O3.} The study follows nine identified entrants: Vistara, Akasa Air, TruJet, Star Air, Fly91, Flybig, Zoom Air, India One Air and Air Deccan. The sample covers airlines that entered India's scheduled domestic passenger market during the study period and for which an identifiable operating history could be established. Other brands appearing in the DGCA data are listed separately in Appendix~\ref{tab:o3-all} and are not treated as entrants in the main analysis. The observation period is January 2015 to July 2026. All nine are compared on national passenger share, operating outcome, scheduled route presence and, where available, financial results.
+\textbf{O3.} The study follows nine identified entrants: Vistara, Akasa Air, TruJet, Star Air, Fly91, Flybig, Zoom Air, India One Air and Air Deccan. The sample covers airlines that entered India's scheduled domestic passenger market during the study period and for which an identifiable operating history could be established. Other brands appearing in the DGCA data are listed separately in Table~\ref{tab:o3-all} in Appendix B and are not treated as entrants in the main analysis. The observation period is January 2015 to July 2026. All nine are compared on national passenger share, operating outcome, scheduled route presence and, where available, financial results.
 \end{o3box}
 
 \section{Literature Review}
@@ -151,14 +151,14 @@ Explain how the existing literature and identified gap inform the research quest
 Briefly describe the research design used in the study.
 
 \begin{o3box}
-\textbf{O3.} Descriptive design applied to all nine entrants: national share tracking in event time, route presence from schedule snapshots, and financial and funding evidence where available.
+\textbf{O3.} Descriptive design applied to all nine entrants: national share tracking in event time, route presence from full-season schedule counts, and financial and funding evidence where available.
 \end{o3box}
 
 \subsection{Data Sources}
 Describe the data source or sources, period covered, geographic coverage, sample or number of observations where applicable, and data collection procedure where applicable.
 
 \begin{o3box}
-\textbf{O3.} \emph{Coverage.} All data are for India's scheduled domestic passenger market, January 2015 to July 2026. \emph{National share and outcome (all nine entrants).} Monthly passenger shares come from DGCA airline statistics as cleaned by Kubicek (2026): 1,577 scheduled domestic airline-months for all airlines, of which 497 airline-months with passengers belong to the nine entrants (April 2020 is missing). Shares are each airline's passengers divided by all scheduled domestic passengers in the month. Outcomes (operating, ceased, merged) come from company releases, regulatory filings and press reports. \emph{Route presence (all nine entrants).} DGCA publishes approved domestic schedules as PDF filings by season; 228 filings (2017--2026) were parsed into flight records, with station names matched to airport codes and duplicate records removed. For each entrant's latest usable season, we count its weekly departures on each airport pair and all other airlines' weekly departures on the same pair on a mid-season date (15 January or 15 July), both directions pooled. This gives 225 entrant--airport-pair observations. A monthly series of route shares from the same filings, covering 20 major routes (April 2019 to July 2026) and 30 airport pairs from TruJet's filings (14 months in 2019--2022), is used in Result 2. \emph{Financial results.} every public figure found for the nine entrants: ICRA's audited tables for Tata SIA Airlines (Vistara) and SNV Aviation (Akasa Air) (ICRA, 2024; ICRA, 2026); FY2023 to FY2025 profit or loss after tax from the civil aviation minister's written reply in the Lok Sabha on 11 December 2025 (Ministry of Civil Aviation, 2025); DGCA operating results for Vistara, TruJet, Zoom Air and Air Deccan reported in Parliament (Rajya Sabha, 2019, 2021); and press reports of Fly91's and Star Air's revenue (Whalesbook, 2026; Aviation A2Z, 2026).
+\textbf{O3.} \emph{Coverage.} All data are for India's scheduled domestic passenger market, January 2015 to July 2026. \emph{National share and outcome (all nine entrants).} Monthly passenger shares come from DGCA airline statistics as cleaned by Kubicek (2026): 1,577 scheduled domestic airline-months for all airlines, of which 497 airline-months with passengers belong to the nine entrants (April 2020 is missing). Shares are each airline's passengers divided by all scheduled domestic passengers in the month. Outcomes (operating, ceased, merged) come from company releases, regulatory filings and press reports. \emph{Route presence (all nine entrants).} DGCA publishes approved domestic schedules as PDF filings by season; 228 filings (2017--2026) were parsed into flight records, with station names matched to airport codes and duplicate records removed. For each entrant's latest usable season, we count its scheduled departures on each airport pair, and all other airlines' departures, on the same pair, over the whole IATA season (last Sunday of March to last Saturday of October for summer; last Sunday of October to last Saturday of March for winter), using each service's operating days and start and end dates, both directions pooled. This gives 229 entrant--airport-pair observations. A monthly series of route shares from the same filings, covering 20 major routes (April 2019 to July 2026) and 30 airport pairs from TruJet's filings (14 months in 2019--2022), is used in Result 2. \emph{Financial results.} available public financial figures identified for the nine entrants: ICRA's audited tables for Tata SIA Airlines (Vistara) and SNV Aviation (Akasa Air) (ICRA, 2024; ICRA, 2026); FY2023 to FY2025 profit or loss after tax from the civil aviation minister's written reply in the Lok Sabha on 11 December 2025 (Ministry of Civil Aviation, 2025); DGCA operating results for Vistara, TruJet, Zoom Air and Air Deccan reported in Parliament (Rajya Sabha, 2019, 2021); and press reports of Fly91's and Star Air's revenue (Whalesbook, 2026; Aviation A2Z, 2026).
 \end{o3box}
 
 \subsection{Unit of Analysis}
@@ -194,7 +194,7 @@ Examples may include:
 
 \begin{o3box}
 
-\textbf{O3.} Event-time tracking: $\tau=0$ is the first month in which an entrant recorded passengers, with subsequent months numbered sequentially. Each entrant's share is recorded at $\tau=12,24,36$, alongside its peak share, number of traffic months and operating outcome. An entrant is \emph{meaningful} if its share reaches 1\% in at least one month and \emph{persistent} if it stays at or above 1\% for 24 consecutive months; both cut-offs are study-defined. Airlines still flying are right-censored at July 2026. An airline's scheduled-frequency share on an airport pair is $100\times$ its scheduled flights divided by all recorded scheduled flights that month. Event time compares airlines at the same stage; route and financial evidence are added because national share understates a regional airline's local role and does not show whether growth was sustainable. For route presence, an entrant is the \emph{sole recorded operator} on an airport pair if it has all recorded weekly departures, and \emph{dominant} if it has at least half. Net profit or loss for FY2024-25 is compared across the operating entrants using the ministry's reported figures. 
+\textbf{O3.} Event-time tracking: $\tau=0$ is the first month in which an entrant recorded passengers, with subsequent months numbered sequentially. Each entrant's share is recorded at $\tau=12,24,36$, alongside its peak share, number of traffic months and operating outcome. An entrant is \emph{meaningful} if its share reaches 1\% in at least one month and \emph{persistent} if it stays at or above 1\% for 24 consecutive months; both cut-offs are study-defined. Airlines still flying are right-censored at July 2026. An airline's scheduled-frequency share on an airport pair is $100\times$ its scheduled flights divided by all recorded scheduled flights that month. Event time compares airlines at the same stage; route and financial evidence are added because national share understates a regional airline's local role and does not show whether growth was sustainable. For route presence, an entrant is the \emph{sole recorded operator} on an airport pair if it has all recorded scheduled departures over the season, and \emph{dominant} if it has at least half. Net profit or loss for FY2024-25 is compared across the operating entrants using the ministry's reported figures. 
 \end{o3box}
 
 \subsection{Hypotheses or Expected Relationships}
@@ -289,39 +289,39 @@ Figure~\ref{fig:o3-age} follows each entrant by months since first service.
 
 \textbf{Result 1: only two entrants achieved meaningful and persistent national market shares.} The 1\% market-share and 24-month persistence thresholds are study-defined measures, not industry standards. Only Vistara and Akasa Air ever exceeded 1\% of domestic passenger traffic. Together, they accounted for 93\% of the passengers carried by the nine entrants, while the other seven collectively never exceeded 1.17\% of national passenger traffic in any month. Akasa Air crossed the 1\% threshold in its third month of operations and Vistara in its fourth. Both maintained a share of at least 1\% for almost their entire observed operating periods: 46 of 48 months for Akasa Air and 115 of 118 months for Vistara. Both therefore meet the study's persistence criterion (Figure~\ref{fig:o3-age}). Akasa Air also grew faster, reaching a 5.43\% share at $\tau=36$, compared with Vistara's 3.58\% (Table~\ref{tab:o3-summary}). By contrast, all four entrants that ceased flying: TruJet, Flybig, Zoom Air and Air Deccan, had peak national shares below 0.8\%.
 
-\textbf{Result 2: regional entrants established local route positions without gaining national scale.} Table~\ref{tab:o3-routes} measures each entrant's share of recorded weekly scheduled departures on its airport pairs; these figures represent scheduled capacity presence, not passenger market share. Vistara was the only recorded operator on just 1 of its 62 pairs, while Akasa Air held this position on 2 of 57. In contrast, the seven regional entrants were the sole recorded operators on 74 of their 106 pairs (70\%) and accounted for at least half of scheduled departures on 81 pairs (76\%). TruJet's monthly filings provide a further indication of this local concentration: in November 2019, it accounted for at least half of recorded flights on 17 of the 22 pairs that could be screened. On Chennai--Salem, it operated all 60 recorded flights (route \HHI{} of 10,000), despite the route carrying only 3,281 passengers across all airlines and TruJet holding just 0.63\% of the national market.
+\textbf{Result 2: regional entrants established local route positions without gaining national scale.} Table~\ref{tab:o3-routes} measures each entrant's share of recorded scheduled departures over a full season on its airport pairs, so services that started or stopped during the season count in proportion to the days they operated; these figures represent scheduled capacity presence, not passenger market share. Vistara was the only recorded operator on just 1 of its 63 pairs, while Akasa Air held this position on 2 of 57. In contrast, the seven regional entrants were the sole recorded operators on 75 of their 109 pairs (69\%) and accounted for at least half of scheduled departures on 80 pairs (73\%). TruJet's monthly filings provide a further indication of this local concentration: in November 2019, it accounted for at least half of recorded flights on 17 of the 22 pairs that could be screened. On Chennai–Salem, TruJet accounted for all 60 recorded scheduled departures (route \HHI{} of 10,000), despite the route carrying only 3,281 passengers across all airlines and TruJet holding just 0.63\% of the national market.
 
-The scale entrants, meanwhile, competed alongside other airlines on most of their routes. Monthly data show Vistara's share of Mumbai--Delhi passengers increasing from 20.01\% in April 2019 to 31.27\% in February 2024, while Akasa Air's share rose from 2.65\% in December 2022 to 8.75\% in July 2026. Across the major routes examined, Vistara's share increased on 16 of 20 routes, compared with 10 of 18 for Akasa Air. Taken together, these findings distinguish two forms of competitive presence: the regional entrants often occupied dominant positions on a limited number of routes, whereas the two scale entrants built substantial shares of the national passenger market. These route comparisons are not matched by airline age and cover different observation periods. Route \HHI{} also treats Vistara and Air India as separate firms, although both were Tata-owned by 2023. Zoom Air's route evidence is particularly limited, covering only two airport pairs.
-% >>> LARGE TABLE: candidate to move to Appendix B (keep the \label; the text refers to it by \ref).
+The scale entrants, meanwhile, competed alongside other airlines on most of their routes. Monthly data show Vistara's share of scheduled flights on Mumbai--Delhi increasing from 20.01\% in April 2019 to 31.27\% in February 2024, while Akasa Air's share rose from 2.65\% in December 2022 to 8.75\% in July 2026. Across the major routes examined, Vistara's frequency share increased on 16 of 20 routes, compared with 10 of 18 for Akasa Air. Taken together, these findings distinguish two forms of competitive presence: the regional entrants often occupied dominant positions on a limited number of routes, whereas the two scale entrants built substantial shares of the national passenger market. These route comparisons are not matched by airline age and cover different observation periods. Route \HHI{} also treats Vistara and Air India as separate firms, although both were Tata-owned by 2023. Zoom Air's route evidence is particularly limited, covering only two airport pairs.
+
 \begin{minipage}{\textwidth}
 \footnotesize
-\captionof{table}{O3: Route presence of the nine entrants from schedule snapshots}
+\captionof{table}{O3: Route presence of the nine entrants over a full schedule season}
 \label{tab:o3-routes}
 \setlength{\tabcolsep}{3pt}\noindent\begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.17\textwidth}|>{\raggedright\arraybackslash}X|r|r|r|r|r|r|}
 \hline
-\textbf{Airline} & \textbf{Snapshot} & \textbf{Pairs} & \textbf{Weekly deps.} & \textbf{$\geq$50\%} & \textbf{Sole} & \textbf{Median (\%)} & \textbf{Airlines} \\
+\textbf{Airline} & \textbf{Season} & \textbf{Pairs} & \textbf{Season deps.} & \textbf{$\geq$50\%} & \textbf{Sole} & \textbf{Median (\%)} & \textbf{Airlines} \\
 \hline
-Vistara & Winter 2023 & 62 & 1999 & 3 & 1 & 20.4 & 9 \\
+Vistara & Winter 2023 & 63 & 43,523 & 3 & 1 & 20.3 & 9 \\
 \hline
-Akasa Air & Summer 2026 & 57 & 1076 & 7 & 2 & 23.1 & 9 \\
+Akasa Air & Summer 2026 & 57 & 32,340 & 7 & 2 & 22.8 & 9 \\
 \hline
-TruJet & Winter 2021 & 29 & 457 & 21 & 17 & 100.0 & 10 \\
+TruJet & Winter 2021 & 31 & 9,463 & 21 & 18 & 100.0 & 10 \\
 \hline
-Star Air & Summer 2026 & 37 & 387 & 30 & 28 & 100.0 & 9 \\
+Star Air & Summer 2026 & 37 & 11,589 & 29 & 28 & 100.0 & 9 \\
 \hline
-Fly91 & Summer 2026 & 14 & 249 & 9 & 8 & 100.0 & 9 \\
+Fly91 & Summer 2026 & 15 & 7,503 & 9 & 8 & 100.0 & 9 \\
 \hline
-Flybig & Summer 2022 & 12 & 158 & 9 & 9 & 100.0 & 9 \\
+Flybig & Summer 2022 & 12 & 4,894 & 9 & 9 & 100.0 & 9 \\
 \hline
-Zoom Air & Winter 2017 & 2 & 28 & 1 & 1 & 66.7 & 11 \\
+Zoom Air & Winter 2017 & 2 & 588 & 1 & 1 & 66.7 & 11 \\
 \hline
-India One Air & Summer 2026 & 7 & 126 & 7 & 7 & 100.0 & 9 \\
+India One Air & Summer 2026 & 7 & 3,777 & 7 & 7 & 100.0 & 9 \\
 \hline
-Air Deccan & Winter 2019 & 5 & 54 & 4 & 4 & 100.0 & 11 \\
+Air Deccan & Winter 2019 & 5 & 1,188 & 4 & 4 & 100.0 & 11 \\
 \hline
 \end{tabularx}
 \par\raggedright\footnotesize
-Notes: Pairs are airport pairs served. $\geq$50\% and Sole count pairs where the entrant accounted for at least half, or all, of recorded weekly scheduled departures, respectively. Median is the median entrant share across its pairs. Airlines is the number of airlines with recorded filings in that season. Snapshots use the mid-season date (15 January or 15 July) from the entrant's latest usable filing before closure or merger, or the latest available filing. Shares are based on recorded weekly departures, with both directions pooled. Source: DGCA-approved domestic schedules; authors' calculations.
+Notes: Pairs are airport pairs served. Season deps. is the entrant's scheduled departures over the season, counted from each service's operating days and start and end dates. $\geq$50\% and Sole count pairs where the entrant accounted for at least half, or all, of recorded season departures, respectively. Median is the median entrant share across its pairs. Airlines is the number of airlines with recorded filings in that season. The season is the entrant's latest usable filing season before closure or merger, or the latest available. Both directions are pooled. Source: DGCA-approved domestic schedules; authors' calculations.
 \end{minipage}\par\medskip
 
 \textbf{Result 3: Financial performance and funding of the two scale entrants.} Vistara and Akasa Air are examined here because they were the only two entrants to exceed 1\% of domestic passenger traffic, reaching peak shares of 10.44\% and 6.36\%, respectively. Their sustained market presence makes them the clearest cases for examining whether scale translated into financial viability. The seven regional entrants did not reach the 1\% threshold; their financial evidence is discussed in Results 4 and 5.
@@ -334,7 +334,7 @@ Both airlines also incurred substantial losses in their early years. Vistara's D
 
 \begin{minipage}{\textwidth}
 \footnotesize
-\captionof{table}{O3: Audited results and funding evidence for Vistara and Akasa Air, the two entrants above 1\% of passengers}
+\captionof{table}{O3: Financial results and funding evidence for Vistara and Akasa Air, the two entrants above 1\% of passengers}
 \label{tab:o3-fin}
 \noindent\begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.2\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
 \hline
@@ -357,9 +357,9 @@ Funding & Rs~10,020 crore from Tata and Singapore Airlines by Aug 2024 & Equity 
 
 FY2024--25 provides a useful, though limited, comparison among operating entrants. Fly91 reported a loss of Rs~67.65 crore, while Star Air and India One Air reported profits of Rs~68.75 crore and Rs~3.34 crore, respectively. Akasa Air, the larger scale entrant, reported a loss of Rs~1,986.25 crore in the same Ministry dataset. These figures illustrate the variation in reported financial outcomes but are insufficient to establish a relationship between profitability and market share. Both profitable regional carriers had reported losses in the preceding two years. Moreover, Star Air's FY2025 profit was smaller than the approximately Rs~200 crore in UDAN viability gap funding it reportedly received that year (Aviation A2Z, 2026). This is a descriptive comparison only: the available evidence does not establish how the funding was accounted for or what the airline's result would have been without it.
 
-Financial evidence for the entrants that ceased operations covers only parts of their operating histories. TruJet's reported operating margin improved from $-64.0\%$ in FY2017 to $-15.5\%$ in FY2019 (provisional), but a later parliamentary reply records an operating loss of Rs~143.16 crore in FY2021, a year before it ceased flying (Rajya Sabha, 2021). Zoom Air's operating margin moved from $+4.7\%$ to $-13.5\%$ in its final reported year. Air Deccan reported negative operating results in both available years, although these figures may include non-scheduled operations. Flybig, by contrast, reported net profits in FY2023 and FY2024, but no FY2025 figure is available. TruJet's funding difficulties provide further context: a 2021 report stated that an agreed investment had not materialised and that its main investor had returned ownership to the founder. By February 2022, reports described widespread groundings, with only one aircraft still flying (Hindu BusinessLine, 2021; ch-aviation, 2022). The Comptroller and Auditor General of India's UDAN audit records 52 route awards and 42 commencements for TruJet, but no routes operational as of March 2023 (CAG, 2023).
+Financial evidence for the entrants that ceased operations covers only parts of their operating histories. TruJet's reported operating margin improved from $-64.0\%$ in FY2017 to $-15.5\%$ in FY2019 (provisional), but a later parliamentary reply records an operating loss of Rs~143.16 crore in FY2021, a year before it ceased flying (Rajya Sabha, 2021). Zoom Air's operating margin moved from $+4.7\%$ to $-13.5\%$ in its final reported year. Air Deccan reported negative operating results in both available years, although these figures may include non-scheduled operations. Flybig, by contrast, reported net profits in FY2023 and FY2024, but no FY2025 figure is available. TruJet's funding difficulties provide further context: a 2021 report stated that an agreed investment had not materialised and that its main investor had returned ownership to the founder. By February 2022, reports described widespread groundings, with only one aircraft still flying (Hindu BusinessLine, 2021; ch-aviation, 2022). The Comptroller and Auditor General of India's UDAN audit records 52 route awards and 42 commencements for TruJet, but no routes operational as of March 2023 (Comptroller and Auditor General of India, 2023).
 
-\textbf{Result 5: local dominance and reported profits did not guarantee regional entrants' survival.} Table~\ref{tab:o3-seven} compares the seven regional entrants across traffic history, peak national share, route presence and reported financial outcomes. The four entrants that ceased flying: TruJet, Flybig, Zoom Air and Air Deccan, were the sole recorded operators on 31 of their 48 route-snapshot pairs (65\%). Thus, even substantial local presence did not ensure continued operations. Reported profits were not a guarantee of survival either: Flybig recorded net profits in FY2023 and FY2024, while Zoom Air reported positive operating results in FY2017 and FY2018, yet both subsequently ceased flying. TruJet, in contrast, reported operating losses in all the years for which figures are available.
+\textbf{Result 5: local dominance and reported profits did not guarantee regional entrants' survival.} Table~\ref{tab:o3-seven} compares the seven regional entrants across traffic history, peak national share, route presence and reported financial outcomes. The four entrants that ceased flying: TruJet, Flybig, Zoom Air and Air Deccan, were the sole recorded operators on 32 of their 50 route pairs (64\%). Thus, even substantial local presence did not ensure continued operations. Reported profits were not a guarantee of survival either: Flybig recorded net profits in FY2023 and FY2024, while Zoom Air reported positive operating results in FY2017 and FY2018, yet both subsequently ceased flying. TruJet, in contrast, reported operating losses in all the years for which figures are available.
 
 The three regional entrants still operating at the July 2026 study cutoff also differed considerably in their observed scale. Star Air had recorded passenger traffic for 90 months and reached a peak national share of 0.73\%; Fly91 had operated for 29 traffic months and reached 0.47\%; and India One Air had recorded traffic for 46 months but remained near 0.02\%. These seven cases suggest that neither local route dominance nor isolated years of reported profit were sufficient to ensure survival. However, the small sample, incomplete financial records and differences in operating age do not allow the analysis to identify why some entrants survived while others exited.
 
@@ -370,13 +370,13 @@ The three regional entrants still operating at the July 2026 study cutoff also d
 \label{tab:o3-seven}
 \noindent\begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{0.12\textwidth}|>{\raggedright\arraybackslash}p{0.19\textwidth}|>{\raggedright\arraybackslash}p{0.09\textwidth}|>{\raggedright\arraybackslash}p{0.17\textwidth}|>{\raggedright\arraybackslash}X|}
 \hline
-\textbf{Airline} & \textbf{Traffic months (outcome)} & \textbf{Peak share (\%)} & \textbf{Route snapshot: pairs; $\geq$50\%; sole} & \textbf{Reported financial results (Rs crore)} \\
+\textbf{Airline} & \textbf{Traffic months (outcome)} & \textbf{Peak share (\%)} & \textbf{Route season: pairs; $\geq$50\%; sole} & \textbf{Reported financial results (Rs crore)} \\
 \hline
-TruJet & 79, Jul 2015--Feb 2022 (ceased) & 0.76 & 29; 21; 17 (winter 2021) & $-80.77$, $-85.15$, $-41.00$ (FY2017--19, operating); later years in Table~\ref{tab:o3-fy25} \\
+TruJet & 79, Jul 2015--Feb 2022 (ceased) & 0.76 & 31; 21; 18 (winter 2021) & $-80.77$, $-85.15$, $-41.00$ (FY2017--19, operating); later years in Table~\ref{tab:o3-fy25} \\
 \hline
-Star Air & 90, from Jan 2019 (operating) & 0.73 & 37; 30; 28 (summer 2026) & $-20.84$, $-33.31$, $+68.75$ (FY2023--25, net) \\
+Star Air & 90, from Jan 2019 (operating) & 0.73 & 37; 29; 28 (summer 2026) & $-20.84$, $-33.31$, $+68.75$ (FY2023--25, net) \\
 \hline
-Fly91 & 29, from Mar 2024 (operating) & 0.47 & 14; 9; 8 (summer 2026) & $-31.42$, $-67.65$ (FY2024--25, net) \\
+Fly91 & 29, from Mar 2024 (operating) & 0.47 & 15; 9; 8 (summer 2026) & $-31.42$, $-67.65$ (FY2024--25, net) \\
 \hline
 Flybig & 58, Jan 2021--Oct 2025 (ceased) & 0.24 & 12; 9; 9 (summer 2022) & $+5.59$, $+4.83$ (FY2023--24, net); none for FY2025 \\
 \hline
@@ -387,7 +387,7 @@ India One Air & 46, from Oct 2022 (operating) & 0.02 & 7; 7; 7 (summer 2026) & $
 Air Deccan & 13, Dec 2017--Mar 2020 (ceased) & 0.01 & 5; 4; 4 (winter 2019) & $-13.55$, $-28.90$ (FY2018--19, operating) \\
 \hline
 \end{tabularx}
-\par\raggedright\footnotesize Sources: DGCA via Kubicek (2026); DGCA-approved domestic schedules; Ministry of Civil Aviation (2025); Rajya Sabha (2019); authors' calculations. Route snapshot columns are defined under Table~\ref{tab:o3-routes}. Financial figures are reported on different bases; see Table~\ref{tab:o3-fy25}.
+\par\raggedright\footnotesize Sources: DGCA via Kubicek (2026); DGCA-approved domestic schedules; Ministry of Civil Aviation (2025); Rajya Sabha (2019); authors' calculations. Route season columns are defined under Table~\ref{tab:o3-routes}. Financial figures are reported on different bases; see Table~\ref{tab:o3-fy25}.
 \end{minipage}\par\medskip
 
 
@@ -455,13 +455,13 @@ Where relevant, mention how these limitations could be addressed in future resea
 \subsection{O3: Limitations}
 
 \begin{itemize}
-    \item \textbf{Definitions and sample selection:} The 1\% market-share and 24-month persistence thresholds are study-defined and may produce different classifications under alternative cut-offs. For example, reducing the meaningful-share threshold to 0.5\% would add TruJet and Star Air to that group, although neither meets the persistence criterion. The nine-airline sample is not exhaustive of every brand appearing in the DGCA data. Additional brands are listed in Appendix~\ref{tab:o3-all}; their exclusion was based on the study's operational and entry criteria.
+    \item \textbf{Definitions and sample selection:} The 1\% market-share and 24-month persistence thresholds are study-defined and may produce different classifications under alternative cut-offs. For example, reducing the meaningful-share threshold to 0.5\% would add TruJet and Star Air to that group, although neither meets the persistence criterion. The nine-airline sample is not exhaustive of every brand appearing in the DGCA data. Additional brands are listed in Table~\ref{tab:o3-all} in Appendix B; their exclusion was based on the study's operational and entry criteria.
 
-    \item \textbf{Route measurement and schedule data:} Route-level shares are calculated from approved schedules, which represent planned rather than operated flights. Missing competitor filings may overstate an entrant's calculated share, while scheduled departures do not directly measure seats, passengers or actual market presence. City-pair passenger totals are available without an airline-level split, limiting direct measurement of route-level passenger shares. The route snapshots cover different years and seasons, so comparisons are more reliable within individual routes than across airlines' entire networks. Summer 2024 has only three recorded airlines and is therefore excluded; Zoom Air and Air Deccan rely on older filings from 2017--2019.
+    \item \textbf{Route measurement and schedule data:} Route-level shares are calculated from approved schedules, which represent planned rather than operated flights. Departures are counted from filed validity dates and operating days, so cancellations and unrecorded changes are not reflected, and missing competitor filings may overstate an entrant's calculated share, while scheduled departures do not directly measure seats, passengers or actual market presence. City-pair passenger totals are available without an airline-level split, limiting direct measurement of route-level passenger shares. The route-season counts cover different years and seasons, so comparisons are more reliable within individual routes than across airlines' entire networks. Summer 2024 has only three recorded airlines and is therefore excluded; Zoom Air and Air Deccan rely on older filings from 2017--2019.
 
     \item \textbf{Financial data and comparability:} Financial evidence is available for all nine entrants, but the figures come from different sources and accounting bases: ICRA audited net results for Vistara and Akasa Air, Ministry of Civil Aviation net profits after tax for FY2023--FY2025 (with FY2025 figures provisional), and DGCA operating results for Vistara, TruJet, Zoom Air and Air Deccan for FY2017--FY2021. These measures are not directly comparable. Flybig has no FY2025 figure, while Air Deccan's reported results may include non-scheduled business. The Ministry reports Vistara's FY2024 loss as Rs~589.12 crore, compared with Rs~581.1 crore in ICRA's report; for Akasa Air, the corresponding FY2025 figures are Rs~1,986.25 crore and Rs~1,983.5 crore. The sources do not explain these differences. TruJet's FY2019 loss was reported as Rs~41.00 crore in a 2019 reply and Rs~17.56 crore in a later reply. Fly91's and Star Air's revenue figures are press-reported, and the underlying filings were not inspected. Consequently, per-passenger loss and break-even calculations should be treated as indicative estimates rather than directly comparable measures of financial viability.
 
-    \item \textbf{Uneven coverage across entrants:} Monthly route-share and funding evidence is available for only three of the nine entrants, limiting comparisons of network development and financing across the full sample. Although route snapshots cover all nine entrants, coverage varies substantially: Zoom Air has only two airport pairs, and Flybig's latest recovered schedule filing is from mid-2022, despite its continued operations until 2025.
+  \item \textbf{Uneven coverage across entrants:} Monthly route-share and funding evidence is available for only three of the nine entrants, limiting comparisons of network development and financing across the full sample. Although route-season counts cover all nine entrants, coverage varies substantially: Zoom Air has only two airport pairs, and Flybig's latest recovered schedule filing is from mid-2022, despite its continued operations until 2025.
 
     \item \textbf{Time coverage and observation window:} Monthly passenger data end in July 2026. First and last observed months may be incomplete; for example, Vistara's final month covers only eleven days. April 2020 is missing from the dataset, although this does not affect the comparisons at $\tau\leq36$. Entrants still operating at the cutoff have right-censored operating histories, meaning their eventual peak shares and outcomes may change as they continue operating.
 \end{itemize}
@@ -471,7 +471,9 @@ Where relevant, mention how these limitations could be addressed in future resea
 Summarise the research question, main findings, key economic interpretation, and main implications.
 
 \begin{o3box}
-\textbf{O3.} Of the nine entrants since 2015, only two (Vistara and Akasa Air) became meaningful and persistent competitors; four ceased flying, while Vistara merged into Air India in November 2024. The seven regional entrants together never exceeded 1.2\% of national passenger traffic in any month and, despite high shares on some routes, failed to gain national scale. FY2024--25 results illustrate that market share and profitability are distinct: Akasa Air, the largest independently operating entrant at the July 2026 cutoff, reported a substantial loss, while the smaller regional carriers Star Air and India One Air reported profits. These observations are descriptive and do not establish a causal relationship between scale and profitability. Competition among new entrants therefore rests largely on Akasa Air, whose continued expansion is supported by external funding. Route snapshots show that regional entrants were the sole recorded operator on about 70\% of their airport pairs. Overall, the findings describe entrant outcomes and market structure, but do not establish their causes or effects on fares.
+
+\textbf{O3.} Of the nine entrants since 2015, only two (Vistara and Akasa Air) became meaningful and persistent competitors; four ceased flying, while Vistara merged into Air India in November 2024. The seven regional entrants together never exceeded 1.2\% of national passenger traffic in any month and, despite high shares on some routes, failed to gain national scale. FY2024--25 results illustrate that market share and profitability are distinct: Akasa Air, the largest independently operating entrant at the July 2026 cutoff, reported a substantial loss, while the smaller regional carriers Star Air and India One Air reported profits. These observations are descriptive and do not establish a causal relationship between scale and profitability. Competition among new entrants therefore rests largely on Akasa Air, whose continued expansion is supported by external funding. Full-season route counts show that regional entrants were the sole recorded operator on about 69\% of their airport pairs. Overall, the findings describe entrant outcomes and market structure, but do not establish their causes or effects on fares.
+
 \end{o3box}
 
 \newpage
@@ -483,21 +485,13 @@ References should follow APA 7th edition style. Every source cited in the text m
 \begingroup\small\setstretch{1.0}\sloppy\emergencystretch=3em\def\UrlBreaks{\do\/\do\-\do\_\do\?\do\=\do\&\do\.\do\%}
 \setlength{\parindent}{-0.5in}\setlength{\leftskip}{0.5in}\setlength{\parskip}{4pt}
 
-Akasa Air. (2025a, August 19). \textit{Akasa Air announces completion of strategic investment transaction, welcomes new investment partners to the Akasian family} [Press release]. \url{https://www.akasaair.com/news-room/akasa-press-releases/akasa-air-announces-completion-of-strategic-investment-transaction-welcomes-new-investment-partners-to-the-akasian-family}
-
 Akasa Air. (2025b, August 7). \textit{Three years, 19 million passengers: Akasa Air celebrates record growth} [Press release]. \url{https://www.akasaair.com/news-room/akasa-press-releases/three-years-19-million-passengers-akasa-air-celebrates-record-growth}
 
 Aviation A2Z. (2026, January 1). \textit{Star Air targeting 1,100 crore turnover}. \url{https://aviationa2z.com/index.php/2026/01/01/star-air-targeting-1100-crore-turnover/}
 
-Business Standard. (2022, July 12). \textit{Fly Delhi to Shimla soon as UDAN spreads wings}. \url{https://www.business-standard.com/article/economy-policy/fly-delhi-to-shimla-soon-as-udan-spreads-wings-122071200958_1.html}
-
-Business Standard. (2025, August 20). \textit{Akasa Air investment report} [Newspaper article]. \url{https://bsmedia.business-standard.com/_media/bs/data/announcements/bse/20082025/d9b3ad9b-0198-4050-95a4-369387043c19.pdf}
-
 Business Today. (2019, January 7). \textit{UDAN sees bumpy trajectory as 8 regional airlines suspend operations in two years: Report}. \url{https://businesstoday.in/amp/latest/story/udan-sees-bumpy-trajectory-as-8-regional-airlines-suspend-operations-in-two-years-report-157327-2019-01-07}
 
 ch-aviation. (2022, February 18). \textit{India's TruJet grounds fleet, in talks for \$25mn funding}. \url{https://www.ch-aviation.com/news/112730-indias-trujet-grounds-fleet-in-talks-for-25mn-funding}
-
-ch-aviation. (2023, November 17). \textit{India's flybig suspends flights as lessors repo planes}. \url{https://www.ch-aviation.com/news/134270-indias-flybig-suspends-flights-as-lessors-repo-planes}
 
 Comptroller and Auditor General of India. (2023). \textit{Performance audit of the Regional Connectivity Scheme (UDAN)} (Report No. 22 of 2023). \url{https://d7i5wg8xwe4hf.cloudfront.net/uploads/download_audit_report/2023/Report-No.22-English-064d5dc4be9bf67.48739275.pdf}
 
@@ -517,13 +511,11 @@ Jayathilakan, A., Ngo, T., Tsui, W. H. K., Redmayne, N. B., Balli, F., \& Fu, X.
 
 Joshi, A. (2025, November 7). \textit{DGCA gets IDERA request for deregistration of all three FlyBig aircraft}. Mint. \url{https://www.livemint.com/companies/dgca-gets-idera-request-for-deregistration-of-all-three-flybig-aircraft-11762511072251.html}
 
-Joy, S. (n.d.). \textit{Domestic airlines post loss of over Rs 5,200 crore in 2024-25}. Deccan Herald. \url{https://www.deccanherald.com/india/domestic-airlines-post-loss-of-over-rs-5200-crore-in-2024-25-3831137}
-
 Kubicek, M. (2026). \textit{india-aviation-stats} [Data set]. GitHub. \url{https://github.com/mkubicek/india-aviation-stats}
 
 Kumari, J., Singh, S. K., \& Singh, V. L. (2026). Soaring together or fighting for the skies? Investigating market behavior in Indian aviation. \textit{Competitiveness Review, 36}(5), 960--982. \url{https://doi.org/10.1108/CR-08-2025-0275}
 
-Ministry of Civil Aviation. (2024, July 29). \textit{Rajya Sabha unstarred question no. 265, Annexures B and C}. \url{https://rsdebate.nic.in/bitstream/123456789/749917/1/PQ_265_29072024_U648_p129_p133.pdf}
+Ministry of Civil Aviation. (2024, July 29). \textit{Rajya Sabha unstarred question no. 265, Annexures B and C}. \url{https://sansad.in/getFile/annex/265/AU650_G16bb4.pdf?source=pqars}
 
 Ministry of Civil Aviation. (2025, December 11). \textit{Losses in the aviation sector} (Lok Sabha Unstarred Question No. 1950). Lok Sabha Secretariat. \url{https://sansad.in/getFile/loksabhaquestions/annex/186/AU1950_3gZIP6.pdf?source=pqals}
 
@@ -531,7 +523,7 @@ Ministry of Civil Aviation. (2026, March 16). \textit{Decreasing competition in 
 
 Oliveira, M. V. R., \& Oliveira, A. V. M. (2018). What drives effective competition in the airline industry? An empirical model of city-pair market concentration. \textit{Transport Policy, 63}, 165--175. \url{https://doi.org/10.1016/j.tranpol.2017.12.021}
 
-Rajya Sabha. (2019, July 10). \textit{Unstarred Question No. 1903: Financial performance of scheduled Indian carriers for 2016-17, 2017-18 and 2018-19 (P)} [Annexure]. Ministry of Civil Aviation. \url{https://rsdebate.nic.in/bitstream/123456789/700080/2/PQ_249_10072019_U1903_p67_p71.pdf}
+Rajya Sabha. (2019, July 10). \textit{Unstarred Question No. 1903: Financial performance of scheduled Indian carriers for 2016-17, 2017-18 and 2018-19 (P)} [Annexure]. Ministry of Civil Aviation. \url{https://sansad.in/getFile/annex/249/Au1903.pdf?source=pqars}
 
 Rajya Sabha. (2021, August 4). \textit{Unstarred Question No. 1812: Financial performance of private scheduled domestic airlines, 2018-19 to 2020-21(P)} [Annexure]. Ministry of Civil Aviation. \url{https://rsdebate.nic.in/bitstream/123456789/719481/1/PQ_254_04082021_U1812_p150_p151.pdf}
 
@@ -539,13 +531,10 @@ Singapore Airlines. (2022, November 29). \textit{Merger of Air India and Vistara
 
 Singapore Airlines. (2025, May 15). \textit{Rule 706A announcement} [Filing to the Singapore Exchange]. \url{https://links.sgx.com/1.0.0/corporate-announcements/WN9KAJ4AZRKNOFUJ/845637_Rule\%20706A_May\%202025.pdf}
 
-Skift. (2025, June 18). \textit{Trujet to return to Indian skies, eyes November launch}. \url{https://skift.com/2025/06/18/trujet-to-return-to-indian-skies-eyes-november-launch/}
-
 Soman, S. S., \& Punjani, K. K. (2024). Financial crisis at Jet Airways Limited: Turnaround or bankruptcy. \textit{Asian Journal of Management Cases, 21}(1), 99--122.
 
 Tata Sons. (2024, November 12). \textit{Air India completes merger with Vistara} [Press release]. \url{https://www.tata.com/content/dam/tata/pdf/Air-India-Completes-Merger-With-Vistara.pdf}
 
-Travel Extra. (2025). \textit{PLAY no more, these are the 25 airlines which ceased operations in 2025 (and 6 which merged)}. \url{https://www.travelextra.ie/these-are-airlines-which-ceased-operations-or-merged-during-2025/}
 
 Wang, K., Zhang, A., \& Zhang, Y. (2018). Key determinants of airline pricing and air travel demand in China and India: Policy, ownership, and LCC competition. \textit{Transport Policy, 63}, 80--89. \url{https://doi.org/10.1016/j.tranpol.2017.12.018}
 
@@ -571,7 +560,7 @@ Include additional tables and figures where applicable.
 
 \begingroup
 \footnotesize
-\captionof{table}{O3: All brands first appearing after January 2015 (sensitivity)}
+\captionof{table}{O3: All brands first appearing after January 2015}
 \label{tab:o3-all}
 \noindent\begin{tabularx}{\textwidth}{|X|l|l|r|r|l|}
 \hline
@@ -664,11 +653,11 @@ Zoom Air & Ceased & Suspended operations in July 2018; June 2018 is its last mon
 \hline
 Air Deccan & Ceased & Last passenger traffic recorded in March 2020. The Ministry lists Deccan Charters (Air Deccan) among airlines that stopped operating after commencement (Ministry of Civil Aviation, 2024). \\
 \hline
-Star Air & Operating & Passenger traffic recorded through July 2026; listed as an operating scheduled commuter airline in the Ministry's December 2024 annual report (Ministry of Civil Aviation, 2025; DGCA via Kubicek, 2026). \\
+Star Air & Operating & Passenger traffic recorded through July 2026; listed as a scheduled commuter operator in the Ministry's Annual Report 2024--25, as of 31 December 2024 (Ministry of Civil Aviation, 2025; DGCA via Kubicek, 2026). \\
 \hline
-Fly91 & Operating & Passenger traffic recorded through July 2026; listed as an operating scheduled commuter airline in the Ministry's December 2024 annual report (Ministry of Civil Aviation, 2025; DGCA via Kubicek, 2026). \\
+Fly91 & Operating & Passenger traffic recorded through July 2026; listed as a scheduled commuter operator in the Ministry's Annual Report 2024--25, as of 31 December 2024 (Ministry of Civil Aviation, 2025; DGCA via Kubicek, 2026). \\
 \hline
-India One Air & Operating & Passenger traffic recorded through July 2026; listed as an operating scheduled commuter airline in the Ministry's December 2024 annual report (Ministry of Civil Aviation, 2025; DGCA via Kubicek, 2026). \\
+India One Air & Operating & Passenger traffic recorded through July 2026; listed as a scheduled commuter operator in the Ministry's Annual Report 2024--25, as of 31 December 2024 (Ministry of Civil Aviation, 2025; DGCA via Kubicek, 2026). \\
 \hline
 \end{tabularx}
 \endgroup
@@ -682,7 +671,7 @@ Include full regression output, additional calculations, analysis code, or other
 \textbf{O4 reproduction files.} Data preparation, Python plotting code, numerical tables and run instructions are available in the \href{https://github.com/Goutham7358/Economics_Assignment3_Template}{Assignment 3 code repository}.
 
 \begin{o3box}
-\textbf{O3 reproduction files.} National passenger-share analysis, event-time calculations and figures are generated by \texttt{o3\_entrant\_analysis.py}. Route snapshots are generated by \texttt{o3\_route\_snapshots.py} using the DGCA schedule archive. The scripts, supporting data and financial calculations are available in the \href{https://github.com/Goutham7358/Assignment3_Code}{Assignment 3 code repository} and the \href{https://github.com/Goutham7358/Economics_New_Entrants_India_Domestic_Aviation}{O3 case-study repository}.
+\textbf{O3 reproduction files.} National passenger-share analysis, event-time calculations and figures are generated by \texttt{o3\_entrant\_analysis.py}. Full-season route counts are generated by \texttt{o3\_route\_fullseason.py} using the DGCA schedule archive. The scripts, supporting data and financial calculations are available in the \href{https://github.com/Goutham7358/Assignment3_Code}{Assignment 3 code repository} and the \href{https://github.com/Goutham7358/Economics_New_Entrants_India_Domestic_Aviation}{O3 case-study repository}.
 \end{o3box}
 
 \section{Survey Questionnaire or Interview Guide}
