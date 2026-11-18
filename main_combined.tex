@@ -30,9 +30,8 @@
 \usepackage{longtable}
 \usepackage{amsmath}
 \usepackage{csquotes}
-\usepackage[backend=biber,style=apa,sorting=nyt]{biblatex}
-\addbibresource{airline_references.bib}
-\addbibresource{o1_stakes_appendix.bib}
+\usepackage[backend=biber,style=apa]{biblatex}
+\addbibresource{review/appendix_reduction/combined_references.bib}
 \captionsetup[figure]{font=small,labelfont=bf,justification=raggedright,singlelinecheck=false,skip=7pt}
 \usepackage[margin=1in]{geometry}
 \usepackage{setspace}
@@ -217,17 +216,17 @@ The literature motivates four connected analyses: tracking concentration around 
 \section{Data and Methodology}
 \subsection{Data Sources}
 Table~\ref{tab:data-sources} summarises the data sources, periods, samples and uses.
-\input{review/shortening/data_sources.tex}
+\input{review/appendix_reduction/data_sources.tex}
 
 \subsection{Unit of Analysis}
 O1 and O4 use the national market in each month for concentration, with O4 also assessing capacity. These measures are built from monthly airline records grouped by brand or ownership. O2 compares ownership-group shares and national HHI before and after exits and consolidation events. O3 follows airline brands each month and compares their finances by financial year. Route measures combine both directions of each airport pair. O3 observes each airline on an airport pair over a full selected summer or winter season and also uses separate monthly route records, while O4 measures concentration for each airport pair in each month. Variable definitions, units and calculation rules are provided in Appendix~\ref{app:variable-dictionary}.
 
 \subsection{Method of Analysis}
-\input{review/shortening/method_o1.tex}
+\input{review/appendix_reduction/method_o1.tex}
 
-\input{review/shortening/method_o2.tex}
+\input{review/appendix_reduction/method_o2.tex}
 
-\input{review/shortening/method_o3.tex}
+\input{review/appendix_reduction/method_o3.tex}
 
 \begin{authorcontribution}{authorGoutham}
 \Needspace{4\baselineskip}
@@ -268,11 +267,11 @@ Missing observations are excluded. Appendix~\ref{app:o4-flags} defines the thres
 \end{authorcontribution}
 \endgroup
 
-\input{review/shortening/section4.tex}
-\input{review/shortening/section5.tex}
-\input{review/shortening/section6_refs.tex}
-\input{review/shortening/recommendations.tex}
-\input{review/shortening/limitations.tex}
+\input{review/appendix_reduction/section4.tex}
+\input{review/appendix_reduction/section5.tex}
+\input{review/appendix_reduction/section6_refs.tex}
+\input{review/appendix_reduction/recommendations.tex}
+\input{review/appendix_reduction/limitations.tex}
 
 \Needspace{6\baselineskip}
 \section{Conclusion}
@@ -283,10 +282,19 @@ Entry alone did not ensure sustained competition. Only Vistara and Akasa Air met
 \clubpenalty=150
 \widowpenalty=150
 \newpage
-\nocite{kubicek2026aviationstats,dgcaDomesticSchedules}
+% Preserve the sources supplied in both original reference lists.
+\nocite{kubicek2026aviationstats,dgcaDomesticSchedules,akasa2025investment,akasa2025anniversary,aviationa2z2026star,businessstandard2022udan,businessstandard2025akasa,businesstoday2019udan,chaviation2022trujet,chaviation2023flybig,cag2023udan,grosche2020concentration,businessline2021trujet,icra2024vistara,icra2026akasa,seatrade2025trujet,jasrotia2025gofirst,jayathilakan2024determinants,joshi2025flybig,joyAirlineLosses,kumari2026soaring,moca2024regional,moca2025losses,moca2026competition,oliveira2018effective,rajyasabha2019finances,rajyasabha2021finances,sia2022mergerrelease,sia2025rule706a,skift2025trujet,soman2024jet,tata2024vistaramerger,travelextra2025closures,wang2018determinants,whalesbook2026fly91}
+\begingroup
+\setstretch{1.15}
+\raggedright
+\setlength{\emergencystretch}{3em}
+\setlength{\bibhang}{0.5in}
+\setlength{\bibitemsep}{0pt}
+\setlength{\bibparsep}{0pt}
+\titleformat{\section}{\normalsize\bfseries\centering}{\thesection.}{0.6em}{}
+\defbibheading{bibliography}[References]{\section*{#1}}
 \printbibliography[title={References}]
-\clearpage
-\input{sections/o3_source_references.tex}
+\endgroup
 
 \newpage
 \appendix
@@ -298,21 +306,27 @@ Entry alone did not ensure sustained competition. Only Vistara and Akasa Air met
 \titlespacing*{\section}{0pt}{8pt}{4pt}
 \titlespacing*{\subsection}{0pt}{8pt}{4pt}
 \titlespacing*{\subsubsection}{0pt}{6pt}{3pt}
-\input{review/shortening/supporting_material.tex}
-\input{review/shortening/results_support.tex}
+\input{review/appendix_reduction/supporting_material.tex}
+\input{review/appendix_reduction/results_support.tex}
 \endgroup
 
-\clearpage
+\begingroup
+\setstretch{1.15}
+\setlength{\parskip}{4pt}
+\titlespacing*{\section}{0pt}{12pt}{6pt}
+\Needspace{6\baselineskip}
 \section*{Methods and Tools Statement}
-\textbf{O4 data and tools.} The analysis uses DGCA monthly airline data distributed by Kubicek and DGCA approved domestic flight schedules. Data preparation, calculations and figures use Python; the report is prepared in LaTeX.
+The study builds on the research question, literature review and methods developed in Assignments 1 and 2. Data are from DGCA monthly airline statistics distributed by Kubicek, DGCA flight schedules, and the company, credit-rating and government records cited in the report. Python was used for data preparation, calculations, regressions and figures, and LaTeX for report formatting. The code repository and run instructions are linked in Appendix~\ref{app:reproduction}.
 
-\textbf{Code repository:} \href{https://github.com/Goutham7358/Assignment3_Code}{https://github.com/Goutham7358/Assignment3\_Code}. The repository contains the data-preparation scripts, analysis code and reproduction instructions.
-
-\textbf{AI assistance (O4).} AI assistance was used to develop code for cleaning the data, converting DGCA schedule PDFs to CSV, calculating measures such as HHI and CR2, and generating figures. It also supported grammar correction and LaTeX formatting.
-
-% Add the other objectives' data, software and AI-use statements during team integration.
+AI assisted with literature-search keywords and search strings, grammar correction, document structure and LaTeX formatting. It helped generate code for data cleaning, PDF-to-CSV conversion, the team's specified calculations and plots. The team chose the research question, objectives and methods, reviewed the AI-assisted material, and takes responsibility for the analysis and submitted work. AI was not used to fabricate data, results or references.
 
 \section*{Team Member Contributions}
-\templatebullet{\textbf{Goutham P:} Contributed to the literature review and group discussions, and completed O4's data preparation, analysis, figures and report sections.}
+All members contributed to the literature review, research problem, question and objectives, and group discussions.
+\templatebullet{\textbf{Sowmya K:} O1 data preparation, analysis, figures and report sections.}
+\templatebullet{\textbf{Meena Chidambaram:} O2 data preparation, analysis, figures and report sections.}
+\templatebullet{\textbf{Sweta Behera:} O3 data preparation, analysis, figures and report sections.}
+\templatebullet{\textbf{Goutham P:} O4 data preparation, analysis, figures and report sections.}
+
+\endgroup
 
 \end{document}

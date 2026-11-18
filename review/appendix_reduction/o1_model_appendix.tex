@@ -1,0 +1,22 @@
+\label{app:review-o1-formulae}
+MHHI adds a partial-ownership adjustment to the common index in Appendix~\ref{app:shared-calculations}:
+\begin{equation}
+\text{MHHI}_t = \text{Ownership-HHI}_t+\sum_{j}\sum_{k\neq j}\lambda_{jk}S_{jt}S_{kt},\qquad
+\lambda_{jk}=\frac{\sum_i \gamma_{ij}\beta_{ik}}{\sum_i \gamma_{ij}\beta_{ij}} \tag{O1.1b}\label{eq:review-o1-mhhi}
+\end{equation}
+Here $\beta_{ik}$ is owner $i$'s stake in firm $k$ and $\gamma_{ik}$ its control share \parencite{obriensalop2000}. The regression is
+\begin{equation}
+\text{Index}_t = \alpha + \beta t + \sum_{k=1}^{4}\gamma_k\,\text{Post}_{kt} + \delta\,\text{COVID}_t + \sum_{m=2}^{12}\mu_m M_{mt} + \varepsilon_t \tag{O1.2}\label{eq:review-o1-regression}
+\end{equation}
+Here $\beta$ is the monthly trend, $\gamma_k$ the four permanent event steps, $\delta$ the COVID effect and $\mu_m$ the seasonal effects (January base). Dates and controls follow Section~\ref{sec:method-o1}. Standard errors follow \textcite{neweywest1987}.
+\begin{samepage}
+For each of Brand HHI, Ownership HHI and MHHI, let $x_t$ be the change from the previous available observation. The modified score is
+\begingroup
+\renewcommand{\theHequation}{review-o1-jump}
+\begin{equation}
+M_t=\frac{0.6745\,[x_t-\operatorname{median}(x)]}{\operatorname{median}|x-\operatorname{median}(x)|}.
+\tag{O1.3}\label{eq:review-o1-jump}
+\end{equation}
+\endgroup
+\par\end{samepage}
+The median and MAD use all observed changes \parencite{iglewicz1993outliers}. Missing April 2020 makes May's change span March--May. Apply the flag and nearby-window rules in Section~\ref{sec:method-o1}; the pass/fail outcomes are reported with Table~\ref{tab:o1-drift}.

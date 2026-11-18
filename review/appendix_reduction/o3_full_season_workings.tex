@@ -1,0 +1,19 @@
+\begingroup
+\renewcommand{\theHequation}{review-o3-season-departures}
+\textbf{Full-season counts.} Sum deduplicated services across both directions, counting only valid dates and operating weekdays within the chosen season:
+\begin{equation}
+D_{a,r,s}=\sum_{j\in(a,r)}\ \sum_{d\in s}
+\mathbf{1}\{b_j\leq d\leq e_j\}\,
+\mathbf{1}\{\mathrm{weekday}(d)\in W_j\}.
+\tag{O3.1}\label{eq:o3-season-departures}
+\end{equation}
+Here $a,r,s$ denote airline, pair and season; $b_j,e_j,W_j$ are service $j$'s validity dates and weekdays. These are scheduled departures, not verified operations.
+\renewcommand{\theHequation}{review-o3-season-share}
+\begin{equation}
+\mathrm{SeasonShare}_{a,r,s}=100\,
+\frac{D_{a,r,s}}{\sum_b D_{b,r,s}}.
+\tag{O3.2}\label{eq:o3-season-share}
+\end{equation}
+The denominator includes all recorded airlines on the airport pair in that season. Sole-operator records give $100(75/109)=68.8\%$ for regional entrants and $100(32/50)=64.0\%$ for ceased entrants. These are airline--airport-pair--season records.
+\endgroup
+\par

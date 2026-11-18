@@ -1,0 +1,41 @@
+\par
+\begingroup
+\flowtablestyle
+\color{black}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{0.23\linewidth}|>{\raggedright\arraybackslash}p{0.21\linewidth}|>{\raggedright\arraybackslash}p{0.25\linewidth}|>{\raggedright\arraybackslash}p{\dimexpr0.31\linewidth-8\tabcolsep-5\arrayrulewidth\relax}|}
+\caption{Data sources, coverage, sample and uses.}\label{tab:data-sources}\\
+\hline
+\textbf{Source and access} & \textbf{Coverage} & \textbf{Sample} & \textbf{Used for}\\
+\hline
+\endfirsthead
+\multicolumn{4}{c}{\tablename~\thetable\ (continued)}\\
+\hline
+\textbf{Source and access} & \textbf{Coverage} & \textbf{Sample} & \textbf{Used for}\\
+\hline
+\endhead
+\endfoot
+\endlastfoot
+DGCA airline traffic and city-pair totals.\par \href{https://github.com/mkubicek/india-aviation-stats}{Public GitHub repository.}
+& National airline data: January 2015--July 2026.\par Airport-pair passenger totals: 2025, used to select the busiest airport pairs.
+& 1,577 airline-month observations across 138 months.\par 2025 passenger totals for airport pairs.
+& O1--O4: Concentration, capacity, exit-share changes, entrant tracking and route selection.\\
+\hline
+DGCA approved domestic schedules.\par \href{https://www.dgca.gov.in/digigov-portal/?page=4201/4200/servicename}{PDFs from the DGCA portal.}
+& DGCA schedule archive: 2017--2026.
+& Archive: 228 PDFs.\par O4: 20 airport pairs, with 1,150 monthly observations in total, April 2019--September 2026. Top-10 subset included.
+& O3--O4: Route presence, concentration and dependence on IndiGo.\\
+\hline
+CCI combination orders and releases.\par \href{https://www.cci.gov.in/images/caseorders/en/order1695297548.pdf}{Air India--Vistara order (2023).}\par \href{https://cci.gov.in/images/antitrustorder/en/order1770207377.pdf}{IndiGo order (2026).}
+& Merger and competition-policy records, including 2023 and 2026 orders.
+& Selected CCI orders and releases relevant to the study.
+& O1, O2, O4: Ownership, merger commitments and competition policy.\\
+\hline
+Company, financial and regulatory records.\par \href{https://corporate.spicejet.com/Content/pdf/AnnualReport_SpiceJet_201920.pdf}{SpiceJet annual report.}\par \href{https://www.sebi.gov.in/filings/public-issues/may-2021/go-airlines-india-limited-drhp_50122.html}{Go Airlines prospectus.}\par \href{https://www.icra.in/Rating/GetRationalReportFilePdf?id=143563}{Akasa rating report.}
+& Ownership and operating histories; financial years vary by airline.
+& Available company and regulatory records, including parliamentary replies.
+& O1--O3: Ownership, slots, fleets, entrant outcomes, finance and funding.\\*
+\noalign{\hrule height\arrayrulewidth\nobreak}
+\multicolumn{4}{@{}p{\linewidth}@{}}{\par
+\resultstablenotes{Schedules describe planned flights, not actual flights or passengers. \textcolor{authorSweta}{O3 uses 229 full-season airline--airport-pair records for nine entrants, alongside separate monthly route samples (Appendix~\ref{app:eda-route-support}). Summer 2026 counts include planned departures beyond July. National passenger and outcome records end in July 2026.}}{National traffic and city-pair data: \textcite{kubicek2026aviationstats}; schedules: \textcite{dgcaDomesticSchedules}; CCI documents: \parencite{cci2023vistara,cci2026indigo}; supporting records include \textcite{spicejet2020annual} and \textcite{goair2021drhp}. Sample counts are from the prepared study datasets.}}\\
+\end{longtable}
+\endgroup

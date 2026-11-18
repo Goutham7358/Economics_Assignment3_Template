@@ -1,0 +1,115 @@
+\section{Shared Data and Calculations}
+\label{app:shared-calculations}
+\label{app:o4-dictionary}
+\label{app:variable-dictionary}
+\label{app:team-variables}
+\subsection{Inputs, units and ownership mapping}
+\label{app:o4-input-definitions}
+Ownership groups combine Air India with Air India Express and Jet Airways with JetLite. Vistara and AirAsia India/AIX Connect join Air India Group from January 2022. Alliance Air remains separate. GOI and GOX are distinct airports.
+
+Source ASK and RPK are in thousands. Divide by 1,000,000 to express them in billions. Passenger counts measure journeys, not unique travellers.
+
+\subsection{Common measures}
+\label{app:o4-measure-definitions}
+Shares are percentages; $g$, $r$ and $t$ denote group, airport pair and month. Ranks $(1)$ and $(2)$ identify the two largest shares, reranked each observation; pp denotes percentage points. For brand shares $s_{it}$ and group shares $S_{gt}=\sum_{i\in g}s_{it}$,
+\begin{equation}
+\mathrm{Brand\mbox{-}HHI}_t=\sum_i s_{it}^2,\qquad
+\mathrm{Ownership\mbox{-}HHI}_t=\sum_g S_{gt}^2.
+\tag{A.1}\label{eq:review-o1-indices}
+\end{equation}
+
+\begin{minipage}{\linewidth}
+\captionsetup{font=small,labelfont=bf,justification=raggedright,singlelinecheck=false,hypcap=false}
+\captionof{table}{Common measures and units.}
+\label{tab:o4-dictionary-measures}
+\centering
+{\footnotesize\setstretch{1.0}\setlength{\tabcolsep}{4pt}\fontsize{10}{12}\selectfont\setstretch{1}\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{|>{\raggedright\arraybackslash}p{\dimexpr0.24\linewidth-2\tabcolsep-1.3333333333333333\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.59\linewidth-2\tabcolsep-1.3333333333333333\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.17\linewidth-2\tabcolsep-1.3333333333333333\arrayrulewidth\relax}|}
+\hline
+\textbf{Measure} & \textbf{Definition} & \textbf{Unit} \\
+\hline
+Passenger / frequency share & $s_{gt}=100P_{gt}/\sum_gP_{gt}$ nationally; $s_{grt}=100f_{grt}/\sum_gf_{grt}$ for flights on a pair. Brand shares use the same denominators. & \% \\
+\hline
+Ownership / brand HHI & Equation~\ref{eq:review-o1-indices}; also applies to frequency or capacity shares when specified. & Points \\
+\hline
+CR2 & $s_{(1)}+s_{(2)}$, the combined share of the two largest groups, ranked afresh for each observation. & \% \\
+\hline
+Leader--rival gap & $s_{(1)}-s_{(2)}$. Nonnegative; this compares the two largest groups, whichever group leads. & pp \\
+\hline
+Fringe share & $100-\mathrm{CR2}$. Combined share of all groups outside the leading pair. & \% \\
+\hline
+Effective equal-sized firms & $N_t=10{,}000/\mathrm{HHI}_t$, using the stated brand or ownership definition. This is not a count of actual airlines. & Firms \\
+\hline
+Condition percentages & $100\times$ qualifying observations / retained observations. Monthly route denominators use only that month's available pairs. & \% \\
+\hline
+\end{tabular}
+\par}
+\vspace{4pt}
+{\footnotesize\setstretch{1.0}\raggedright\textit{Source:} Authors' calculations; objective-specific applications follow in Appendix~\ref{app:results-details}.\par}
+\end{minipage}
+
+Calculations use unrounded values. HHI ranges from 0 to 10,000. Route quartiles use linear interpolation. Missing observations are excluded.
+
+\subsection{Averaging HHI across months}
+\label{app:aggregation}
+For a window $W$ of $n_W$ observed months, $\bar s_{g,W}$ is group $g$'s mean monthly share. The two summaries are
+\begin{equation}
+\underbrace{\sum_g \bar s_{g,W}^{\,2}}_{\text{HHI of average shares}},
+\qquad
+\underbrace{\frac{1}{n_W}\sum_{t\in W}\mathrm{HHI}_t}_{\text{average monthly HHI}}.
+\tag{A.2}\label{eq:shared-aggregation}
+\end{equation}
+O2's exit contributions use the first. O1's period summaries and O2's observed consolidation changes use the second. Monthly observations receive equal weight.
+
+\subsection{Worked national observation: July 2026}
+\label{app:o4-national-calculations}
+
+\begin{minipage}{\linewidth}
+\captionsetup{font=small,labelfont=bf,justification=raggedright,singlelinecheck=false,hypcap=false}
+\captionof{table}{Worked national concentration inputs and HHI contributions, July 2026.}
+\label{tab:o4-national-worked}
+\centering
+{\small\setstretch{1.1}\fontsize{10}{12}\selectfont\setstretch{1}\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{|>{\raggedright\arraybackslash}p{\dimexpr0.4\linewidth-2\tabcolsep-1.25\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.2\linewidth-2\tabcolsep-1.25\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.2\linewidth-2\tabcolsep-1.25\arrayrulewidth\relax}|>{\raggedright\arraybackslash}p{\dimexpr0.2\linewidth-2\tabcolsep-1.25\arrayrulewidth\relax}|}
+\hline
+\textbf{Ownership group} & \textbf{Passengers} & \textbf{Share (\%)} & \textbf{HHI contribution} \\
+\hline
+IndiGo & 8,081,825 & 67.3518 & 4,536.27 \\
+\hline
+Air India Group & 2,875,100 & 23.9603 & 574.10 \\
+\hline
+Akasa Air & 664,572 & 5.5384 & 30.67 \\
+\hline
+SpiceJet & 187,280 & 1.5607 & 2.44 \\
+\hline
+Star Air & 83,018 & 0.6919 & 0.48 \\
+\hline
+Fly91 & 56,152 & 0.4680 & 0.22 \\
+\hline
+Alliance Air & 50,078 & 0.4173 & 0.17 \\
+\hline
+India One Air & 1,386 & 0.0116 & 0.00 \\
+\hline
+Total & 11,999,411 & 100.0000 & 5,144.35 \\
+\hline
+\end{tabular}
+\par}
+\vspace{4pt}
+{\footnotesize\setstretch{1.1}\raggedright\textit{Note:} Each HHI contribution is the square of its group's percentage share. Calculations use unrounded shares; displayed shares and contributions are rounded independently.\par
+\textit{Source:} Same passenger snapshot and ownership convention as Table~\ref{tab:o4-national-results}; authors' calculations.\par}
+\end{minipage}
+
+With $P=11{,}999{,}411$ total journeys, $I$ denoting IndiGo and $A$ Air India Group,
+\[
+\begin{aligned}
+ s_I&=100\frac{8{,}081{,}825}{P}\approx67.3518\%, &
+ s_A&=100\frac{2{,}875{,}100}{P}\approx23.9603\%,\\
+ \mathrm{CR2}&=s_I+s_A\approx91.3122\%, &
+ \mathrm{Gap}&=s_I-s_A\approx43.3915\ \mathrm{pp},\\
+ \mathrm{Fringe}&=100-\mathrm{CR2}\approx8.6878\%, &
+ \mathrm{HHI}&=\sum_g s_g^2\approx5{,}144.35,\\
+ N&=10{,}000/\mathrm{HHI}\approx1.944.
+\end{aligned}
+\]

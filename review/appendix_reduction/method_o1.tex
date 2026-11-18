@@ -1,0 +1,35 @@
+\begin{authorcontribution}{authorSowmya}
+\Needspace{4\baselineskip}
+\label{sec:method-o1}
+\textbf{O1.}
+\begin{itemize}[leftmargin=2em]
+    \item \textbf{Monthly concentration.} Clean the national passenger records as shown in Table~\ref{tab:o1-cleansing}. Calculate Brand HHI, Ownership HHI and MHHI from the same monthly data, alongside CR2 and the effective number of firms. Ownership HHI groups brands by owner, while MHHI also accounts for partial-ownership links. Formulae and ownership stakes are in Appendices~\ref{app:review-o1-formulae} and~\ref{app:o1-stakes}.
+    \item \textbf{Regression model.} Fit a separate regression to each HHI series using a time trend and four post-event indicators: Jet's exit (May 2019), Tata's acquisition (January 2022), Go First's exit (June 2023) and the legal mergers (December 2024). Include a COVID indicator for March 2020--December 2021 and month indicators for seasonality. Estimate the coefficients jointly, with Newey--West standard errors using 12 lags. The event dates are specified before fitting. These are estimated level shifts, not causal effects.
+    \item \textbf{Abrupt changes.} Calculate the unitless jump score $M$ separately for changes in Brand HHI, Ownership HHI and MHHI. Flag a month if the absolute score exceeds 3.5 in any one series. Compare the seven selected windows D1--D7 with these flags, counting a jump within 40 days of each window's endpoint. Examine passenger-share changes, ownership grouping, brand reporting and reversals in the observed series. The score formula is in Appendix~\ref{app:review-o1-formulae}.
+    \item \textbf{Ownership comparisons.} Compare Ownership HHI with Brand HHI to measure the grouping effect, and MHHI with Ownership HHI to measure the extra partial-ownership adjustment. The latter adds nothing from January 2022 once the relevant airlines are already grouped together.
+\end{itemize}
+
+\begin{minipage}{\linewidth}
+\captionsetup{font={small,color=authorSowmya},labelfont=bf,justification=raggedright,singlelinecheck=false,hypcap=false}
+\captionof{table}{O1: Data cleansing applied (additional checks in Appendix~\ref{app:o1-cleaning}).}
+\label{tab:o1-cleansing}
+\centering
+{\footnotesize\setstretch{1.0}\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.2}\begin{tabularx}{\linewidth}{|>{\raggedright\arraybackslash}p{0.19\linewidth}|>{\raggedright\arraybackslash}p{0.34\linewidth}|>{\raggedright\arraybackslash}X|}
+\hline
+\textbf{Rules} & \textbf{Treatment} & \textbf{Effect} \\
+\hline
+C1--C3 Schema, names, scope & Coerce numeric fields; keep scheduled domestic service & 1,773 out-of-scope rows excluded \\
+\hline
+C4--C5 Duplicates, zeros & Sum duplicate airline-months; drop zero-passenger rows & 132 zero rows dropped \\
+\hline
+C6--C7 Consistency, outliers & Flag, never overwrite & 92 outlier flags, none material \\
+\hline
+C8 Gaps & April 2020 left empty; AirAsia India 2017 interpolated only as a sensitivity run & 138 market-months \\
+\hline
+C9 Shares & Recomputed from passengers & Sum to 100\% in all months \\
+\hline
+\end{tabularx}\par}
+\end{minipage}
+
+\end{authorcontribution}
